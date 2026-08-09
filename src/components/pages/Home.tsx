@@ -9,8 +9,8 @@ import { IconStarFilled } from '@tabler/icons-react';
 export const Home = () => {
     return (
         <>
-            <section className="relative overflow-hidden py-12 md:py-28 items-center">
-                <div className="grid grid-cols-1 md:mt-0 sm:mt-8 lg:grid-cols-2 px-6 lg:px-12 max-w-7xl mx-auto items-center">
+            <section className="overflow-hidden py-12 md:py-28 items-center">
+                <div className="grid grid-cols-1 sm:mt-8 lg:grid-cols-2 px-6  max-w-7xl mx-auto items-center">
                     <section>
                         <h1 className="font-cursive text-purple-bright text-3xl">
                             Handcrafted in Kettering
@@ -29,22 +29,22 @@ export const Home = () => {
                             <span>Made fresh</span>
                         </div>
                         <div className="flex flex-wrap gap-4 mt-6">
-                            <Link to="/cakes" className="bg-purple-primary text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
+                            <Link to="/enquiryForm" className="bg-purple-primary text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
                                 ORDER YOUR TREATS
                             </Link>
-                            <Link to="/contact" className=" border border-purple-primary text-purple-primary px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
+                            <Link to="/cakes" className=" border border-purple-primary text-purple-primary px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
                                 EXPLORE OUR BAKREY
                             </Link>
                         </div>
                     </section>
-                    <aside>
-                        <img src={Cake} alt="Lavish Treats" className="justify-self-center mt-8 lg:justify-self-end rounded-full shadow-accent-lavender shadow-xl " />
+                    <aside className="flex justify-self-center lg:justify-self-end items-center">
+                        <img src={Cake} alt="Lavish Treats" className=" mt-8  rounded-full shadow-accent-lavender shadow-xl " />
                     </aside>
                 </div>
             </section>
 
             <section className="bg-purple-deep py-12 md:py-28">
-                <div className=" text-center items-center  px-6 mx-auto">
+                <div className=" text-center items-center px-6 mx-auto">
 
                     <h1 className=" text-gold font-light mb-3 uppercase tracking-widest">
                         We bake for moments that matter
@@ -157,32 +157,15 @@ export const Home = () => {
                             Our signature buttercream cakes combine elegant designs with rich flavours, making them the perfect centrepiece for your celebration.
                             Available in multiple sizes with custom design options to suit your occasion.
                         </p>
-                        <Link to="/contact" className="text-purple-bright hover:text-purple-dark font-semibold hover:transition-colors duration-300">
+                        <Link to="/cakes" className="text-purple-bright hover:text-purple-dark font-semibold hover:transition-colors duration-300">
                             View Pricing
                         </Link>
                     </section>
-                    <aside className="order-first">
-                        <div className="border border-border-soft w-fit rounded-2xl items-center overflow-hidden justify-self-center mb-4 ">
+                              <aside className="flex justify-self-center lg:justify-self-start items-center order-first">
+                        <div className="border border-border-soft w-fit rounded-2xl  overflow-hidden  mb-4 ">
                             <img src={Cake} alt="Lavish Treats" className="object-cover hover:scale-105 duration-500 " />
                         </div>
                     </aside>
-                </div>
-            </section>
-
-            <section className="bg-purple-deep py-12 md:py-28">
-                <div className="text-center items-center px-6 mx-auto max-w-7xl">
-                    <h1 className=" text-gold font-light mb-3 uppercase tracking-widest">
-                        Ready to order your treats?
-                    </h1>
-                    <h2 className="font-serif text-white text-4xl lg:text-6xl mb-3 font-semibold">
-                        Let's make your celebration even sweeter.
-                    </h2>
-                    <p className=" text-text-body font-extralight text-lg mb-4">
-                        Whether you're planning a birthday, wedding, or any special occasion, we're here to create the perfect dessert for your celebration.
-                    </p>
-                    <Link to="/contact" className="bg-purple-primary text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
-                        CONTACT US
-                    </Link>
                 </div>
             </section>
 
@@ -282,7 +265,7 @@ export const Home = () => {
                      <h1 className="font-cursive text-gold text-3xl">
                             Ready to Order Something Special?
                         </h1>
-                         <h2 className="font-serif text-white text-4xl lg:text-5xl mb-4 font-semibold">
+                         <h2 className="font-serif text-white text-3xl lg:text-5xl mb-4 font-semibold">
                             Let's bake something <br className='hidden lg:block' /> beautiful just for you
                         </h2>
                         <p className=" text-white/85 font-light text-base  mb-4">

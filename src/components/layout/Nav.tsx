@@ -1,18 +1,19 @@
 import { useState, } from 'react'
-import { NavLink } from '../utils/Navlink'
+import { NavLink } from './Navlink'
+import { Link } from '@tanstack/react-router'
 
 export const Nav = () => {
 
 
     return (
-        <nav className="flex flex-col font-serif font-medium text-2xl lg:text-lg lg:flex-row gap-6">
+        <nav className="flex flex-col font-serif text-purple-dark font-medium text-2xl lg:text-lg lg:flex-row gap-6 cursor-pointer">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/cakes">Celebration Cakes</NavLink>
             <NavLink to="/pastries">Pastries</NavLink>
             <NavLink to="/desserts">Desserts</NavLink>
             <NavLink to="/gallery">Gallery</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/shop">Shop</NavLink>
         </nav>
     )
 }
@@ -46,10 +47,13 @@ const Mobilenav = () => {
                     </div>
                 </div>
                 <div
-                    className={`absolute ml-auto right-0.5 overflow-hidden bg-white divide-y divide-line border-line lg:hidden transition-all duration-300 ease-linear ${isOpen ? 'max-w-2xl opacity-100 px-8 py-4 gap-4' : 'max-w-0 opacity-0 px-8 py-0 gap-0'
+                    className={`absolute ml-auto right-0.5 overflow-hidden bg-white divide-y divide-line border-line lg:hidden transition-all duration-500 ease-linear ${isOpen ? 'max-w-2xl opacity-100 px-8 py-4 gap-4' : 'max-w-0 opacity-0 px-8 py-0 gap-0'
                         }`}
                 >
                     <Nav />
+                     <Link to="/enquiryForm" className="bg-purple-primary text-white font-semibold py-2 uppercase px-4 rounded-md mt-6 hover:bg-purple-dark transition duration-300 block">
+                              Order Now
+                    </Link>
                 </div>
 
 

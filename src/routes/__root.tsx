@@ -22,7 +22,8 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Lavish Treats',
+        description: 'Lavish Treats is a bakery that specializes in custom cakes and pastries.',
       },
     ],
   }),

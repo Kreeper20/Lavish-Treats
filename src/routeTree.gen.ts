@@ -14,8 +14,10 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as CakesRouteImport } from './routes/cakes'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DessertsRouteImport } from './routes/desserts'
+import { Route as EnquiryFormRouteImport } from './routes/enquiryForm'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as PastriesRouteImport } from './routes/pastries'
+import { Route as ShopRouteImport } from './routes/shop'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -42,6 +44,11 @@ const DessertsRoute = DessertsRouteImport.update({
   path: '/desserts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnquiryFormRoute = EnquiryFormRouteImport.update({
+  id: '/enquiryForm',
+  path: '/enquiryForm',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
@@ -52,6 +59,11 @@ const PastriesRoute = PastriesRouteImport.update({
   path: '/pastries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -59,8 +71,10 @@ export interface FileRoutesByFullPath {
   '/cakes': typeof CakesRoute
   '/contact': typeof ContactRoute
   '/desserts': typeof DessertsRoute
+  '/enquiryForm': typeof EnquiryFormRoute
   '/gallery': typeof GalleryRoute
   '/pastries': typeof PastriesRoute
+  '/shop': typeof ShopRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -68,8 +82,10 @@ export interface FileRoutesByTo {
   '/cakes': typeof CakesRoute
   '/contact': typeof ContactRoute
   '/desserts': typeof DessertsRoute
+  '/enquiryForm': typeof EnquiryFormRoute
   '/gallery': typeof GalleryRoute
   '/pastries': typeof PastriesRoute
+  '/shop': typeof ShopRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -78,8 +94,10 @@ export interface FileRoutesById {
   '/cakes': typeof CakesRoute
   '/contact': typeof ContactRoute
   '/desserts': typeof DessertsRoute
+  '/enquiryForm': typeof EnquiryFormRoute
   '/gallery': typeof GalleryRoute
   '/pastries': typeof PastriesRoute
+  '/shop': typeof ShopRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -89,8 +107,10 @@ export interface FileRouteTypes {
     | '/cakes'
     | '/contact'
     | '/desserts'
+    | '/enquiryForm'
     | '/gallery'
     | '/pastries'
+    | '/shop'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -98,8 +118,10 @@ export interface FileRouteTypes {
     | '/cakes'
     | '/contact'
     | '/desserts'
+    | '/enquiryForm'
     | '/gallery'
     | '/pastries'
+    | '/shop'
   id:
     | '__root__'
     | '/'
@@ -107,8 +129,10 @@ export interface FileRouteTypes {
     | '/cakes'
     | '/contact'
     | '/desserts'
+    | '/enquiryForm'
     | '/gallery'
     | '/pastries'
+    | '/shop'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -117,8 +141,10 @@ export interface RootRouteChildren {
   CakesRoute: typeof CakesRoute
   ContactRoute: typeof ContactRoute
   DessertsRoute: typeof DessertsRoute
+  EnquiryFormRoute: typeof EnquiryFormRoute
   GalleryRoute: typeof GalleryRoute
   PastriesRoute: typeof PastriesRoute
+  ShopRoute: typeof ShopRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -158,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DessertsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/enquiryForm': {
+      id: '/enquiryForm'
+      path: '/enquiryForm'
+      fullPath: '/enquiryForm'
+      preLoaderRoute: typeof EnquiryFormRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
@@ -172,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PastriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -181,8 +221,10 @@ const rootRouteChildren: RootRouteChildren = {
   CakesRoute: CakesRoute,
   ContactRoute: ContactRoute,
   DessertsRoute: DessertsRoute,
+  EnquiryFormRoute: EnquiryFormRoute,
   GalleryRoute: GalleryRoute,
   PastriesRoute: PastriesRoute,
+  ShopRoute: ShopRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

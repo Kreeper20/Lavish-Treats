@@ -1,11 +1,19 @@
 import Mobilenav from "./Nav";
-import logo from "../../assets/hero.png";
+import { Logo } from "../../components/utils/imports";
+import { Link } from "@tanstack/react-router";
 
 export const Navbar = () => {
   return (
-    <header className="flex p-4 items-center justify-between border-b border-line">
-        <img src={logo} alt="Lavish Treats Logo" className="w-12 h-12 ml-6 block cursor-pointer" />
+    <header className=" border-b border-line py-6 px-4 md:px-8 lg:px-12">
+      <div className="flex items-center justify-between max-w-7xl mx-auto">
+        <Link to="/" className="flex items-center cursor-pointer">
+          <img src={Logo} alt="Lavish Treats Logo" className="max-w-16 block cursor-pointer" />
+        </Link>
         <Mobilenav />
+        <Link to="/enquiryForm" className="bg-purple-primary text-white font-medium py-2 uppercase px-4 rounded-full hover:bg-purple-dark transition duration-300 hidden lg:block">
+          Order Now
+        </Link>
+      </div>
     </header>
   )
 }
