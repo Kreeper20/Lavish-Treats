@@ -4,13 +4,14 @@ import { UseShoppingCart } from "../context/ShoppingCartContext";
 import { ShopData } from "../data/ShopData";
 import { formatCurrency } from "../utils/formatCurrency";
 import { supabase } from '../utils/supabase'
+import { motion } from "framer-motion";
 
 
 
 
 export const Checkout = () => {
 
-      const motionVariants = {
+    const motionVariants = {
     hidden: { opacity: 0,  y: 20 },
     visible: { opacity: 1,  y: 0 },
   };
@@ -85,7 +86,11 @@ export const Checkout = () => {
     }
     return (
         <>
-            <section className="bg-lilac-50 py-12 lg:py-28">
+            <motion.section 
+            variants={motionVariants}
+            initial="hidden"
+            animate="visible"
+            className="bg-lilac-50 py-12 lg:py-28">
                 <div className="text-center items-center px-4 mx-auto">
                     <h1 className=" text-purple-bright font-light mb-3 uppercase tracking-widest">STEP 2 OF 2</h1>
                     <h2 className="font-serif text-purple-deep text-4xl lg:text-6xl mb-3 font-semibold">
@@ -95,7 +100,7 @@ export const Checkout = () => {
                         Please provide your details below and we will be in touch to confirm your order and arrange payment.
                     </p>
                 </div>
-            </section>
+            </motion.section>
 
             <section className="px-4 md:px-8 py-12 flex flex-col lg:flex-row max-w-6xl gap-12 mx-auto ">
                 <section>

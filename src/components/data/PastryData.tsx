@@ -13,7 +13,6 @@ import {
     GalleryTreatBoxes,
     GalleryBentaCake,
     GalleryBentaCuppCake,
-    GalleryCakeLoaf,
     GalleryCakeParfait,
     GalleryMiniCakeLoaf,
     GallerySheetCake,
@@ -26,7 +25,6 @@ import {
     GalleryBirthdayTwo,
     GalleryCake,
     GalleryChristmasCupcakes,
-    GalleryCupcake,
     GalleryMiniLoafPhoto,
 } from '../utils/imports'
 

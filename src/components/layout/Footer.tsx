@@ -65,7 +65,7 @@ export const Footer = () => {
         <p className="text-text-dim font-extralight">
           &copy; {new Date().getFullYear()} Lavish Treats. All rights reserved.
         </p>    
-        <p className="text-text-dim font-extralight" onClick={() => setShowModal(true)} style={{ cursor: "pointer" }}>
+        <p className="text-text-dim font-extralight hover:text-purple-light" onClick={() => setShowModal(true)} style={{ cursor: "pointer" }}>
            Terms of Service | Privacy Policy
         </p>
       </div>

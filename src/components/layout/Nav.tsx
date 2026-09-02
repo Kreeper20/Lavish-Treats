@@ -2,7 +2,6 @@ import { useEffect, useState, } from 'react'
 import { NavLink } from './Navlink'
 import { Link } from '@tanstack/react-router'
 import { IconChevronDownFilled, IconShoppingBag } from '@tabler/icons-react'
-import { Button } from 'react-bootstrap'
 import { UseShoppingCart } from '../context/ShoppingCartContext'
 import { FlyoutLink } from './flyout'
 
@@ -75,10 +74,9 @@ const Mobilenav = () => {
                     </div>
                     <div className="lg:hidden mr-6">
 
-                        <Button
+                        <button
                             onClick={openCart}
                             style={{ width: "3rem", height: "3rem", position: "relative" }}
-                            variant="outline-primary"
                             className="rounded-full border items-center justify-center flex hover:bg-purple-mid hover:text-white transition delay-100 duration-300 ease-in-out"
                         >
                             <IconShoppingBag className="w-6 h-6" />
@@ -98,7 +96,7 @@ const Mobilenav = () => {
                                     {cartQuantity}
                                 </span>
                             )}
-                        </Button>
+                        </button>
                     </div>
                     <div className="lg:hidden mt-2">
                         <button

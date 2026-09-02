@@ -1,6 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { TAndCModal } from "../ui/T&Cmodal";
 import { motion } from "framer-motion";
+import { useNavigate } from "@tanstack/react-router";
 
 
 export const EnquiryForm = () => {
@@ -16,10 +17,9 @@ export const EnquiryForm = () => {
 
     const boxStyles = "mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-purple-deep focus:border-purple-deep sm:text-sm"
     const [fileName, setFileName] = useState<string | null>(null);
-    const [isSubmitted, setisSubmitted] = useState(false);
+    const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [formData, setFormData] = useState({});
-     const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
     const [termsAccepted, setTermsAccepted] = useState(false);
 
 
@@ -47,15 +47,18 @@ export const EnquiryForm = () => {
 
             if (!response.ok) throw new Error("Submission failed");
 
-            setisSubmitted(true);
+            // setisSubmitted(true);
             form.reset();
             setFileName(null);
+            console.log("Form submitted successfully");
+            navigate({ to: "/orderConfirm" });
         } catch {
             setError("Something went wrong. Please try again.");
         } finally {
             setIsSubmitting(false);
         }
     };
+
     const [showModal, setShowModal] = useState(false);
 
 
@@ -87,207 +90,218 @@ export const EnquiryForm = () => {
                     </motion.div>
                     <motion.form
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.5 }}
-                        className="space-y-6 px-6 md:px-12" action="#" method="POST" onSubmit={handleSubmit}>
+                        className="space-y-6 px-6 md:px-12"
+                        name="Custom-Order-Enquiry"
+                        method="POST"
+                        data-netlify="true"
+                        netlify-honeypot="bot-field"
+                        encType="multipart/form-data"
+                        onSubmit={handleSubmit}
+                    >
+                      <input type="hidden" name="form-name" value="Custom-Order-Enquiry" />
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label htmlFor="email" className={"block text-sm font-medium text-gray-700"}>
-                                    Pickup/Delivery Date
-                                </label>
-                                <input
-                                    type="date"
-                                    name="date"
-                                    placeholder="Pick a date"
-                                    id="date"
-                                    required
-                                    className={boxStyles}
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="name" className={"block text-sm font-medium text-gray-700"}>
-                                    Full Name
-                                </label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    autoComplete="name"
-                                    required
-                                    className={boxStyles}
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="email" className={"block text-sm font-medium text-gray-700"}>
-                                    Email Address
-                                </label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    autoComplete="email"
-                                    required
-                                    className={boxStyles}
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="phone" className={"block text-sm font-medium text-gray-700"}>
-                                    Phone Number
-                                </label>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    id="phone"
-                                    autoComplete="tel"
-                                    placeholder="###-###-####"
-                                    required
-                                    className={boxStyles}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-6 items-center">
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                                    Order Details
-                                </label>
-                                <textarea
-                                    name="message"
-                                    id="message"
-                                    rows={3}
-                                    required
-                                    className={`resize-none ${boxStyles}`}
-                                />
-                            </div>
-
-                            <div className="flex flex-col gap-4">
-                                <div>
-                                    <label
-                                        htmlFor="images"
-                                        className={boxStyles + " cursor-pointer text-center bg-purple-deep hover:bg-purple-dark text-white font-semibold py-2 px-4 rounded-md transition duration-300"}
-                                    >
-                                        <span className="block truncate">
-                                            {fileName || "Upload Reference Images (Optional)"}
-                                        </span>
-                                    </label>
-                                    <input
-                                        type="file"
-                                        name="images"
-                                        id="images"
-                                        accept="image/*"
-                                        multiple
-                                        onChange={handleFileChange}
-                                        className="hidden"
-                                    />
-                                    <span
-                                        className="block mt-1 text-sm text-gray-500">
-                                        Upload supported file (Max 15MB)
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Cake Flavours
-                                </label>
-                                <div className="flex flex-col gap-3">
-                                    {["Red Velvet", "Carrot Cake", "Cookies & Cream", "Classic Vanilla", "Rich Chocolate"].map((flavor) => {
-                                        const id = `flavour-${flavor.replace(/\s+/g, "-").toLowerCase()}`;
-                                        return (
-                                            <div key={id} className="flex items-center">
-                                                <input
-                                                    type="checkbox"
-                                                    name="flavours"
-                                                    id={id}
-                                                    className="w-5 h-5 mr-3 accent-black cursor-pointer"
-                                                />
-                                                <label htmlFor={id} className="text-sm text-gray-700 cursor-pointer">
-                                                    {flavor}
-                                                </label>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Optional Toppings/Extras
-                                </label>
-                                <div className="flex flex-col gap-3">
-                                    {["Cake Spheres", "Fondant Toppers", "Dried Florals", "Feathers", "Metallic Finishes", "Gold Leaf Details", "Personalised Names/Age Toppers"].map((topping) => {
-                                        const id = `topping-${topping.replace(/\s+/g, "-").toLowerCase()}`;
-                                        return (
-                                            <div key={id} className="flex items-center">
-                                                <input
-                                                    type="checkbox"
-                                                    name="toppings"
-                                                    id={id}
-                                                    className="w-5 h-5 mr-3 accent-black cursor-pointer"
-                                                />
-                                                <label htmlFor={id} className="text-sm text-gray-700 cursor-pointer">
-                                                    {topping}
-                                                </label>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-
-                            <div className="order-first md:order-last">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Icings
-                                </label>
-                                <div className="flex flex-col gap-3">
-                                    {["Buttercream", "Ganache Frosting"].map((icing) => {
-                                        const id = `icing-${icing.replace(/\s+/g, "-").toLowerCase()}`;
-                                        return (
-                                            <div key={id} className="flex items-center">
-                                                <input
-                                                    type="checkbox"
-                                                    name="icings"
-                                                    id={id}
-                                                    className="w-5 h-5 mr-3 accent-black cursor-pointer"
-                                                />
-                                                <label htmlFor={id} className="text-sm text-gray-700 cursor-pointer">
-                                                    {icing}
-                                                </label>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className="flex items-center gap-2 mt-4 flex-col md:flex-row">
-                            <label htmlFor="terms" className="flex items-center gap-2 text-sm text-gray-700">
-                                <input
-                                    type="checkbox"
-                                    name="terms"
-                                    id="terms"
-                                    required
-                                    className="w-5 h-5 accent-black cursor-pointer block"
-                                    onChange={(e) => setTermsAccepted(e.target.checked)}
-                                />
-                                By submitting this form you agree to the
+                        <div>
+                            <label htmlFor="email" className={"block text-sm font-medium text-gray-700"}>
+                                Pickup/Delivery Date
                             </label>
-                            <a onClick={() => setShowModal(true)} target="_blank" rel="noopener noreferrer" className="text-purple-deep hover:text-purple-dark underline text-sm cursor-pointer">
-                                Terms and Conditions
-                            </a>
+                            <input
+                                type="date"
+                                name="date"
+                                placeholder="Pick a date"
+                                id="date"
+                                required
+                                className={boxStyles}
+                            />
                         </div>
-                        <div className="flex items-center justify-center mt-4">
-                            <button type="submit" disabled={!termsAccepted || isSubmitting} className="bg-purple-deep disabled:bg-gray-300 hover:bg-purple-dark text-white font-semibold p-2 rounded-md transition duration-300 cursor-pointer w-full">
-                                {isSubmitting ? "Submitting..." : "Submit Enquiry"}
-                            </button>
+                        <div>
+                            <label htmlFor="name" className={"block text-sm font-medium text-gray-700"}>
+                                Full Name
+                            </label>
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                autoComplete="name"
+                                required
+                                className={boxStyles}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="email" className={"block text-sm font-medium text-gray-700"}>
+                                Email Address
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                autoComplete="email"
+                                required
+                                className={boxStyles}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="phone" className={"block text-sm font-medium text-gray-700"}>
+                                Phone Number
+                            </label>
+                            <input
+                                type="tel"
+                                name="phone"
+                                id="phone"
+                                autoComplete="tel"
+                                placeholder="###-###-####"
+                                required
+                                className={boxStyles}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-6 items-center">
+                        <div>
+                            <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                                Order Details
+                            </label>
+                            <textarea
+                                name="message"
+                                id="message"
+                                rows={3}
+                                required
+                                className={`resize-none ${boxStyles}`}
+                            />
                         </div>
 
-                    </motion.form>
+                        <div className="flex flex-col gap-4">
+                            <div>
+                                <label
+                                    htmlFor="images"
+                                    className={boxStyles + " cursor-pointer text-center bg-purple-deep hover:bg-purple-dark text-white font-semibold py-2 px-4 rounded-md transition duration-300"}
+                                >
+                                    <span className="block truncate">
+                                        {fileName || "Upload Reference Images (Optional)"}
+                                    </span>
+                                </label>
+                                <input
+                                    type="file"
+                                    name="images"
+                                    id="images"
+                                    accept="image/*"
+                                    multiple
+                                    onChange={handleFileChange}
+                                    className="hidden"
+                                />
+                                
+                                <span
+                                    className="block mt-1 text-sm text-gray-500">
+                                    Upload supported file (Max 15MB)
+                                </span>
+                            </div>
+                        </div>
 
-                </div>
-                <p className="font-cursive text-2xl md:text-3xl mx-auto text-center text-purple-primary mt-3 md:mt-6 px-4">
-                    Freshly baked. Handcrafted with care. Made to celebrate every moment.
-                </p>
-            </motion.section>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Cake Flavours <span className="text-xs font-light">(Choose One)</span>
+                            </label>
+                            <div className="flex flex-col gap-3">
+                                {["Red Velvet", "Carrot Cake", "Cookies & Cream", "Classic Vanilla", "Rich Chocolate"].map((flavor) => {
+                                    const id = `flavour-${flavor.replace(/\s+/g, "-").toLowerCase()}`;
+                                    return (
+                                        <div key={id} className="flex items-center">
+                                            <input
+                                                type="radio"
+                                                name="flavours"
+                                                id={id}
+                                                className="w-5 h-5 mr-3 accent-black cursor-pointer"
+                                            />
+                                            <label htmlFor={id} className="text-sm text-gray-700 cursor-pointer">
+                                                {flavor}
+                                            </label>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Optional Toppings/Extras
+                            </label>
+                            <div className="flex flex-col gap-3">
+                                {["Cake Spheres", "Fondant Toppers", "Dried Florals", "Feathers", "Metallic Finishes", "Gold Leaf Details", "Personalised Names/Age Toppers"].map((topping) => {
+                                    const id = `topping-${topping.replace(/\s+/g, "-").toLowerCase()}`;
+                                    return (
+                                        <div key={id} className="flex items-center">
+                                            <input
+                                                type="checkbox"
+                                                name="toppings"
+                                                id={id}
+                                                className="w-5 h-5 mr-3 accent-black cursor-pointer"
+                                            />
+                                            <label htmlFor={id} className="text-sm text-gray-700 cursor-pointer">
+                                                {topping}
+                                            </label>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        <div className="order-first md:order-last">
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Icings <span className="text-xs font-light">(Choose One)</span>
+                            </label>
+                            <div className="flex flex-col gap-3">
+                                {["Buttercream", "Ganache Frosting"].map((icing) => {
+                                    const id = `icing-${icing.replace(/\s+/g, "-").toLowerCase()}`;
+                                    return (
+                                        <div key={id} className="flex items-center">
+                                            <input
+                                                type="radio"
+                                                name="icings"
+                                                id={id}
+                                                className="w-5 h-5 mr-3 accent-black cursor-pointer"
+                                            />
+                                            <label htmlFor={id} className="text-sm text-gray-700 cursor-pointer">
+                                                {icing}
+                                            </label>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 mt-4 flex-col md:flex-row">
+                        <label htmlFor="terms" className="flex items-center gap-2 text-sm text-gray-700">
+                            <input
+                                type="checkbox"
+                                name="terms"
+                                id="terms"
+                                required
+                                className="w-5 h-5 accent-black cursor-pointer block"
+                                onChange={(e) => setTermsAccepted(e.target.checked)}
+                            />
+                            By submitting this form you agree to the
+                        </label>
+                        <a onClick={() => setShowModal(true)} target="_blank" rel="noopener noreferrer" className="text-purple-deep hover:text-purple-dark underline text-sm cursor-pointer">
+                            Terms and Conditions
+                        </a>
+                    </div>
+                    <div className="flex items-center justify-center mt-4">
+                        <button type="submit" disabled={!termsAccepted || isSubmitting}  className="bg-purple-deep disabled:bg-gray-300 hover:bg-purple-dark text-white font-semibold p-2 rounded-md transition duration-300 cursor-pointer w-full">
+                            {isSubmitting ? "Submitting..." : "Submit Enquiry"}
+                        </button>
+                    </div>
+                     <p className="text-red-500 text-sm mt-2">{error}</p>
+                   
+                </motion.form>
+
+            </div>
+            <p className="font-cursive text-2xl md:text-3xl mx-auto text-center text-purple-primary mt-3 md:mt-6 px-4">
+                Freshly baked. Handcrafted with care. Made to celebrate every moment.
+            </p>
+        </motion.section >
             <TAndCModal showModal={showModal} onClose={() => setShowModal(false)} />
 
         </>

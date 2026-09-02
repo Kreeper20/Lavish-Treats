@@ -18,8 +18,8 @@
     "@tanstack/react-start": "^1.168.32",
     "bootstrap": "^5.3.8",
     "framer-motion": "^13.1.1",
+    "nitro": "^3.0.260610-beta",
     "react": "^19.2.8",
-    "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3",
     "tanstack": "^2.0.3"

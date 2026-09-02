@@ -53,22 +53,29 @@ export const Contact = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="w-full max-w-lg justify-self-center"
           >
-            <form className="w-full space-y-2 rounded-xl border border-lilac-panel bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+            <form className="w-full space-y-2 rounded-xl border border-lilac-panel bg-white p-6 shadow-sm sm:p-8 lg:p-10"
+              name="Contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              encType="multipart/form-data"
+            >
+              <input type="hidden" name="form-name" value="Contact" />
               <div>
-                <label htmlFor="name" className="mb-2 block text-base font-medium text-text-body">Name</label>
-                <input type="text" id="name" name="name" className={boxStyles} />
+                <label htmlFor="name"  className="mb-2 block text-base font-medium text-text-body">Name</label>
+                <input type="text" required id="name" name="name" className={boxStyles} />
               </div>
               <div>
                 <label htmlFor="email" className="mb-2 block text-base font-medium text-text-body">Email</label>
-                <input type="email" id="email" name="email" className={boxStyles} />
+                <input type="email" required id="email" name="email" className={boxStyles} />
               </div>
               <div>
                 <label htmlFor="subject" className="mb-2 block text-base font-medium text-text-body">Subject</label>
-                <input type="text" id="subject" name="subject" className={boxStyles} />
+                <input type="text" required id="subject" name="subject" className={boxStyles} />
               </div>
               <div>
                 <label htmlFor="message" className="mb-2 block text-base font-medium text-text-body">Message</label>
-                <textarea id="message" name="message" rows={5} className={`${boxStyles} resize-none`}></textarea>
+                <textarea id="message" required name="message" rows={5} className={`${boxStyles} resize-none`}></textarea>
               </div>
               <button type="submit" className="w-full rounded-xl bg-purple-deep px-5 py-4 text-xl font-medium text-white transition duration-300 ease-in-out hover:bg-purple-mid">
                 Send Message
@@ -95,7 +102,7 @@ export const Contact = () => {
           </div>
         </div>
       </motion.section>
-      
+
 
     </>
   )

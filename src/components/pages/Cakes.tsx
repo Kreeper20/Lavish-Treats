@@ -3,7 +3,7 @@ import { CakeBoxes } from "../ui/CakesBoxes"
 import { CakeData } from "../data/CakeBoxesData"
 import { Link } from "@tanstack/react-router"
 import { motion } from "framer-motion"
-import confetti from "../../assets/bg/confetti.svg"
+import confetti from "../../assets/Bg/confetti.svg"
 export const Cakes = () => {
   const motionVariants = {
     hidden: { opacity: 0, scale: 0.95, x: -20 },

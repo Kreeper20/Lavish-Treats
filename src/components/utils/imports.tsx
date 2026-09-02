@@ -2,7 +2,7 @@ export { default as Logo } from '../../assets/lavish-logo.png'
 export { default as Custom } from '../../assets/CustomCake.jpeg'
 export { default as Celebration } from '../../assets/celeCake.jpg'
 export { default as Ose } from '../../assets/Ose.jpg'
-export { default as MultiLayered } from '../../assets/Multi Layered Cake.jpg'
+export { default as MultiLayered } from '../../assets/Multi-Layered-Cake.jpg'
 // ShopItems exports
 export { default as TwelveCupcake } from '../../assets/ShopItems/12Cupcake.jpeg'
 export { default as SixCupCake } from '../../assets/ShopItems/6CupCake.jpeg'
