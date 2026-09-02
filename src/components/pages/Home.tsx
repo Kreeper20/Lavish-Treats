@@ -1,23 +1,42 @@
 import { Link } from '@tanstack/react-router'
 import Cake from '../../assets/HeroCake.jpeg'
+import { MultiLayered } from '../utils/imports'
+import bake from '../../assets/Bg/bake.svg'
 import { pastryData } from '../data/PastryData'
 import { PastriesBoxes } from '../ui/PastriesBoxes'
 import { GalleryBoxes } from '../ui/GalleryBoxes'
+import { motion } from 'framer-motion'
 import { testimonials } from '../data/TestimonialData'
 import { IconStarFilled } from '@tabler/icons-react';
 
+
+
 export const Home = () => {
+    const motionVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+    };
+    const reasons = [
+        "Freshly baked to order",
+        "Premium quality ingredients",
+        "Beautiful handcrafted designs",
+        "Personalised celebrations",
+        "Attention to every detail",
+        "Reliable ordering process",
+    ]
     return (
+
         <>
-            <section className="overflow-hidden py-12 md:py-28 items-center">
-                <div className="grid grid-cols-1 sm:mt-8 lg:grid-cols-2 px-6  max-w-7xl mx-auto items-center">
-                    <section>
-                        <h1 className="font-cursive text-purple-bright text-3xl">
+
+            <section className="overflow-hidden py-12 lg:py-28 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 px-6 max-w-7xl mx-auto items-center">
+                    <motion.section initial="hidden" animate="visible" variants={motionVariants} >
+                        <motion.h1 variants={motionVariants} className="font-cursive text-purple-bright text-3xl">
                             Handcrafted in Kettering
-                        </h1>
-                        <h2 className="font-serif text-purple-deep text-4xl lg:text-6xl mb-3 font-semibold">
+                        </motion.h1>
+                        <motion.h2 variants={motionVariants} className="font-serif text-purple-deep text-4xl lg:text-6xl mb-3 font-semibold">
                             Cakes & Sweet Treats Made for Every Celebration
-                        </h2>
+                        </motion.h2>
                         <p className=" text-text-body font-light text-lg lg:text-xl mb-4">
                             Not every milestone looks the same, but every one deserves something made with care. From elegant buttercream cakes to handcrafted pastries,
                             Lavish Treats creates desserts that become part of the memories you'll look back on long after the last slice is gone.
@@ -29,17 +48,18 @@ export const Home = () => {
                             <span>Made fresh</span>
                         </div>
                         <div className="flex flex-wrap gap-4 mt-6">
-                            <Link to="/enquiryForm" className="bg-purple-primary text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
-                                ORDER YOUR TREATS
+                            <Link to="/shop" className="bg-purple-primary text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
+                                ORDER TREATS
+                                
                             </Link>
                             <Link to="/cakes" className=" border border-purple-primary text-purple-primary px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
                                 EXPLORE OUR BAKREY
                             </Link>
                         </div>
-                    </section>
-                    <aside className="flex justify-self-center lg:justify-self-end items-center">
-                        <img src={Cake} alt="Lavish Treats" className=" mt-8  rounded-full shadow-accent-lavender shadow-xl " />
-                    </aside>
+                    </motion.section>
+                    <motion.aside initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex justify-self-center lg:justify-self-end items-center">
+                        <img src={Cake} alt="Lavish Treats" className=" mt-8  rounded-2xl shadow-accent-lavender shadow-sm " />
+                    </motion.aside>
                 </div>
             </section>
 
@@ -49,13 +69,13 @@ export const Home = () => {
                     <h1 className=" text-gold font-light mb-3 uppercase tracking-widest">
                         We bake for moments that matter
                     </h1>
-                    <p className="font-serif text-purple-soft text-2xl lg:text-4xl mb-4">
+                    <p className="font-serif text-purple-soft text-xl md:text-2xl lg:text-4xl mb-3">
                         There are birthdays you will never forget. Baby showers filled with <br className='lg:block hidden' /> laughter. Anniversaries worth celebrating. Quiet Sundays <br className='lg:block hidden' /> that deserve something sweet.
 
                     </p>
-                    <p className=" text-lg text-text-dim font-light mb-4">
-                        At Lavish Treats, every order is created with one purpose, to make those moments feel <br className='lg:block hidden' /> even more special. Each cake is baked fresh to order.
-                        Every pastry is prepared with care.<br className='lg:block hidden' /> Every detail matters, because we know it isn't just dessert.
+                    <p className=" text-sm md:text-base lg:text-lg text-text-dim mx-auto max-w-2xl font-light mb-4">
+                        At Lavish Treats, every order is created with one purpose, to make those moments feel even more special. Each cake is baked fresh to order.
+                        Every pastry is prepared with care. Every detail matters, because we know it isn't just dessert.
                     </p>
                     <h2 className="font-cursive text-purple-light text-3xl">
                         It's part of your story.
@@ -69,12 +89,12 @@ export const Home = () => {
                     <h2 className="font-serif text-purple-deep text-4xl lg:text-6xl mb-3 font-semibold">
                         Something for Every Occasion
                     </h2>
-                    <p className=" text-text-body font-extralight text-lg mb-4">
+                    <p className=" text-text-body text-sm md:text-base lg:text-lg font-light mb-4">
                         Whether you're planning an intimate gathering or a grand celebration, <br className='hidden lg:block' /> we have something special for every table.
                     </p>
                 </div>
                 <div className="grid grid-cols-1 justify-self-center md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 px-6 lg:px-4 max-w-7xl mx-auto">
-                    {pastryData.map((pastry) => (
+                    {pastryData.filter((_, i) => [0, 1, 2, 3].includes(i)).map((pastry) => (
                         <PastriesBoxes
                             key={pastry.name}
                             name={pastry.name}
@@ -102,49 +122,20 @@ export const Home = () => {
                         </p>
                     </section>
                     <aside className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-8 md:mt-0 text-purple-deep">
-                        <div className="bg-white border border-border-soft rounded-2xl items-center flex p-4 gap-4">
-                            <div className="bg-purple-dark w-2 h-2 rounded-full" />
-                            <h1>
-                                Freshly baked to order
-                            </h1>
-                        </div>
-                        <div className="bg-white border border-border-soft rounded-2xl items-center flex p-4 gap-4">
-                            <div className="bg-purple-dark w-2 h-2 rounded-full" />
-                            <h1>
-                                Premium quality ingredients
-                            </h1>
-                        </div>
-                        <div className="bg-white border border-border-soft rounded-2xl items-center flex p-4 gap-4">
-                            <div className="bg-purple-dark w-2 h-2 rounded-full" />
-                            <h1>
-                                Beautiful handcrafted designs
-                            </h1>
-                        </div>
-                        <div className="bg-white border border-border-soft rounded-2xl items-center flex p-4 gap-4">
-                            <div className="bg-purple-dark w-2 h-2 rounded-full" />
-                            <h1>
-                                Personalised celebrations
-                            </h1>
-                        </div>
-                        <div className="bg-white border border-border-soft rounded-2xl items-center flex p-4 gap-4">
-                            <div className="bg-purple-dark w-2 h-2 rounded-full" />
-                            <h1>
-                                Attention to every detail
-                            </h1>
-                        </div>
-                        <div className="bg-white border border-border-soft rounded-2xl items-center flex p-4 gap-4">
-                            <div className="bg-purple-dark w-2 h-2 rounded-full" />
-                            <h1>
-                                Reliable ordering process
-                            </h1>
-                        </div>
-
+                        {reasons.map((reason, index) => (
+                            <div key={index} className="bg-white border border-border-soft rounded-2xl items-center flex p-4 gap-4">
+                                <div className="bg-purple-dark w-2 h-2 rounded-full" />
+                                <h1>
+                                    {reason}
+                                </h1>
+                            </div>
+                        ))}
                     </aside>
                 </div>
             </section>
 
-            <section className="bg-lilac-50 py-12 md:py-28">
-                <div className="grid grid-cols-1 md:grid-cols-2 items-center px-6 mx-auto max-w-7xl">
+            <section className="bg-lilac-50 py-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 items-center px-6 gap-6  mx-auto max-w-7xl">
                     <section>
                         <h1 className=" text-purple-bright font-light mb-3 uppercase tracking-widest">
                             FEATURED CELEBRATION CAKES
@@ -153,7 +144,7 @@ export const Home = () => {
                             Buttercream Celebration Cakes
                         </h2>
 
-                        <p className=" text-text-body font-extralight text-lg">
+                        <p className=" text-text-body font-extralight text-sm md:text-base lg:text-lg">
                             Our signature buttercream cakes combine elegant designs with rich flavours, making them the perfect centrepiece for your celebration.
                             Available in multiple sizes with custom design options to suit your occasion.
                         </p>
@@ -161,16 +152,16 @@ export const Home = () => {
                             View Pricing
                         </Link>
                     </section>
-                              <aside className="flex justify-self-center lg:justify-self-start items-center order-first">
-                        <div className="border border-border-soft w-fit rounded-2xl  overflow-hidden  mb-4 ">
-                            <img src={Cake} alt="Lavish Treats" className="object-cover hover:scale-105 duration-500 " />
+                    <aside className=" order-first ">
+                        <div className="border border-border-soft w-fit rounded-2xl   overflow-hidden  mb-4 ">
+                            <img src={MultiLayered} alt="Lavish Treats" className="w-96 object-cover hover:scale-105 duration-500 " />
                         </div>
                     </aside>
                 </div>
             </section>
 
-            <section className="bg-lilac-panel py-12 md:py-28">
-                <div className="text-center items-center px-6 mx-auto max-w-7xl">
+            <section className=" bg-lilac-panel grid grid-cols-1 md:grid-cols-2">
+                <div className="items-center px-6  py-12 order-last mx-auto">
                     <h1 className=" text-purple-bright font-light mb-3 uppercase tracking-widest">
                         How to order
                     </h1>
@@ -180,7 +171,7 @@ export const Home = () => {
                     <p className=" text-text-body font-extralight text-lg mb-4">
                         Follow these simple steps to order your custom desserts.
                     </p>
-                    <div className="mt-6 grid grid-cols-1 md:grid-cols-2 items-center">
+                    <div className="mt-6 grid grid-cols-1  gap-12 items-center">
                         <div className=" border-t text-left  border-purple-primary">
                             <dl className="w-full  divide-y divide-purple-primary">
                                 {[
@@ -196,22 +187,22 @@ export const Home = () => {
                                 ))}
                             </dl>
                         </div>
-                        <img src={Cake} alt="Lavish Treats" className="justify-self-center mt-8 lg:justify-self-end rounded-sm shadow-accent-lavender shadow-xl " />
                     </div>
                 </div>
+                <aside className="order-last hidden md:block" style={{ backgroundImage: `url(${bake})` }} />
             </section>
 
-            <section className="bg-lilac-50 py-12 md:py-28">
+            <section className="bg-lilac-50 py-12 ">
                 <div className="text-center items-center px-6 mx-auto">
                     <h1 className=" text-purple-bright font-light mb-3 uppercase tracking-widest">Gallery</h1>
                     <h2 className="font-serif text-purple-deep text-4xl lg:text-5xl mb-3 font-semibold">
                         Every Creation Is Made With Love
                     </h2>
-                    <p className=" text-text-body font-extralight text-lg mb-4">
-                        Browse a collection of some of our favourite cakes, pastries, and desserts created for <br className='hidden md:block' /> birthdays, weddings, baby showers, anniversaries, and special occasions.
+                    <p className=" text-text-body font-extralight text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
+                        Browse a collection of some of our favourite cakes, pastries, and desserts created for birthdays, weddings, baby showers, anniversaries, and special occasions.
                     </p>
-                    <div className="grid grid-cols-1 mb-8 md:mb-12 justify-self-center md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 px-6 lg:px-4 max-w-7xl mx-auto">
-                        {pastryData.map((pastry) => (
+                    <div className="grid mb-8 md:mb-12 justify-self-center grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mt-8  max-w-6xl mx-auto">
+                        {pastryData.filter((_, i) => [5, 6, 8, 9].includes(i)).map((pastry) => (
                             <GalleryBoxes
                                 key={pastry.image}
                                 name={pastry.name}
@@ -262,23 +253,23 @@ export const Home = () => {
                 <div className="homeContact relative  overflow-hidden rounded-4xl py-12 items-center px-10 text-center text-white mx-auto max-w-5xl">
                     <div className="absolute -top-12.5 -right-7.5 w-50 h-50 rounded-full bg-white/8" />
                     <div className="absolute -bottom-15 -left-5 w-60 h-60 rounded-full bg-accent-lavender/20" />
-                     <h1 className="font-cursive text-gold text-3xl">
-                            Ready to Order Something Special?
-                        </h1>
-                         <h2 className="font-serif text-white text-3xl lg:text-5xl mb-4 font-semibold">
-                            Let's bake something <br className='hidden lg:block' /> beautiful just for you
-                        </h2>
-                        <p className=" text-white/85 font-light text-base  mb-4">
-                           Whether you're celebrating a milestone or simply treating yourself, we'd love to <br className='hidden lg:block'/> create something unforgettable.
-                        </p>
-                        <div className=" flex flex-wrap justify-center gap-3 md:gap-4 mt-6">
-                            <Link to="/cakes" className="bg-white w-full md:w-fit text-purple-dark px-6 py-3 rounded-full hover:bg-gold hover:text-white transition delay-100 duration-300 ease-in-out">
-                                ORDER TODAY
-                            </Link>
-                            <Link to="/contact" className=" border w-full md:w-fit text-white px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out ">
-                                CONTACT US
-                            </Link>
-                        </div>
+                    <h1 className="font-cursive text-gold text-3xl">
+                        Ready to Order Something Special?
+                    </h1>
+                    <h2 className="font-serif text-white text-3xl lg:text-5xl mb-4 font-semibold">
+                        Let's bake something <br className='hidden lg:block' /> beautiful just for you
+                    </h2>
+                    <p className=" text-white/85 font-light text-base  mb-4">
+                        Whether you're celebrating a milestone or simply treating yourself, we'd love to <br className='hidden lg:block' /> create something unforgettable.
+                    </p>
+                    <div className=" flex flex-wrap justify-center gap-3 md:gap-4 mt-6">
+                        <Link to="/cakes" className="bg-white w-full md:w-fit text-purple-dark px-6 py-3 rounded-full hover:bg-gold hover:text-white transition delay-100 duration-300 ease-in-out">
+                            ORDER TODAY
+                        </Link>
+                        <Link to="/contact" className=" border w-full md:w-fit text-white px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out ">
+                            CONTACT US
+                        </Link>
+                    </div>
 
                 </div>
             </section>

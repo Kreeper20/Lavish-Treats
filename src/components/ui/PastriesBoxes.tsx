@@ -10,7 +10,7 @@ export const PastriesBoxes = ({ name, description, imageUrl }: PastriesBoxesProp
               <img src={imageUrl} alt={name} className="w-full h-52 object-cover hover:scale-105 duration-500" />
             <div className="p-6 border-t border-border-soft">
                <h1 className="text-2xl font-bold font-serif text-purple-deep ">{name}</h1>
-                <p className="text-text-dim font-extralight">{description}</p>
+                <p className="text-text-dim font-extralight text-sm md:text-base ">{description}</p>
             </div>
         </div>
     )

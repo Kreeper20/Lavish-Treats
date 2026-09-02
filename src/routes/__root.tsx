@@ -2,6 +2,7 @@
 import type { ReactNode } from 'react'
 
 import '../index.css'
+
 import {
   Outlet,
   createRootRoute,
@@ -10,6 +11,9 @@ import {
 } from '@tanstack/react-router'
 import { Navbar } from '../components/layout/Header'
 import { Footer } from '../components/layout/Footer'
+import { ShoppingCartProvider } from '../components/context/ShoppingCartContext'
+import { AlertProvider } from '../components/cart/Toast'
+
 
 export const Route = createRootRoute({
   head: () => ({
@@ -24,6 +28,9 @@ export const Route = createRootRoute({
       {
         title: 'Lavish Treats',
         description: 'Lavish Treats is a bakery that specializes in custom cakes and pastries.',
+        links: [
+          { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        ],
       },
     ],
   }),
@@ -39,11 +46,15 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <RootDocument>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </RootDocument>
+    <ShoppingCartProvider>
+      <AlertProvider>
+      <RootDocument>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </RootDocument>
+    </AlertProvider>
+    </ShoppingCartProvider>
   )
 }
 

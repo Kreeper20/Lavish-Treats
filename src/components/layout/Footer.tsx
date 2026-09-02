@@ -1,12 +1,16 @@
 import { Link } from "@tanstack/react-router"
 import { Logo } from "../utils/imports"
 import { IconBrandInstagram, IconBrandWhatsapp, IconMail } from "@tabler/icons-react"
+import { TAndCModal } from "../ui/T&Cmodal"
+import { useState } from "react"
 
 
 const linkStyle = "text-text-dim font-extralight hover:text-purple-light transition duration-300 ease-in-out block"
 const iconStly = "text-white mt-4 hover:text-purple-light transition duration-300 ease-in-out cursor-pointer"
 
 export const Footer = () => {
+      const [showModal, setShowModal] = useState(false);
+  
   return (
     <footer className="border-t items-center bg-purple-deep">
       <div className="mx-auto max-w-6xl py-12 px-8">
@@ -22,7 +26,7 @@ export const Footer = () => {
               <a href="https://api.whatsapp.com/message/2JTPML3URTPUE1" target="_blank" rel="noopener noreferrer">
                 <IconBrandWhatsapp className={iconStly} size={25} stroke={1.5} />
               </a>
-              <a href="mailto:lavishtreats@gmail.com" target="_blank" rel="noopener noreferrer">
+              <a href="mailto:lavishtreats.24@gmail.com" target="_blank" rel="noopener noreferrer">
                 <IconMail className={iconStly} size={25} stroke={1.5} />
               </a>
             </div>
@@ -41,8 +45,7 @@ export const Footer = () => {
               <h3 className="text-lg font-semibold text-white">Our Menu</h3>
               <div className="text-text-dim font-extralight flex flex-col gap-2 mt-2">
                 <Link to={"/cakes"} className={linkStyle}>Celebration Cakes</Link>
-                <Link to={"/pastries"} className={linkStyle}>Pastries</Link>
-                <Link to={"/desserts"} className={linkStyle}>Desserts</Link>
+                <Link to={"/shop"} className={linkStyle}>Shop</Link>
               </div>
             </div>
             <div>
@@ -61,11 +64,13 @@ export const Footer = () => {
       <div className="text-center py-2 border-t border-purple-light pt-6 items-center flex flex-col md:flex-row justify-around">
         <p className="text-text-dim font-extralight">
           &copy; {new Date().getFullYear()} Lavish Treats. All rights reserved.
-        </p>
-        <p className="text-text-dim font-extralight">
+        </p>    
+        <p className="text-text-dim font-extralight" onClick={() => setShowModal(true)} style={{ cursor: "pointer" }}>
            Terms of Service | Privacy Policy
         </p>
       </div>
+               <TAndCModal showModal={showModal} onClose={() => setShowModal(false)} />
+
     </footer>
   )
 }

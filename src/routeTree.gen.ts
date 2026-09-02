@@ -12,11 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CakesRouteImport } from './routes/cakes'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as DessertsRouteImport } from './routes/desserts'
-import { Route as EnquiryFormRouteImport } from './routes/enquiryForm'
+import { Route as CustomOrderRouteImport } from './routes/custom-order'
 import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as PastriesRouteImport } from './routes/pastries'
+import { Route as OrderConfirmRouteImport } from './routes/orderConfirm'
 import { Route as ShopRouteImport } from './routes/shop'
 
 const IndexRoute = IndexRouteImport.update({
@@ -34,19 +34,19 @@ const CakesRoute = CakesRouteImport.update({
   path: '/cakes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DessertsRoute = DessertsRouteImport.update({
-  id: '/desserts',
-  path: '/desserts',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EnquiryFormRoute = EnquiryFormRouteImport.update({
-  id: '/enquiryForm',
-  path: '/enquiryForm',
+const CustomOrderRoute = CustomOrderRouteImport.update({
+  id: '/custom-order',
+  path: '/custom-order',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -54,9 +54,9 @@ const GalleryRoute = GalleryRouteImport.update({
   path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PastriesRoute = PastriesRouteImport.update({
-  id: '/pastries',
-  path: '/pastries',
+const OrderConfirmRoute = OrderConfirmRouteImport.update({
+  id: '/orderConfirm',
+  path: '/orderConfirm',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -69,22 +69,22 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cakes': typeof CakesRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/desserts': typeof DessertsRoute
-  '/enquiryForm': typeof EnquiryFormRoute
+  '/custom-order': typeof CustomOrderRoute
   '/gallery': typeof GalleryRoute
-  '/pastries': typeof PastriesRoute
+  '/orderConfirm': typeof OrderConfirmRoute
   '/shop': typeof ShopRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cakes': typeof CakesRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/desserts': typeof DessertsRoute
-  '/enquiryForm': typeof EnquiryFormRoute
+  '/custom-order': typeof CustomOrderRoute
   '/gallery': typeof GalleryRoute
-  '/pastries': typeof PastriesRoute
+  '/orderConfirm': typeof OrderConfirmRoute
   '/shop': typeof ShopRoute
 }
 export interface FileRoutesById {
@@ -92,11 +92,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cakes': typeof CakesRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/desserts': typeof DessertsRoute
-  '/enquiryForm': typeof EnquiryFormRoute
+  '/custom-order': typeof CustomOrderRoute
   '/gallery': typeof GalleryRoute
-  '/pastries': typeof PastriesRoute
+  '/orderConfirm': typeof OrderConfirmRoute
   '/shop': typeof ShopRoute
 }
 export interface FileRouteTypes {
@@ -105,33 +105,33 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/cakes'
+    | '/checkout'
     | '/contact'
-    | '/desserts'
-    | '/enquiryForm'
+    | '/custom-order'
     | '/gallery'
-    | '/pastries'
+    | '/orderConfirm'
     | '/shop'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/cakes'
+    | '/checkout'
     | '/contact'
-    | '/desserts'
-    | '/enquiryForm'
+    | '/custom-order'
     | '/gallery'
-    | '/pastries'
+    | '/orderConfirm'
     | '/shop'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/cakes'
+    | '/checkout'
     | '/contact'
-    | '/desserts'
-    | '/enquiryForm'
+    | '/custom-order'
     | '/gallery'
-    | '/pastries'
+    | '/orderConfirm'
     | '/shop'
   fileRoutesById: FileRoutesById
 }
@@ -139,11 +139,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CakesRoute: typeof CakesRoute
+  CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
-  DessertsRoute: typeof DessertsRoute
-  EnquiryFormRoute: typeof EnquiryFormRoute
+  CustomOrderRoute: typeof CustomOrderRoute
   GalleryRoute: typeof GalleryRoute
-  PastriesRoute: typeof PastriesRoute
+  OrderConfirmRoute: typeof OrderConfirmRoute
   ShopRoute: typeof ShopRoute
 }
 
@@ -170,6 +170,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CakesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -177,18 +184,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/desserts': {
-      id: '/desserts'
-      path: '/desserts'
-      fullPath: '/desserts'
-      preLoaderRoute: typeof DessertsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/enquiryForm': {
-      id: '/enquiryForm'
-      path: '/enquiryForm'
-      fullPath: '/enquiryForm'
-      preLoaderRoute: typeof EnquiryFormRouteImport
+    '/custom-order': {
+      id: '/custom-order'
+      path: '/custom-order'
+      fullPath: '/custom-order'
+      preLoaderRoute: typeof CustomOrderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -198,11 +198,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pastries': {
-      id: '/pastries'
-      path: '/pastries'
-      fullPath: '/pastries'
-      preLoaderRoute: typeof PastriesRouteImport
+    '/orderConfirm': {
+      id: '/orderConfirm'
+      path: '/orderConfirm'
+      fullPath: '/orderConfirm'
+      preLoaderRoute: typeof OrderConfirmRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -219,11 +219,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CakesRoute: CakesRoute,
+  CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
-  DessertsRoute: DessertsRoute,
-  EnquiryFormRoute: EnquiryFormRoute,
+  CustomOrderRoute: CustomOrderRoute,
   GalleryRoute: GalleryRoute,
-  PastriesRoute: PastriesRoute,
+  OrderConfirmRoute: OrderConfirmRoute,
   ShopRoute: ShopRoute,
 }
 export const routeTree = rootRouteImport

@@ -1,10 +1,11 @@
 import { IconX } from "@tabler/icons-react";
 
-export const TAndCModal = ({ showModal, onClose, handleSubmit }: { showModal: boolean; onClose: () => void; handleSubmit: () => void }) => {
+export const TAndCModal = ({ showModal, onClose}: { showModal: boolean; onClose: () => void }) => {
    
   return (
     <>
       {showModal && (
+       
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
           <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-3/4 lg:w-1/2 max-h-[85vh] flex flex-col">
             <div className="flex justify-end p-4">
@@ -19,9 +20,6 @@ export const TAndCModal = ({ showModal, onClose, handleSubmit }: { showModal: bo
               <h2 className="text-2xl font-bold text-center uppercase mb-4">
                 Terms & Conditions
               </h2>
-              <p className="mb-4">
-                By submitting this enquiry form, you agree to the following terms and conditions:
-              </p>
             </div>
 
             <div className="px-6 flex-1 overflow-y-auto min-h-0">
@@ -106,20 +104,6 @@ export const TAndCModal = ({ showModal, onClose, handleSubmit }: { showModal: bo
                     </p>
                   </section>
                 </div>
-              </div>
-            </div>
-
-            <div className="p-6 pt-4">
-              <p className="mb-4">
-                Please read these terms carefully before submitting your enquiry. If you do not agree with any part of these terms, please do not submit the form.
-              </p>
-              <div className="flex justify-end">
-                <button
-                  onClick={handleSubmit}
-                  className="bg-purple-primary hover:bg-purple-dark text-white font-semibold px-4 py-2 rounded-md transition duration-300"
-                >
-                  Place Order
-                </button>
               </div>
             </div>
 

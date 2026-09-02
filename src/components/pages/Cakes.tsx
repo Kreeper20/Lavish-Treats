@@ -1,34 +1,43 @@
-import { treats } from "../utils/imports"
+import { SixCupCake } from "../utils/imports"
 import { CakeBoxes } from "../ui/CakesBoxes"
 import { CakeData } from "../data/CakeBoxesData"
 import { Link } from "@tanstack/react-router"
+import { motion } from "framer-motion"
+import confetti from "../../assets/bg/confetti.svg"
 export const Cakes = () => {
+  const motionVariants = {
+    hidden: { opacity: 0, scale: 0.95, x: -20 },
+    visible: { opacity: 1, scale: 1, x: 0 },
+  };
   return (
     <>
-      <section className=" py-12 md:py-22 px-6">
-        <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 items-center">
-          <section>
-            <h1 className="text-purple-bright font-light mb-3 uppercase tracking-widest">
-              Celebration Cakes
-            </h1>
-            <h2 className="font-serif text-purple-deep text-4xl font-semibold lg:text-6xl ">
-              Cakes for Every Occasion
-            </h2>
-            <p className="text-text-dim font-extralight mt-4 mb-6  md:max-w-lg">
-              Beautifully handcrafted buttercream cakes designed to become the centrepiece of your celebration. Every cake is made fresh to order and customised to match your theme, colours, and occasion.
-            </p>
-            <Link to="/enquiryForm" className="bg-purple-primary text-white uppercase  px-6 py-3 rounded-full mt-6 hover:bg-purple-dark transition duration-300 ease-in-out">
+      <section className=" py-12 lg:py-28 px-6 text-shadow-2xs"
+      style={{ backgroundImage: `url(${confetti})`, backgroundSize: "cover", backgroundPosition: "center"}}
+      >
+        <motion.div
+          initial="hidden" animate="visible" variants={motionVariants}
+          className="mx-auto max-w-7xl items-center text-center">
+          <motion.h1 variants={motionVariants}
+            className="text-purple-bright font-light mb-3 uppercase tracking-widest">
+            Celebration Cakes
+          </motion.h1>
+          <motion.h2
+            variants={motionVariants}
+            className="font-serif text-purple-deep text-4xl lg:text-6xl mb-3 font-semibold">
+            Cakes for Every Occasion
+          </motion.h2>
+          <p className=" text-text-body font-extralight text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
+            Beautifully handcrafted buttercream cakes designed to become the centrepiece of your celebration. Every cake is made fresh to order and customised to match your theme, colours, and occasion.
+          </p>
+          <div className="flex items-center max-w-xl mt-6 mx-auto justify-center gap-y-2 gap-x-4 flex-col md:flex-row">
+            <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-full  hover:bg-purple-dark transition duration-300 ease-in-out">
               Enquire about your Cake
             </Link>
-          </section>
-          <aside className="flex justify-self-center lg:justify-self-end items-center">
-            <img
-              src=""
-              alt="Lavish Treats"
-              className=" rounded-4xl shadow-accent-lavender shadow-xl "
-            />
-          </aside>
-        </div>
+            <Link to="/shop" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-full hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
+              Explore Shop
+            </Link>
+          </div>
+        </motion.div>
       </section>
 
       <section className="testimonials py-12 items-center">
@@ -80,13 +89,13 @@ export const Cakes = () => {
                 />
               ))}
               <div className="relative">
-                <img src={treats} className="w-full h-80 object-cover rounded-2xl" />
+                <img src={SixCupCake} className="w-full h-80 object-cover rounded-2xl" />
                 <div className="bg-white shadow-xl rounded-xl p-6 -mt-16 mx-6 relative z-10">
-                  <h3 className="text-xl font-bold tracking-wide uppercase text-left">Deserts</h3>
-                  <p className="text-left mb-4">View our desserts menu here:</p>
+                  <h3 className="text-xl font-bold tracking-wide uppercase text-left">Pastries/Desserts</h3>
+                  <p className="text-left mb-4">View our menu here:</p>
                   <Link
-                    to="/desserts" className="bg-white cursor-pointer shadow-sm shadow-accent-lavender text-purple-deep uppercase  px-6 py-3 rounded-full mt-6 hover:bg-purple-deep hover:text-white transition duration-300 ease-in-out">
-                    DESSERTS MENU
+                    to="/shop" className="bg-white cursor-pointer shadow-sm shadow-accent-lavender text-purple-deep uppercase  px-6 py-3 rounded-full mt-6 hover:bg-purple-deep hover:text-white transition duration-300 ease-in-out">
+                    View offerings
                   </Link>
                 </div>
               </div>

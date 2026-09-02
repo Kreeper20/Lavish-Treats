@@ -1,12 +1,16 @@
 import { Link, type LinkProps } from '@tanstack/react-router'
 
+
 export function NavLink({ children, ...props }: LinkProps) {
+    const navLinkClassName = "hover:bg-transparent hover:shadow-2xs  hover:shadow-purple-mid/40 transition-shadow duration-300 rounded-lg px-4 py-2 lg:px-2 lg:py-1 lg:block text-purple-dark hover:text-purple-primary"
+    const activeNavLinkClassName = "bg-transparent shadow-2xs shadow-gold  transition-shadow duration-300 rounded-lg px-4 py-2 lg:px-2 lg:py-1 text-purple-primary"
+    
   return (
     <Link
       {...props}
-      className="text-text-nav transition-colors hover:text-purple-deep hover:cursor-pointer relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-purple-dark after:transition-all after:duration-300 lg:hover:after:w-full"
+      className={navLinkClassName }
       activeProps={{
-        className: 'lg:font-semibold lg:underline  lg:decoration-2 lg:underline-offset-7  decoration-purple-dark hover:cursor-pointer ',
+        className: `${activeNavLinkClassName}`,
       }}
       onClick={() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
