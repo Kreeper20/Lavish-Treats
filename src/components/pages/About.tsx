@@ -12,7 +12,7 @@ export const About = () => {
     <>
 
       <section className="  py-12 lg:py-28 items-center px-6">
-        <div className="grid grid-cols-1 md:mt-0 sm:mt-8 lg:grid-cols-2 max-w-7xl mx-auto items-center">
+        <div className="grid grid-cols-1 md:mt-0 sm:mt-8 lg:grid-cols-2 max-w-7xl mx-auto items-center gap-x-28">
           <motion.section initial="hidden" animate="visible" variants={motionVariants} >
             <motion.h1 variants={motionVariants} className="font-light uppercase text-purple-bright tracking-widest">
               About Lavish Treats
@@ -38,15 +38,22 @@ export const About = () => {
               beautiful as they tasted.
             </motion.p>
           </motion.section>
-          <motion.aside className="flex justify-self-center lg:justify-self-end items-center ml-10">
-            <motion.img
-              src={Ose}
-              alt="Lavish Treats"
-              className=" mt-8 rounded-4xl"
-              initial={{ opacity: 0, scale: 0.8, x: 0 }}
-              animate={{ opacity: 1, scale: 1, x: -20 }}
-            />
-          </motion.aside>
+          <motion.aside
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.7 }}
+                        className="relative mt-8 lg:mt-0"
+                    >
+                        <div
+                            className="relative w-full rounded-3xl aspect-square overflow-hidden z-10 shadow-xl shadow-lilac-panel"
+                        >
+                            <img
+                                src={Ose}
+                                alt="Lavish Treats"
+                                className="w-full h-full  object-cover hover:scale-105 duration-500"
+                            />
+                        </div>
+                    </motion.aside>
         </div>
         <div className="mx-auto max-w-5xl text-center mt-12 md:mt-18">
           <h1 className="font-serif italic text text-xl md:text-3xl mb-4">

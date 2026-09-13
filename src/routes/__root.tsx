@@ -15,6 +15,8 @@ import { ShoppingCartProvider } from '../components/context/ShoppingCartContext'
 import { AlertProvider } from '../components/cart/Toast'
 
 
+
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [

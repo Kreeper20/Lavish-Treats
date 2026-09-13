@@ -11,7 +11,7 @@ export const Nav = () => {
 
     return (
 
-        <nav className="flex flex-col items-start gap-3 lg:gap-6 font-serif text-2xl font-medium text-purple-dark lg:flex-row lg:items-center lg:text-lg divider-x lg:divide-line lg:divide-opacity-50">
+        <nav className="flex flex-col items-start gap-3 lg:gap-6 font-sans text-xl font-light text-purple-dark lg:flex-row lg:items-center lg:text-lg divider-x lg:divide-line lg:divide-opacity-50">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>
 

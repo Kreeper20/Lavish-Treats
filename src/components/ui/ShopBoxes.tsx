@@ -1,7 +1,7 @@
 type ShopBoxesProps = {
     id: number;
     name: string;
-    description: string;
+    description?: string;
     price: number;
     imageUrl: string;
     link?: string;
@@ -13,46 +13,62 @@ import { useAlertPopup } from "../context/Toast-context";
 import { IconShoppingCartPlus } from "@tabler/icons-react"
 import { Link } from "@tanstack/react-router";
 
-export const ShopBoxes = ({ id, name, description, imageUrl, price, link }: ShopBoxesProps) => {
-
+export const ShopBoxes = ({ id, name, description, imageUrl, price, link, product }: ShopBoxesProps & { product: any }) => {
     const show = useAlertPopup();
-    const {increaseCartQuantityWithMinimum } = UseShoppingCart();
-
+    const { increaseCartQuantityWithMinimum } = UseShoppingCart();
 
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.95, }} whileInView={{ opacity: 1, scale: 1, }} viewport={{ once: true }} transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl border border-border-soft overflow-hidden flex h-full flex-col">
-            <img
-                src={imageUrl}
-                alt={name}
-                className="w-full h-52 object-cover hover:scale-105 duration-500"
-            />
+        <>
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-white rounded-b-2xl overflow-hidden flex h-full flex-col group"
+            >
+                <Link to={'/productDetails/' + product.id}>
+                    <div className="overflow-hidden">
+                        <img
+                            src={imageUrl}
+                            alt={name}
+                            className="w-full h-64 object-cover group-hover:scale-105 duration-700 ease-out"
+                        />
+                    </div>
 
-            <div className="p-6 border-t border-border-soft flex-1">
-                <h1 className="text-lg md:text-2xl font-medium font-sans text-purple-deep">{name}</h1>
-                <p className="text-text-dim font-extralight text-sm md:text-base  whitespace-pre-line">{description}</p>
-            </div>
-            <div className="p-6 border-t border-border-soft mt-auto justify-between items-center">
-                <h2 className="text-base justify-self-start flex text-left text-purple-bright font-normal mb-1">{formatCurrency(price)}</h2>
-                {link ? (
-                    <Link to={link}>
-                    <button
-                        className="bg-purple-primary w-full hover:cursor-pointer text-xs md:text-base font-semibold text-white px-6 py-3 rounded-xl hover:bg-purple-dark transition delay-100 duration-300 ease-in-out">
-                        Custom Order Form
-                    </button>
-                    </Link>
-                ) : (
-                    <button onClick={() => {
-                        increaseCartQuantityWithMinimum(id);
-                        show?.alertOpen(`${name} has been added to your cart!`);}}
-                         className="bg-purple-primary w-full hover:cursor-pointer text-white px-6 py-3 rounded-xl hover:bg-purple-dark transition delay-100 duration-300 ease-in-out">
-                        <IconShoppingCartPlus className="h-4 w-4 md:w-5 md:h-5 inline-block" /> Add
-                    </button>
-                )}
+                    <div className="px-1 pt-4 pb-1 flex-1">
+                        <h1 className="text-lg font-medium font-sans text-purple-deep tracking-tight">
+                            {name}
+                        </h1>
+                        <p className="text-text-dim font-light text-sm line-clamp-1 mt-0.5">
+                            {description}
+                        </p>
+                    </div>
+                </Link>
 
-            </div>
-        </motion.div>
+                <div className="px-1 pb-2 pt-3 border-t border-border-soft mt-auto flex items-center justify-between gap-3">
+                    <span className="text-xl font-semibold text-purple-bright tabular-nums">
+                        {formatCurrency(price)}
+                    </span>
+                    {link ? (
+                        <Link to={link}>
+                            <button className="text-xs font-semibold text-purple-primary border border-purple-primary px-4 py-2 rounded-full hover:bg-purple-primary hover:text-white transition duration-300">
+                                Custom Order
+                            </button>
+                        </Link>
+                    ) : (
+                        <button
+                            onClick={() => {
+                                increaseCartQuantityWithMinimum(id);
+                                show?.alertOpen(`${product.quantity}x ${name} has been added to your cart!`);
+                            }}
+                            className="bg-purple-primary hover:cursor-pointer text-white w-11 h-11 rounded-full flex items-center justify-center hover:bg-purple-dark transition duration-300 shrink-0"
+                        >
+                            <IconShoppingCartPlus className="h-5 w-5" />
+                        </button>
+                    )}
+                </div>
+            </motion.div>
+        </>
     );
 };
 

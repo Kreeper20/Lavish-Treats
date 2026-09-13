@@ -1,5 +1,7 @@
 
 
+
+{/** @returns {Array} 
 export const testimonials = () => [
   {
     id: 1,
@@ -20,3 +22,4 @@ export const testimonials = () => [
       '\"I ordered my cake and cupcakes with short notice and was able to get it on the exact date I needed them. Presentation was beautiful and cake tasted amazing. :))) \"',
   },
 ]
+  */}

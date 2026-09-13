@@ -3,7 +3,6 @@ import { ShopData } from "../data/ShopData"
 import { Link } from "@tanstack/react-router"
 import { motion } from "framer-motion"
 
-
 export const Shop = () => {
   const motionVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -53,6 +52,7 @@ export const Shop = () => {
                         description={item.description}
                         imageUrl={item.image}
                         price={item.price}
+                        product={item}
                         link={item.link}
                       />
                     ))}

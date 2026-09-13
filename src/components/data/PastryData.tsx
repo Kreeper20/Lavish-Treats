@@ -11,18 +11,11 @@ import {
     GalleryMeatpie,
     GalleryMiniTreatBox,
     GalleryTreatBoxes,
-    GalleryBentaCake,
     GalleryBentaCuppCake,
-    GalleryCakeParfait,
     GalleryMiniCakeLoaf,
-    GallerySheetCake,
     GallerySixCupCake,
     GalleryTwelveCupcake,
-    GalleryBirthday,
-    GalleryBirthdayFour,
     GalleryBirthdayFourPhoto,
-    GalleryBirthdayThree,
-    GalleryBirthdayTwo,
     GalleryCake,
     GalleryChristmasCupcakes,
     GalleryMiniLoafPhoto,
@@ -95,19 +88,9 @@ export const pastryData = [
         image: GalleryTreatBoxes,
     },
     {
-        name: "Benta Cake",
-        description: "A delicious benta cake in any flavour of choice",
-        image: GalleryBentaCake,
-    },
-    {
         name: "Benta & Cupcake",
         description: "A benta cake with a box of 6 cupcakes in any flavour of choice",
         image: GalleryBentaCuppCake,
-    },
-    {
-        name: "Cake Parfait",
-        description: "A box of 6 cake parfaits in any flavour of choice",
-        image: GalleryCakeParfait,
     },
     {
         name: "Mini Cake Loaf",
@@ -115,34 +98,9 @@ export const pastryData = [
         image: GalleryMiniCakeLoaf,
     },
     {
-        name: "Sheet Cake",
-        description: "A sheet cake in any flavour of choice",
-        image: GallerySheetCake,
-    },
-    {
         name: "Cupcake - Box of 6",
         description: "A box of 6 cupcakes in any flavour of choice",
         image: GallerySixCupCake,
-    },
-     {
-        name: "Birthday Cake Design",
-        description: "A handcrafted birthday cake made for a special celebration",
-        image: GalleryBirthday,
-    },
-    {
-        name: "Birthday Cake with Gold Details",
-        description: "A personalised celebration cake with elegant gold decoration",
-        image: GalleryBirthdayTwo,
-    },
-    {
-        name: "Birthday Cake with Fresh Flowers",
-        description: "A beautiful birthday cake finished with fresh floral details",
-        image: GalleryBirthdayThree,
-    },
-    {
-        name: "Pink Birthday Cupcakes",
-        description: "A box of pink birthday cupcakes with delicate decorations",
-        image: GalleryBirthdayFour,
     },
     {
         name: "Birthday Cake with Fruit",

@@ -14,10 +14,11 @@ type ShoppingCartContext = {
     cartItems: cartItems[];
     getItemQuantity: (id: number) => number;
     increaseCartQuantity: (id: number) => void;
-    increaseCartQuantityWithMinimum: (id: number) => void;
+    increaseCartQuantityWithMinimum: (id: number) => void; 
     decreaseCartQuantity: (id: number) => void;
     removeFromCart: (id: number) => void;
     updateItemNote: (id: number, note: string) => void;
+    
 };
 
 type cartItems = {
@@ -39,9 +40,10 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
     const [cartItems, setCartItems] = useLocalStorage<cartItems[]>("shoppingCart", []);
     const [isOpen, setIsOpen] = useState(false);
     const minimumOrderQuantities: { [key: number]: number } = {
+        6: 6,
         7: 6,
-        15: 10, 
-        16: 6, 
+        13: 10, 
+        14: 6, 
     };
 
 

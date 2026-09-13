@@ -3,7 +3,6 @@ import { CakeBoxes } from "../ui/CakesBoxes"
 import { CakeData } from "../data/CakeBoxesData"
 import { Link } from "@tanstack/react-router"
 import { motion } from "framer-motion"
-import confetti from "../../assets/Bg/confetti.svg"
 export const Cakes = () => {
   const motionVariants = {
     hidden: { opacity: 0, scale: 0.95, x: -20 },
@@ -12,7 +11,7 @@ export const Cakes = () => {
   return (
     <>
       <section className=" py-12 lg:py-28 px-6 text-shadow-2xs"
-      style={{ backgroundImage: `url(${confetti})`, backgroundSize: "cover", backgroundPosition: "center"}}
+
       >
         <motion.div
           initial="hidden" animate="visible" variants={motionVariants}
@@ -26,7 +25,7 @@ export const Cakes = () => {
             className="font-serif text-purple-deep text-4xl lg:text-6xl mb-3 font-semibold">
             Cakes for Every Occasion
           </motion.h2>
-          <p className=" text-text-body font-extralight text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
+          <p className=" text-text-body font-extralight text-sm md:text-base lg:text-lg max-w-3xl mx-auto">
             Beautifully handcrafted buttercream cakes designed to become the centrepiece of your celebration. Every cake is made fresh to order and customised to match your theme, colours, and occasion.
           </p>
           <div className="flex items-center max-w-xl mt-6 mx-auto justify-center gap-y-2 gap-x-4 flex-col md:flex-row">
@@ -105,7 +104,16 @@ export const Cakes = () => {
             </p>
           </div>
         </div>
+         <div className="flex items-center max-w-xl text-center px-6 md:px-0 mt-6 mx-auto justify-center gap-y-2 gap-x-4 flex-col md:flex-row">
+            <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-full  hover:bg-purple-dark transition duration-300 ease-in-out">
+              Enquire about your Cake
+            </Link>
+            <Link to="/shop" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-full hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
+              Explore Shop
+            </Link>
+          </div>
       </section>
+      
 
 
     </>

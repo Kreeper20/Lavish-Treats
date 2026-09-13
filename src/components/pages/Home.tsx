@@ -1,13 +1,12 @@
 import { Link } from '@tanstack/react-router'
-import Cake from '../../assets/HeroCake.jpeg'
+import Cake from '../../assets/HeroCake.png'
 import { MultiLayered } from '../utils/imports'
 import bake from '../../assets/Bg/bake.svg'
 import { pastryData } from '../data/PastryData'
 import { PastriesBoxes } from '../ui/PastriesBoxes'
 import { GalleryBoxes } from '../ui/GalleryBoxes'
 import { motion } from 'framer-motion'
-import { testimonials } from '../data/TestimonialData'
-import { IconStarFilled } from '@tabler/icons-react';
+import { TestimonialsBox } from '../sections/Testimonials'
 
 
 
@@ -27,17 +26,16 @@ export const Home = () => {
     return (
 
         <>
-
-            <section className="overflow-hidden py-12 lg:py-28 items-center">
-                <div className="grid grid-cols-1 lg:grid-cols-2 px-6 max-w-7xl mx-auto items-center">
-                    <motion.section initial="hidden" animate="visible" variants={motionVariants} >
+            <section className=" py-12 lg:py-28 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 px-6 max-w-7xl mx-auto gap-x-28 items-center">
+                    <motion.section initial="hidden" animate="visible" variants={motionVariants}>
                         <motion.h1 variants={motionVariants} className="font-cursive text-purple-bright text-3xl">
                             Handcrafted in Kettering
                         </motion.h1>
                         <motion.h2 variants={motionVariants} className="font-serif text-purple-deep text-4xl lg:text-6xl mb-3 font-semibold">
                             Cakes & Sweet Treats Made for Every Celebration
                         </motion.h2>
-                        <p className=" text-text-body font-light text-lg lg:text-xl mb-4">
+                        <p className=" text-purple-deep font-extralight text-lg lg:text-xl mb-4">
                             Not every milestone looks the same, but every one deserves something made with care. From elegant buttercream cakes to handcrafted pastries,
                             Lavish Treats creates desserts that become part of the memories you'll look back on long after the last slice is gone.
                         </p>
@@ -50,19 +48,43 @@ export const Home = () => {
                         <div className="flex flex-wrap gap-4 mt-6">
                             <Link to="/shop" className="bg-purple-primary text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
                                 ORDER TREATS
-                                
                             </Link>
                             <Link to="/cakes" className=" border border-purple-primary text-purple-primary px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
                                 EXPLORE OUR BAKREY
                             </Link>
                         </div>
                     </motion.section>
-                    <motion.aside initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex justify-self-center lg:justify-self-end items-center">
-                        <img src={Cake} alt="Lavish Treats" className=" mt-8  rounded-2xl shadow-accent-lavender shadow-sm " />
+
+                    <motion.aside
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+
+                        transition={{ duration: 0.7 }}
+                        className="relative  mt-8 lg:mt-0 "
+                    >
+                        <div className='absolute bottom-0 left-0 z-20 w-28 h-28 mb-64 rounded-full bg-radial-[at_25%_25%] from-gold to-gold-tan-3 animate-[bounce_10s_ease-in-out_infinite]' />
+                        <div className='absolute top-0 right-0 w-22 z-20 h-22 mt-64 rounded-full bg-radial-[at_25%_25%] from-purple-primary  to-lilac-300 animate-[bounce_10s_ease-in-out_infinite] ' />
+
+                        <div
+                            className="relative w-full aspect-4/3 overflow-hidden z-10 shadow-xl shadow-purple-lighter"
+                            style={{ borderRadius: "60% 40% 55% 45% / 55% 45% 55% 45%" }}
+                        >
+                            <motion.img
+                                animate={{ scale: [1, 1.02, 1] }}
+                                transition={{
+                                    duration: 4,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                                src={Cake}
+                                alt="Lavish Treats"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
                     </motion.aside>
+
                 </div>
             </section>
-
             <section className="bg-purple-deep py-12 md:py-28">
                 <div className=" text-center items-center px-6 mx-auto">
 
@@ -135,8 +157,8 @@ export const Home = () => {
             </section>
 
             <section className="bg-lilac-50 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 items-center px-6 gap-6  mx-auto max-w-7xl">
-                    <section>
+                <div className="grid grid-cols-1 md:grid-cols-2 items-center px-6 gap-x-28  mx-auto max-w-7xl">
+                    <section className="mt-8 lg:mt-0">
                         <h1 className=" text-purple-bright font-light mb-3 uppercase tracking-widest">
                             FEATURED CELEBRATION CAKES
                         </h1>
@@ -152,11 +174,22 @@ export const Home = () => {
                             View Pricing
                         </Link>
                     </section>
-                    <aside className=" order-first ">
-                        <div className="border border-border-soft w-fit rounded-2xl   overflow-hidden  mb-4 ">
-                            <img src={MultiLayered} alt="Lavish Treats" className="w-96 object-cover hover:scale-105 duration-500 " />
+                    <motion.aside
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.7 }}
+                        className="relative   order-first"
+                    >
+                        <div
+                            className="relative w-full aspect-square rounded-3xl overflow-hidden z-10 "
+                        >
+                            <img
+                                src={MultiLayered}
+                                alt="Lavish Treats"
+                                className="w-full h-full object-fit hover:scale-101 duration-500"
+                            />
                         </div>
-                    </aside>
+                    </motion.aside>
                 </div>
             </section>
 
@@ -225,27 +258,7 @@ export const Home = () => {
                     <p className=" text-text-body font-extralight text-lg mb-4">
                         Nothing makes us happier than seeing our customers celebrate life's special moments with our creations.
                     </p>
-                    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
-                        {testimonials().map((testimonial) => (
-                            <div
-                                key={testimonial.id}
-                                className="bg-white p-3 rounded-lg shadow-md flex flex-col">
-                                <div className="flex text-gold mb-4">
-                                    <IconStarFilled size={20} />
-                                    <IconStarFilled size={20} />
-                                    <IconStarFilled size={20} />
-                                    <IconStarFilled size={20} />
-                                    <IconStarFilled size={20} />
-                                </div>
-                                <p className="text-text-body font-light text-lg font-serif italic grow">
-                                    {testimonial.testimonial}
-                                </p>
-                                <h3 className="text-purple-deep font-semibold font-serif text-xl mb-2 mt-4">
-                                    {testimonial.name}
-                                </h3>
-                            </div>
-                        ))}
-                    </div>
+                    <TestimonialsBox />
                 </div>
             </section>
 
