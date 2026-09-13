@@ -46,11 +46,11 @@ export const Home = () => {
                             <span>Made fresh</span>
                         </div>
                         <div className="flex flex-wrap gap-4 mt-6">
-                            <Link to="/shop" className="bg-purple-primary text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
-                                ORDER TREATS
+                            <Link to="/custom-order" className="bg-purple-primary uppercase text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
+                                request a cake quote
                             </Link>
-                            <Link to="/cakes" className=" border border-purple-primary text-purple-primary px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
-                                EXPLORE OUR BAKREY
+                            <Link to="/gallery" className=" border border-purple-primary text-purple-primary px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
+                                EXPLORE GALLERY
                             </Link>
                         </div>
                     </motion.section>
@@ -62,12 +62,10 @@ export const Home = () => {
                         transition={{ duration: 0.7 }}
                         className="relative  mt-8 lg:mt-0 "
                     >
-                        <div className='absolute bottom-0 left-0 z-20 w-28 h-28 mb-64 rounded-full bg-radial-[at_25%_25%] from-gold to-gold-tan-3 animate-[bounce_10s_ease-in-out_infinite]' />
-                        <div className='absolute top-0 right-0 w-22 z-20 h-22 mt-64 rounded-full bg-radial-[at_25%_25%] from-purple-primary  to-lilac-300 animate-[bounce_10s_ease-in-out_infinite] ' />
+                 
 
                         <div
-                            className="relative w-full aspect-4/3 overflow-hidden z-10 shadow-xl shadow-purple-lighter"
-                            style={{ borderRadius: "60% 40% 55% 45% / 55% 45% 55% 45%" }}
+                            className="relative w-full aspect-square rounded-3xl  overflow-hidden z-10 shadow-xl shadow-purple-lighter"
                         >
                             <motion.img
                                 animate={{ scale: [1, 1.02, 1] }}

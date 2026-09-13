@@ -76,7 +76,7 @@ export const Shop = () => {
                 ENQUIRE NOW
               </Link>
               <Link to="/cakes" className=" border border-purple-primary w-full text-purple-primary px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out">
-                EXPLORE OUR BAKREY
+                EXPLORE OUR BAKERY
               </Link>
             </div>
           </div>
