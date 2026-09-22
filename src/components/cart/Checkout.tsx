@@ -15,7 +15,7 @@ export const Checkout = () => {
     };
 
     // cart access
-    const { cartItems, openCart, clearCart } = UseShoppingCart();
+    const { cartItems, openCart } = UseShoppingCart();
     const navigate = useNavigate();
 
     const subtotal = cartItems.reduce((total, cartItem) => {
