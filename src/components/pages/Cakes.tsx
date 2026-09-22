@@ -1,6 +1,6 @@
 import { SixCupCake } from "../utils/imports"
 import { CakeBoxes } from "../ui/CakesBoxes"
-import { CakeData } from "../data/CakeBoxesData"
+import { CakeData } from "../data/CakePricesData"
 import { Link } from "@tanstack/react-router"
 import { motion } from "framer-motion"
 export const Cakes = () => {
@@ -108,8 +108,8 @@ export const Cakes = () => {
             <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-full  hover:bg-purple-dark transition duration-300 ease-in-out">
               Enquire about your Cake
             </Link>
-            <Link to="/shop" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-full hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
-              Explore Shop
+            <Link to="/gallery" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-full hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
+              Explore Gallery
             </Link>
           </div>
       </section>

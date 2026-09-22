@@ -3,6 +3,7 @@ import { UseShoppingCart } from "../context/ShoppingCartContext";
 import { useAlertPopup } from "../context/Toast-context";
 import { ShopData } from "../data/ShopData"
 import {IconChevronUp, IconChevronDown} from "@tabler/icons-react"
+import { formatCurrency } from "../utils/formatCurrency";
 
 
 
@@ -37,7 +38,7 @@ export const ProductDetails = () => {
                     <div className="p-4">
                         <div className="mb-6 ">
                             <h1 className="text-xl lg:text-2xl mb-1 font-semibold">{product.name}</h1>
-                            <span className="text-base font-semibold  text-purple-deep">£{product.price}</span>
+                            {formatCurrency(product.price)} 
                         </div>
                         <p className="text-text-dim font-extralight mt-2 max-w-xs">{product.description}</p>
                         <div className="mt-2 flex items-center gap-2">

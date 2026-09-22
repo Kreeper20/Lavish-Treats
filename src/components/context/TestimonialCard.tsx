@@ -19,15 +19,13 @@ export const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) =
         <div
           className="flex-1 p-8 flex flex-col md:border-l border-gray-200 "
         >
-         
-
           {showFullQuote ? <p className="text-lg text-gray-900 leading-snug mb-6 ">
             "{testimonial.quote}"
-          </p> : <p className="text-lg text-gray-900 leading-snug mb-6 ">
+          </p> : <p className="text-base text-gray-900 leading-snug mb-3 ">
             "{testimonial.quote.substr(0, 100)}..."
           </p>}
 
-          <div className="flex items-center justify-between mt-auto pt-4">
+          <div className="flex items-center justify-between mt-auto">
             <span className="text-gray-400 text-sm">{testimonial.name}<span className="text-text-body font-light text-sm font-serif italic ml-2">
               {testimonial.product_name}
             </span></span>

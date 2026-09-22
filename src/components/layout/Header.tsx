@@ -7,7 +7,7 @@ import { UseShoppingCart } from "../context/ShoppingCartContext";
 export const Navbar = () => {
   const { openCart, cartQuantity } = UseShoppingCart();
   return (
-    <header className=" border-b border-line py-6 px-4 md:px-8 lg:px-12">
+    <header className=" border-b border-line py-6 px-4 md:px-8 lg:px-12  ">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex items-center gap-18 justify-between w-full lg:w-auto">
           <Link to="/" className="flex items-center cursor-pointer">

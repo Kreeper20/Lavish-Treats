@@ -14,7 +14,9 @@ export const Home = () => {
     const motionVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
+
     };
+
     const reasons = [
         "Freshly baked to order",
         "Premium quality ingredients",
@@ -26,19 +28,31 @@ export const Home = () => {
     return (
 
         <>
-            <section className=" py-12 lg:py-28 items-center">
+
+            <motion.section
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className=" py-12 lg:py-28 items-center">
                 <div className="grid grid-cols-1 lg:grid-cols-2 px-6 max-w-7xl mx-auto gap-x-28 items-center">
-                    <motion.section initial="hidden" animate="visible" variants={motionVariants}>
+                    <motion.section
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}>
                         <motion.h1 variants={motionVariants} className="font-cursive text-purple-bright text-3xl">
                             Handcrafted in Kettering
                         </motion.h1>
                         <motion.h2 variants={motionVariants} className="font-serif text-purple-deep text-4xl lg:text-6xl mb-3 font-semibold">
                             Cakes & Sweet Treats Made for Every Celebration
                         </motion.h2>
-                        <p className=" text-purple-deep font-extralight text-lg lg:text-xl mb-4">
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                            className=" text-purple-deep font-extralight text-lg lg:text-xl mb-4">
                             Not every milestone looks the same, but every one deserves something made with care. From elegant buttercream cakes to handcrafted pastries,
                             Lavish Treats creates desserts that become part of the memories you'll look back on long after the last slice is gone.
-                        </p>
+                        </motion.p>
 
                         <div className="flex flex-wrap gap-4 text-xl lg:text-lg font-serif font-light text-purple-bright">
                             <span>Beautiful to look at.</span>
@@ -56,13 +70,12 @@ export const Home = () => {
                     </motion.section>
 
                     <motion.aside
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-
-                        transition={{ duration: 0.7 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
                         className="relative  mt-8 lg:mt-0 "
                     >
-                 
+
 
                         <div
                             className="relative w-full aspect-square rounded-3xl  overflow-hidden z-10 shadow-xl shadow-purple-lighter"
@@ -82,7 +95,7 @@ export const Home = () => {
                     </motion.aside>
 
                 </div>
-            </section>
+            </motion.section>
             <section className="bg-purple-deep py-12 md:py-28">
                 <div className=" text-center items-center px-6 mx-auto">
 
@@ -260,7 +273,7 @@ export const Home = () => {
                 </div>
             </section>
 
-            <section className="bg-lilac-50 py-12  px-6">
+            <section className="bg-lilac-50 py-12  px-6 ">
                 <div className="homeContact relative  overflow-hidden rounded-4xl py-12 items-center px-10 text-center text-white mx-auto max-w-5xl">
                     <div className="absolute -top-12.5 -right-7.5 w-50 h-50 rounded-full bg-white/8" />
                     <div className="absolute -bottom-15 -left-5 w-60 h-60 rounded-full bg-accent-lavender/20" />

@@ -13,6 +13,7 @@ import { Navbar } from '../components/layout/Header'
 import { Footer } from '../components/layout/Footer'
 import { ShoppingCartProvider } from '../components/context/ShoppingCartContext'
 import { AlertProvider } from '../components/cart/Toast'
+import { PromoBar } from '../components/promotions/PromoBar'
 
 
 
@@ -52,6 +53,7 @@ function RootComponent() {
       <AlertProvider>
       <RootDocument>
         <Navbar />
+        <PromoBar />
         <Outlet />
         <Footer />
       </RootDocument>

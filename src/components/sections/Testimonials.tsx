@@ -26,7 +26,7 @@ export const TestimonialsBox = () => {
             setError("Failed to add testimonial. Please try again.");
             console.error(error);
         } else {
-            console.log("Order inserted successfully:", data);
+            console.log("Testimonial inserted successfully:", data);
         }
     }
 
@@ -56,7 +56,7 @@ export const TestimonialsBox = () => {
                 {fetchError && <p className="text-red-500">{fetchError}</p>}
                 {testimonialt && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-8">
-                        {testimonialt.map((testimonial) => (
+                        {testimonialt.filter((_, i) => i < 2).map((testimonial) => (
                             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
                         ))}
                     </div>

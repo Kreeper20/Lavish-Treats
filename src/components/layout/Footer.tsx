@@ -12,7 +12,7 @@ export const Footer = () => {
       const [showModal, setShowModal] = useState(false);
   
   return (
-    <footer className="border-t items-center bg-purple-deep">
+    <footer className="border-t items-center bg-purple-deep w-full ">
       <div className="mx-auto max-w-6xl py-12 px-8">
         <div className="items-center grid grid-cols-1 md:grid-cols-2">
           <div>

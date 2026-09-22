@@ -1,8 +1,9 @@
 import { UseShoppingCart } from "../context/ShoppingCartContext";
-import { formatCurrency } from "../utils/formatCurrency";
 import { ShopData } from "../data/ShopData";
-import { CartItems } from "../ui/CartItems";
+import { CartItems } from "./CartItems";
 import { Link } from "@tanstack/react-router";
+import { getDiscountedTotal, } from "../promotions/promotion";
+import { DiscountedPrice } from "../promotions/DiscountedPrice";
 
 type CartProps = {
   isOpen: boolean;
@@ -10,6 +11,12 @@ type CartProps = {
 
 export const Cart = ({ isOpen }: CartProps) => {
   const { closeCart, cartItems, cartQuantity, } = UseShoppingCart();
+  const subtotal = cartItems.reduce((total, cartItem) => {
+    const item = ShopData.find(item => item.id === cartItem.id);
+    return total + (item?.price || 0) * cartItem.quantity;
+  }, 0);
+
+  const total = getDiscountedTotal(subtotal);
 
   return (
     <>
@@ -18,7 +25,7 @@ export const Cart = ({ isOpen }: CartProps) => {
           }`}
         onClick={closeCart}
       />
-    
+
 
       <aside
         className={`fixed right-0 top-0 z-50 flex h-full max-h-screen w-full max-w-md flex-col bg-lilac-50 shadow-2xl transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
@@ -67,15 +74,20 @@ export const Cart = ({ isOpen }: CartProps) => {
 
         {cartItems.length > 0 && (
           <div className="border-t border-line bg-lilac-50 p-6">
+            {subtotal.valueOf() < 100 ? (
+              <p className="text-sm text-text-muted mb-4 text-center">
+                5% discont applied to your order.
+              </p>
+            ) : (
+              <p className="text-sm text-text-muted mb-4 text-center">
+                10% discont applied to your order.
+              </p>
+            )
+            }
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-purple-deep">Order Total</h2>
               <p className="text-lg font-semibold text-purple-deep">
-                {formatCurrency(
-                  cartItems.reduce((total, cartItem) => {
-                    const item = ShopData.find(item => item.id === cartItem.id);
-                    return total + (item?.price || 0) * cartItem.quantity;
-                  }, 0),
-                )}
+                <DiscountedPrice total={subtotal} price={total} className="text-base" />
               </p>
             </div>
             <p className="text-sm text-text-muted mb-4">

@@ -39,21 +39,21 @@ export const About = () => {
             </motion.p>
           </motion.section>
           <motion.aside
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.7 }}
-                        className="relative mt-8 lg:mt-0"
-                    >
-                        <div
-                            className="relative w-full rounded-3xl aspect-square overflow-hidden z-10 shadow-xl shadow-lilac-panel"
-                        >
-                            <img
-                                src={Ose}
-                                alt="Lavish Treats"
-                                className="w-full h-full  object-cover hover:scale-105 duration-500"
-                            />
-                        </div>
-                    </motion.aside>
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+            className="relative mt-8 lg:mt-0"
+          >
+            <div
+              className="relative w-full rounded-3xl aspect-square overflow-hidden z-10 shadow-xl shadow-lilac-panel"
+            >
+              <img
+                src={Ose}
+                alt="Lavish Treats"
+                className="w-full h-full  object-cover hover:scale-105 duration-500"
+              />
+            </div>
+          </motion.aside>
         </div>
         <div className="mx-auto max-w-5xl text-center mt-12 md:mt-18">
           <h1 className="font-serif italic text text-xl md:text-3xl mb-4">
@@ -65,7 +65,7 @@ export const About = () => {
           <p className=" text-text-body font-extralight text-sm md:text-base lg:text-lg mt-4">
             Today, our bakery creates handcrafted celebration cakes, freshly baked pastries, cupcakes,
             dessert boxes, meat pies and small chops for families, businesses and celebrations across
-            Kettering.
+            Kettering and UK.
             Every order is made with care, every recipe is prepared with quality ingredients and every
             customer is welcomed like family.
             To us, baking has never been just about food. It's about helping people celebrate the
@@ -87,15 +87,15 @@ export const About = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-7xl mx-auto">
           <div className="rounded-2xl  border-[0.1px] border-gold overflow-hidden p-6 left"
-          style={{background: 'rgba(255, 255, 255, 0.08)'}}
+            style={{ background: 'rgba(255, 255, 255, 0.08)' }}
           >
-           <h1 className="text-xl md:text-2xl font-normal  text-gold-light font-serif">Quality Without Compromise</h1>
+            <h1 className="text-xl md:text-2xl font-normal  text-gold-light font-serif">Quality Without Compromise</h1>
             <p className="text-text-muted font-extralight text-sm lg:text-base mt-2">
               Exceptional baking begins with exceptional ingredients. Every product is carefully prepared to taste just as wonderful as it looks.
             </p>
           </div>
           <div className="rounded-2xl  border-[0.1px] border-gold overflow-hidden p-6 left"
-          style={{background: 'rgba(255, 255, 255, 0.08)'}}
+            style={{ background: 'rgba(255, 255, 255, 0.08)' }}
           >
             <h1 className="text-xl md:text-2xl font-normal  text-gold-light font-serif">Creativity</h1>
             <p className="text-text-muted font-extralight text-sm lg:text-base mt-2">
@@ -103,7 +103,7 @@ export const About = () => {
             </p>
           </div>
           <div className="rounded-2xl  border-[0.1px] border-gold overflow-hidden p-6 left"
-          style={{background: 'rgba(255, 255, 255, 0.08)'}}
+            style={{ background: 'rgba(255, 255, 255, 0.08)' }}
           >
             <h1 className="text-xl font-semibold  text-gold font-serif">Customer Care</h1>
             <p className="text-text-muted font-extralight text-sm lg:text-base mt-2">

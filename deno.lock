@@ -27,6 +27,7 @@
         "npm:oxlint@^1.71.0",
         "npm:react-dom@^19.2.8",
         "npm:react@^19.2.8",
+        "npm:resend@^6.28.1",
         "npm:supabase@^2.115.0",
         "npm:tailwindcss-animate@^1.0.7",
         "npm:tailwindcss@^4.3.3",

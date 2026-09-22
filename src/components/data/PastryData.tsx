@@ -18,7 +18,7 @@ import {
     GalleryBirthdayFourPhoto,
     GalleryCake,
     GalleryChristmasCupcakes,
-    GalleryMiniLoafPhoto,
+    GalleryLevel8Cake,
 } from '../utils/imports'
 
 export const pastryData = [
@@ -112,15 +112,15 @@ export const pastryData = [
         description: "A handcrafted cake decorated with cream and fresh fruit",
         image: GalleryCake,
     },
-
-    {
-        name: "Mini Cake Loaf Gallery",
-        description: "A freshly baked mini cake loaf made for sharing",
-        image: GalleryMiniLoafPhoto,
-    },
     {
         name: "Christmas Cupcakes",
         description: "Festive cupcakes decorated in Christmas colours",
         image: GalleryChristmasCupcakes,
     },
+    {
+        name: "Level 8 Celebration Cake",
+        description: "A colourful celebration cake for a special milestone",
+        image: GalleryLevel8Cake,
+    },
+
    ]
