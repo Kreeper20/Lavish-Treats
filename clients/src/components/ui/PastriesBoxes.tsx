@@ -15,5 +15,6 @@ export const PastriesBoxes = ({ name, description, imageUrl }: PastriesBoxesProp
                 <p className="text-text-dim font-extralight text-sm md:text-base ">{description}</p>
             </div>
         </div>
+        
     )
 }

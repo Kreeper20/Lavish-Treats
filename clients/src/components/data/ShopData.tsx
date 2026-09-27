@@ -4,9 +4,9 @@ export const ShopData  = [
     {
         id: 1,
         name: "Fruity Hibiscus Drink",
-        description: "A refreshing drink made with fruity hibiscus.\n£2 for 250ml\n£3.50 for 450ml",
+        description: "A refreshing drink made with fruity hibiscus.\n£3 for 250ml\n£5 for 450ml",
         image: Drink,
-        price: 2.50,
+        price: 3,
         category: "Drinks",
         quantity: 1,
     },
@@ -15,7 +15,7 @@ export const ShopData  = [
         name: "Bento Cake Box",
         description: "4 inch bento cake with 5 cupcakes \nAny flavor of choice",
         image: BentaCuppCake,
-        price: 38,
+        price: 45,
         category: "Celebration Cakes",
         allowsPersonalisation: true,
         quantity: 1,
@@ -29,7 +29,7 @@ export const ShopData  = [
         price: 16,
         category: "Cupcakes & Cake Treats",
         allowsPersonalisation: true,
-        quantity: 1,
+        quantity: 1,            
 
     },
     {
@@ -56,7 +56,7 @@ export const ShopData  = [
         name: "Cake Parfait",
         description: "Cake parfait with strawberry topping \nMinimum order of 6",
         image: CakeParfait,
-        price: 4,
+        price: 5,
         category: "Cupcakes & Cake Treats",
         quantity: 6,
     },

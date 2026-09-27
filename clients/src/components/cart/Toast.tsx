@@ -24,14 +24,13 @@ export const AlertPopup = ({ message, close }: alertProps) => {
     useTimeout(() => { close(); })
     return (
         <>
-
             <motion.div 
                 layout
                 initial={{ y: -15, scale: 0.95 }}
                 animate={{ y: 0, scale: 1 }}
                 exit={{ x: -100, opacity: 0 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className={"flex items-center justify-between gap-4 bg-purple-deep text-white p-4 rounded-lg shadow-md border border-lilac-500 "}>
+                className={"flex items-center justify-between gap-4 bg-purple-deep text-white p-4 rounded-lg shadow-md border border-lilac-500"}>
                 <p>
                     {message}
                 </p>

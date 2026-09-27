@@ -1,8 +1,21 @@
 {
   "name": "lavish-treats",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.",
+  "keywords": [],
+  "homepage": "https://github.com/Kreeper20/Lavish-Treats#readme",
+  "bugs": {
+    "url": "https://github.com/Kreeper20/Lavish-Treats/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kreeper20/Lavish-Treats.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -12,6 +25,7 @@
   },
   "dependencies": {
     "@netlify/functions": "^6.0.0",
+    "@stripe/stripe-js": "^9.17.0",
     "@supabase/supabase-js": "^2.112.3",
     "@tabler/icons-react": "^3.45.0",
     "@tailwindcss/vite": "^4.3.3",
@@ -23,6 +37,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "resend": "^6.28.1",
+    "stripe": "^22.6.2",
     "tailwindcss": "^4.3.3",
     "tanstack": "^2.0.3"
   },
@@ -37,11 +52,6 @@
     "typescript": "~6.0.2",
     "vite": "^8.1.5"
   },
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "allowScripts": {
     "fsevents@2.3.3": true
   }

@@ -16,7 +16,7 @@ export const PromoBar = () => {
     if (!timeLeft?.isActive) return null;
 
     return (
-        <aside className="bg-gold-panel px-4 py-2.5 text-center text-purple-deep" aria-label="Current promotion">
+        <aside className="bg-gold-panel px-4 py-2.5 text-center text-purple-deep " aria-label="Current promotion">
             <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
                 <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-wide">
                     <IconClock className="h-4 w-4" aria-hidden="true" />

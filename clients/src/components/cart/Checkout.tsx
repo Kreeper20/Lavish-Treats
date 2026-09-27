@@ -8,7 +8,9 @@ import { motion } from "framer-motion";
 import { getDiscountedTotal } from "../promotions/promotion";
 import { DiscountedPrice } from "../promotions/DiscountedPrice";
 
+
 export const Checkout = () => {
+
     const motionVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
@@ -93,6 +95,39 @@ export const Checkout = () => {
     const PICKUP_TIMES = ["9am - 9:25am", "9:30am - 9:55am", "10am - 10:25am", "10:30am - 11am", "5pm - 6pm"];
     const DELIVERY_TIMES = ["9am - 9:25am", "9:30am - 9:55am", "10am - 10:25am", "10:30am - 11am", "5pm - 6pm"];
 
+    //Stripe payment
+    const makePayment = async () => {
+        const body = {
+            cartItems: cartItems.map((item) => {
+                const product = ShopData.find((p) => p.id === item.id);
+                return {
+                    name: product?.name ?? "",
+                    price: product?.price ?? 0,
+                    image: product?.image,
+                    quantity: item.quantity,
+                };
+            }),
+        };
+        const headers = {
+            "Content-Type": "application/json",
+        };
+
+        const response = await fetch("http://localhost:8080/create-checkout-session", {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(body),
+        });
+  
+        const { url } = await response.json();
+        window.location.href = url;
+        if (!response.ok) {
+            console.error("Error creating checkout session:", response.statusText);
+            setError("Failed to initiate payment. Please try again.");
+        } else {
+            console.log("Checkout session created successfully. Redirecting to payment...");
+        }
+    }
+
     return (
         <>
             <motion.section
@@ -118,6 +153,7 @@ export const Checkout = () => {
                 <div className="flex flex-col lg:flex-row gap-12">
                     <section className="flex-1">
                         <form
+                            
                             className="space-y-5 border border-lilac-panel bg-white p-6 md:p-10 rounded-2xl shadow-sm"
                             onSubmit={handleSubmit}
                         >
@@ -197,11 +233,10 @@ export const Checkout = () => {
                                     ).map((option) => (
                                         <label
                                             key={option.value}
-                                            className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 transition ${
-                                                fulfillmentType === option.value
-                                                    ? "border-purple-deep bg-lilac-50"
-                                                    : "border-gray-300 bg-white"
-                                            }`}
+                                            className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 transition ${fulfillmentType === option.value
+                                                ? "border-purple-deep bg-lilac-50"
+                                                : "border-gray-300 bg-white"
+                                                }`}
                                         >
                                             <input
                                                 type="radio"
@@ -316,7 +351,7 @@ export const Checkout = () => {
                                 </div>
                             </div>
 
-                           
+
                             <div>
                                 <label htmlFor="notes" className={labelStyles}>
                                     Additional Notes
@@ -334,7 +369,8 @@ export const Checkout = () => {
 
                             <button
                                 type="submit"
-                                disabled={isSubmitting}
+                                disabled
+                                onClick={makePayment}
                                 className="bg-purple-primary cursor-pointer text-white px-6 py-3 uppercase w-full rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed"
                             >
                                 {isSubmitting ? "Submitting..." : "Submit Order"}

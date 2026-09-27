@@ -12,13 +12,16 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CakesRouteImport } from './routes/cakes'
+import { Route as CancelRouteImport } from './routes/cancel'
 import { Route as CartPageRouteImport } from './routes/cartPage'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CreateCheckoutSessionRouteImport } from './routes/create-checkout-session'
 import { Route as CustomOrderRouteImport } from './routes/custom-order'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as OrderConfirmRouteImport } from './routes/orderConfirm'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as SuccessRouteImport } from './routes/success'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as ProductDetailsIdRouteImport } from './routes/productDetails/$id'
@@ -38,6 +41,11 @@ const CakesRoute = CakesRouteImport.update({
   path: '/cakes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CancelRoute = CancelRouteImport.update({
+  id: '/cancel',
+  path: '/cancel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CartPageRoute = CartPageRouteImport.update({
   id: '/cartPage',
   path: '/cartPage',
@@ -51,6 +59,11 @@ const CheckoutRoute = CheckoutRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreateCheckoutSessionRoute = CreateCheckoutSessionRouteImport.update({
+  id: '/create-checkout-session',
+  path: '/create-checkout-session',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CustomOrderRoute = CustomOrderRouteImport.update({
@@ -73,6 +86,11 @@ const ShopRoute = ShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuccessRoute = SuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
@@ -93,13 +111,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cakes': typeof CakesRoute
+  '/cancel': typeof CancelRoute
   '/cartPage': typeof CartPageRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/create-checkout-session': typeof CreateCheckoutSessionRoute
   '/custom-order': typeof CustomOrderRoute
   '/gallery': typeof GalleryRoute
   '/orderConfirm': typeof OrderConfirmRoute
   '/shop': typeof ShopRoute
+  '/success': typeof SuccessRoute
   '/admin/login': typeof AdminLoginRoute
   '/productDetails/$id': typeof ProductDetailsIdRoute
   '/admin/': typeof AdminIndexRoute
@@ -108,13 +129,16 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cakes': typeof CakesRoute
+  '/cancel': typeof CancelRoute
   '/cartPage': typeof CartPageRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/create-checkout-session': typeof CreateCheckoutSessionRoute
   '/custom-order': typeof CustomOrderRoute
   '/gallery': typeof GalleryRoute
   '/orderConfirm': typeof OrderConfirmRoute
   '/shop': typeof ShopRoute
+  '/success': typeof SuccessRoute
   '/admin/login': typeof AdminLoginRoute
   '/productDetails/$id': typeof ProductDetailsIdRoute
   '/admin': typeof AdminIndexRoute
@@ -124,13 +148,16 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cakes': typeof CakesRoute
+  '/cancel': typeof CancelRoute
   '/cartPage': typeof CartPageRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/create-checkout-session': typeof CreateCheckoutSessionRoute
   '/custom-order': typeof CustomOrderRoute
   '/gallery': typeof GalleryRoute
   '/orderConfirm': typeof OrderConfirmRoute
   '/shop': typeof ShopRoute
+  '/success': typeof SuccessRoute
   '/admin/login': typeof AdminLoginRoute
   '/productDetails/$id': typeof ProductDetailsIdRoute
   '/admin/': typeof AdminIndexRoute
@@ -141,13 +168,16 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/cakes'
+    | '/cancel'
     | '/cartPage'
     | '/checkout'
     | '/contact'
+    | '/create-checkout-session'
     | '/custom-order'
     | '/gallery'
     | '/orderConfirm'
     | '/shop'
+    | '/success'
     | '/admin/login'
     | '/productDetails/$id'
     | '/admin/'
@@ -156,13 +186,16 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/cakes'
+    | '/cancel'
     | '/cartPage'
     | '/checkout'
     | '/contact'
+    | '/create-checkout-session'
     | '/custom-order'
     | '/gallery'
     | '/orderConfirm'
     | '/shop'
+    | '/success'
     | '/admin/login'
     | '/productDetails/$id'
     | '/admin'
@@ -171,13 +204,16 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/cakes'
+    | '/cancel'
     | '/cartPage'
     | '/checkout'
     | '/contact'
+    | '/create-checkout-session'
     | '/custom-order'
     | '/gallery'
     | '/orderConfirm'
     | '/shop'
+    | '/success'
     | '/admin/login'
     | '/productDetails/$id'
     | '/admin/'
@@ -187,13 +223,16 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CakesRoute: typeof CakesRoute
+  CancelRoute: typeof CancelRoute
   CartPageRoute: typeof CartPageRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
+  CreateCheckoutSessionRoute: typeof CreateCheckoutSessionRoute
   CustomOrderRoute: typeof CustomOrderRoute
   GalleryRoute: typeof GalleryRoute
   OrderConfirmRoute: typeof OrderConfirmRoute
   ShopRoute: typeof ShopRoute
+  SuccessRoute: typeof SuccessRoute
   AdminLoginRoute: typeof AdminLoginRoute
   ProductDetailsIdRoute: typeof ProductDetailsIdRoute
   AdminIndexRoute: typeof AdminIndexRoute
@@ -222,6 +261,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CakesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cancel': {
+      id: '/cancel'
+      path: '/cancel'
+      fullPath: '/cancel'
+      preLoaderRoute: typeof CancelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cartPage': {
       id: '/cartPage'
       path: '/cartPage'
@@ -241,6 +287,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/create-checkout-session': {
+      id: '/create-checkout-session'
+      path: '/create-checkout-session'
+      fullPath: '/create-checkout-session'
+      preLoaderRoute: typeof CreateCheckoutSessionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/custom-order': {
@@ -271,6 +324,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/success': {
+      id: '/success'
+      path: '/success'
+      fullPath: '/success'
+      preLoaderRoute: typeof SuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/': {
       id: '/admin/'
       path: '/admin'
@@ -299,13 +359,16 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CakesRoute: CakesRoute,
+  CancelRoute: CancelRoute,
   CartPageRoute: CartPageRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
+  CreateCheckoutSessionRoute: CreateCheckoutSessionRoute,
   CustomOrderRoute: CustomOrderRoute,
   GalleryRoute: GalleryRoute,
   OrderConfirmRoute: OrderConfirmRoute,
   ShopRoute: ShopRoute,
+  SuccessRoute: SuccessRoute,
   AdminLoginRoute: AdminLoginRoute,
   ProductDetailsIdRoute: ProductDetailsIdRoute,
   AdminIndexRoute: AdminIndexRoute,

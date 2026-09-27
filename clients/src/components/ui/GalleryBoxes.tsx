@@ -20,7 +20,6 @@ export const GalleryBoxes = ({ name, imageUrl }: GalleryBoxesProps) => {
                         </span>
                     </div>
                 </div>
-
             </div>
         </>
     )

@@ -1,31 +1,27 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
-import { IconShoppingBagCheck, IconChevronDown } from '@tabler/icons-react'
-import { UseShoppingCart } from '../components/context/ShoppingCartContext';
-import { ShopData } from '../components/data/ShopData';
-import { useEffect, useState } from 'react';
-import { formatCurrency } from '../components/utils/formatCurrency';
-import { getDiscountedTotal } from '../components/promotions/promotion';
+import { IconShoppingBagCheck, IconChevronDown } from "@tabler/icons-react";
+import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { UseShoppingCart } from "../src/components/context/ShoppingCartContext";
+import { ShopData } from "../src/components/data/ShopData";
+import { getDiscountedTotal } from "../src/components/promotions/promotion";
+import { formatCurrency } from "../src/components/utils/formatCurrency";
 
-export const Route = createFileRoute('/orderConfirm')({
-  component: RouteComponent,
-})
-
-function RouteComponent() {
+export const Success = () => {
   const { cartItems, clearCart } = UseShoppingCart();
   const subtotal = cartItems.reduce((total, cartItem) => {
     const item = ShopData.find(item => item.id === cartItem.id);
     return total + (item?.price || 0) * cartItem.quantity;
-}, 0);
+  }, 0);
 
-const total = getDiscountedTotal(subtotal);
- 
+  const total = getDiscountedTotal(subtotal);
+
 
   useEffect(() => {
     return () => {
       clearCart();
     };
   }, []);
-  
+
   const [summaryOpen, setSummaryOpen] = useState(true);
   return (
     <>
