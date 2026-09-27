@@ -100,7 +100,7 @@ export const Checkout = () => {
     const DELIVERY_TIMES = ["9am - 9:25am", "9:30am - 9:55am", "10am - 10:25am", "10:30am - 11am", "5pm - 6pm"];
 
     //Stripe payment
-    {/*
+
         const makePayment = async () => {
         const body = {
             cartItems: cartItems.map((item) => {
@@ -117,7 +117,7 @@ export const Checkout = () => {
             "Content-Type": "application/json",
         };
 
-        const response = await fetch("http://localhost:8080/create-checkout-session", {
+        const response = await fetch("https://lavish-treats.onrender.com/create-checkout-session", {
             method: "POST",
             headers: headers,
             body: JSON.stringify(body),
@@ -131,7 +131,7 @@ export const Checkout = () => {
         } else {
             console.log("Checkout session created successfully. Redirecting to payment...");
         }
-    } */}
+    } 
 
     return (
         <>
