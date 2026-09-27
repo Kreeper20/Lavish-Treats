@@ -26,7 +26,7 @@
   "dependencies": {
     "@netlify/functions": "^6.0.0",
     "@stripe/stripe-js": "^9.17.0",
-    "@supabase/supabase-js": "^2.112.3",
+    "@supabase/supabase-js": "^2.117.2",
     "@tabler/icons-react": "^3.45.0",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-router": "^1.170.18",
@@ -47,9 +47,10 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
     "oxlint": "^1.71.0",
+    "pridepack": "^2.6.4",
     "supabase": "^2.115.0",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "~6.0.2",
+    "typescript": "^5.9.3",
     "vite": "^8.1.5"
   },
   "allowScripts": {

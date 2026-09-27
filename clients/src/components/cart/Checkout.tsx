@@ -74,6 +74,10 @@ export const Checkout = () => {
                         note: item.note || "",
                     };
                 }),
+                fulfillment_type: fulfillmentType,
+                address_line: fulfillmentType === "delivery" ? addressLine : null,
+                city: fulfillmentType === "delivery" ? city : null,
+                postal_code: fulfillmentType === "delivery" ? postcode : null,
             },
         ]);
 
@@ -96,7 +100,8 @@ export const Checkout = () => {
     const DELIVERY_TIMES = ["9am - 9:25am", "9:30am - 9:55am", "10am - 10:25am", "10:30am - 11am", "5pm - 6pm"];
 
     //Stripe payment
-    const makePayment = async () => {
+    {/*
+        const makePayment = async () => {
         const body = {
             cartItems: cartItems.map((item) => {
                 const product = ShopData.find((p) => p.id === item.id);
@@ -126,7 +131,7 @@ export const Checkout = () => {
         } else {
             console.log("Checkout session created successfully. Redirecting to payment...");
         }
-    }
+    } */}
 
     return (
         <>
@@ -207,19 +212,6 @@ export const Checkout = () => {
                                         onChange={(e) => setPhone(e.target.value)}
                                     />
                                 </div>
-                                <div>
-                                    <label htmlFor="collectionDate" className={labelStyles}>
-                                        Collection Date*
-                                    </label>
-                                    <input
-                                        type="date"
-                                        name="collectionDate"
-                                        id="collectionDate"
-                                        className={boxStyles}
-                                        value={collectionDate}
-                                        onChange={(e) => setCollectionDate(e.target.value)}
-                                    />
-                                </div>
                             </div>
 
                             <div>
@@ -262,7 +254,7 @@ export const Checkout = () => {
                                 </div>
                             </div>
 
-                            {/* Delivery address, only when relevant */}
+                            
                             {fulfillmentType === "delivery" && (
                                 <div className="space-y-4 rounded-xl bg-lilac-50 p-4">
                                     <div>
@@ -369,8 +361,6 @@ export const Checkout = () => {
 
                             <button
                                 type="submit"
-                                disabled
-                                onClick={makePayment}
                                 className="bg-purple-primary cursor-pointer text-white px-6 py-3 uppercase w-full rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed"
                             >
                                 {isSubmitting ? "Submitting..." : "Submit Order"}
