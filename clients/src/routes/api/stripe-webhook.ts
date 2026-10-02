@@ -2,23 +2,23 @@ import { createFileRoute } from "@tanstack/react-router";
 import Stripe from "stripe";
 import { supabase } from "../../../../server/supabase";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 export const Route = createFileRoute("/api/stripe-webhook")({
     server: {
         handlers: {
             POST: async ({ request }) => {
                 const body = await request.text();
                 const signature = request.headers.get("stripe-signature");
+                const stripeKey = process.env.STRIPE_SECRET_KEY;
                 const secret = process.env.STRIPE_WEBHOOK_SECRET;
 
-                if (!signature || !secret) {
+                if (!signature || !secret || !stripeKey) {
                     return new Response("Missing webhook configuration", { status: 400 });
                 }
 
                 let event: Stripe.Event;
 
                 try {
+                    const stripe = new Stripe(stripeKey);
                     event = stripe.webhooks.constructEvent(body, signature, secret);
                 } catch (error) {
                     console.error("Webhook verification failed:", error);
