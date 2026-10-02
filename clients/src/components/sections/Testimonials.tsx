@@ -1,4 +1,4 @@
-import { supabase } from "../utils/supabase"
+import { supabase } from "../../../../server/supabase"
 import { useEffect, useState } from "react"
 import { TestimonialCard } from "../context/TestimonialCard"
 

@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react';
-import { supabase } from '../../components/utils/supabase';
+import { supabase } from '../../../../server/supabase';
 import { Orders } from '../../components/context/adminPage';
 
 export const Route = createFileRoute('/admin/login')({

@@ -32,17 +32,11 @@ async function handleStripeWebhook(req, res) {
                 payment_intent: paymentIntentId,
             });
 
-            const orderId = event.data.object.metadata?.orderId;
-
-            const { data, error } = await supabase
+            const { orderId } = session.data[0].metadata;
+            await supabase
                 .from("orders")
                 .update({ paid: isPaid })
-                .eq("id", orderId)
-                .select("id, paid");
-
-            if (error) throw error;
-
-            console.log("Updated order:", data);
+                .eq("id", orderId);
         }
         switch (event.type) {
             case 'payment_intent.succeeded': {
@@ -58,11 +52,11 @@ async function handleStripeWebhook(req, res) {
                 break;
         }
         return res.json({ received: true });
-
     } catch (error) {
         console.error('Error handling webhook event:', error);
-        return res.status(400).json({ error: "Webhook failed" });
+       return res.status(400).json({ error: "Webhook failed" });
     }
+    
 
 }
 app.post(

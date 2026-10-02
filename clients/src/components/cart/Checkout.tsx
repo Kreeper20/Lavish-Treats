@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from "react";
-import { useNavigate } from "@tanstack/react-router";
 import { UseShoppingCart } from "../context/ShoppingCartContext";
 import { ShopData } from "../data/ShopData";
 import { formatCurrency } from "../utils/formatCurrency";
-import { supabase } from "../utils/supabase";
 import { motion } from "framer-motion";
 import { getDiscountedTotal } from "../promotions/promotion";
 import { DiscountedPrice } from "../promotions/DiscountedPrice";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 
 export const Checkout = () => {
@@ -18,7 +18,6 @@ export const Checkout = () => {
 
     // cart access
     const { cartItems, openCart } = UseShoppingCart();
-    const navigate = useNavigate();
 
     const subtotal = cartItems.reduce((total, cartItem) => {
         const item = ShopData.find((item) => item.id === cartItem.id);
@@ -31,6 +30,13 @@ export const Checkout = () => {
     const boxStyles =
         "mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2.5 px-3 text-text-body focus:outline-none focus:ring-1 focus:ring-purple-deep focus:border-purple-deep sm:text-sm";
     const labelStyles = "block text-sm font-medium text-text-body";
+
+    // fulfillment type
+    const [fulfillmentType, setFulfillmentType] = useState<"pickup" | "delivery">("pickup");
+    const DELIVERY_FEE = 5;
+    const PICKUP_TIMES = ["9am - 9:25am", "9:30am - 9:55am", "10am - 10:25am", "10:30am - 11am", "5pm - 6pm"];
+    const DELIVERY_TIMES = ["9am - 9:25am", "9:30am - 9:55am", "10am - 10:25am", "10:30am - 11am", "5pm - 6pm"];
+
 
     // supabase form
     const [customerName, setCustomerName] = useState("");
@@ -56,82 +62,57 @@ export const Checkout = () => {
             return;
         }
 
-        const { data, error } = await supabase.from("orders").insert([
-            {
-                customer_name: customerName,
-                email: email,
-                phone: phone,
-                collection_date: collectionDate,
-                collection_time: collectionTime,
-                notes: notes,
-                total_amount: total,
-                items: cartItems.map((item) => {
-                    const product = ShopData.find((p) => p.id === item.id);
-                    return {
-                        id: item.id,
-                        name: product?.name || "",
-                        quantity: item.quantity,
-                        note: item.note || "",
-                    };
-                }),
-                fulfillment_type: fulfillmentType,
-                address_line: fulfillmentType === "delivery" ? addressLine : null,
-                city: fulfillmentType === "delivery" ? city : null,
-                postal_code: fulfillmentType === "delivery" ? postcode : null,
-            },
-        ]);
+        // REPLACED the Supabase insert — just hand everything to checkout now
+        checkout({
+            customerName,
+            email,
+            phone,
+            collectionDate,
+            collectionTime,
+            notes,
+            totalAmount: total,
+            fulfillmentType,
+            addressLine,
+            city,
+            postcode,
+        });
 
-        if (error) {
-            console.error("Error inserting order:", error);
-            setError(error.message);
-            setIsSubmitting(false);
-            return;
-        }
-
-        console.log("Order inserted successfully:", data);
         setIsSubmitting(false);
-        navigate({ to: "/orderConfirm" });
     };
-
-    // fulfillment type
-    const [fulfillmentType, setFulfillmentType] = useState<"pickup" | "delivery">("pickup");
-    const DELIVERY_FEE = 5;
-    const PICKUP_TIMES = ["9am - 9:25am", "9:30am - 9:55am", "10am - 10:25am", "10:30am - 11am", "5pm - 6pm"];
-    const DELIVERY_TIMES = ["9am - 9:25am", "9:30am - 9:55am", "10am - 10:25am", "10:30am - 11am", "5pm - 6pm"];
-
     //Stripe payment
 
-        const makePayment = async () => {
-        const body = {
-            cartItems: cartItems.map((item) => {
-                const product = ShopData.find((p) => p.id === item.id);
-                return {
-                    name: product?.name ?? "",
-                    price: product?.price ?? 0,
-                    image: product?.image,
-                    quantity: item.quantity,
-                };
-            }),
-        };
-        const headers = {
-            "Content-Type": "application/json",
-        };
 
-        const response = await fetch("https://lavish-treats.onrender.com/create-checkout-session", {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify(body),
-        });
-  
-        const { url } = await response.json();
-        window.location.href = url;
-        if (!response.ok) {
-            console.error("Error creating checkout session:", response.statusText);
-            setError("Failed to initiate payment. Please try again.");
-        } else {
-            console.log("Checkout session created successfully. Redirecting to payment...");
-        }
-    } 
+    const { mutate: checkout, isPending } = useMutation({
+        mutationFn: async (orderDetails: {
+            customerName: string;
+            email: string;
+            phone: string;
+            collectionDate: string;
+            collectionTime: string;
+            notes: string;
+            totalAmount: number;
+            fulfillmentType: "pickup" | "delivery";
+            addressLine: string;
+            city: string;
+            postcode: string;
+        }) => {
+            const response = await axios.post("/api/checkout", {
+                orderDetails,
+                cartItems: cartItems.map((item) => {
+                    const product = ShopData.find((p) => p.id === item.id);
+                    return {
+                        name: product?.name ?? "",
+                        price: product?.price ?? 0,
+                        quantity: item.quantity,
+                    };
+                }),
+            });
+            return response.data;
+        },
+        onSuccess: (data: { url: string }) => {
+            window.location.href = data.url;
+        },
+    });
 
     return (
         <>
@@ -158,7 +139,7 @@ export const Checkout = () => {
                 <div className="flex flex-col lg:flex-row gap-12">
                     <section className="flex-1">
                         <form
-                            
+
                             className="space-y-5 border border-lilac-panel bg-white p-6 md:p-10 rounded-2xl shadow-sm"
                             onSubmit={handleSubmit}
                         >
@@ -254,7 +235,7 @@ export const Checkout = () => {
                                 </div>
                             </div>
 
-                            
+
                             {fulfillmentType === "delivery" && (
                                 <div className="space-y-4 rounded-xl bg-lilac-50 p-4">
                                     <div>
@@ -361,9 +342,11 @@ export const Checkout = () => {
 
                             <button
                                 type="submit"
+                                disabled={isPending || isSubmitting}
+
                                 className="bg-purple-primary cursor-pointer text-white px-6 py-3 uppercase w-full rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed"
                             >
-                                {isSubmitting ? "Submitting..." : "Submit Order"}
+                                {isPending ? "Submitting..." : "Submit Order"}
                             </button>
 
                             {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
@@ -456,3 +439,4 @@ export const Checkout = () => {
         </>
     );
 };
+

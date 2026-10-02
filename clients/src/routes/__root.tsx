@@ -14,6 +14,9 @@ import { Footer } from '../components/layout/Footer'
 import { ShoppingCartProvider } from '../components/context/ShoppingCartContext'
 import { AlertProvider } from '../components/cart/Toast'
 import { PromoBar } from '../components/promotions/PromoBar'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 
 
@@ -49,6 +52,7 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
+    <QueryClientProvider client={queryClient}>
     <ShoppingCartProvider>
       <AlertProvider>
       <RootDocument>
@@ -59,6 +63,7 @@ function RootComponent() {
       </RootDocument>
     </AlertProvider>
     </ShoppingCartProvider>
+    </QueryClientProvider>
   )
 }
 

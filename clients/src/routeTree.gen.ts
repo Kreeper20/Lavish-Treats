@@ -24,6 +24,8 @@ import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SuccessRouteImport } from './routes/success'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as ApiCheckoutRouteImport } from './routes/api/checkout'
+import { Route as ApiStripeWebhookRouteImport } from './routes/api/stripe-webhook'
 import { Route as ProductDetailsIdRouteImport } from './routes/productDetails/$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -101,6 +103,16 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCheckoutRoute = ApiCheckoutRouteImport.update({
+  id: '/api/checkout',
+  path: '/api/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiStripeWebhookRoute = ApiStripeWebhookRouteImport.update({
+  id: '/api/stripe-webhook',
+  path: '/api/stripe-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductDetailsIdRoute = ProductDetailsIdRouteImport.update({
   id: '/productDetails/$id',
   path: '/productDetails/$id',
@@ -122,6 +134,8 @@ export interface FileRoutesByFullPath {
   '/shop': typeof ShopRoute
   '/success': typeof SuccessRoute
   '/admin/login': typeof AdminLoginRoute
+  '/api/checkout': typeof ApiCheckoutRoute
+  '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/productDetails/$id': typeof ProductDetailsIdRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -140,6 +154,8 @@ export interface FileRoutesByTo {
   '/shop': typeof ShopRoute
   '/success': typeof SuccessRoute
   '/admin/login': typeof AdminLoginRoute
+  '/api/checkout': typeof ApiCheckoutRoute
+  '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/productDetails/$id': typeof ProductDetailsIdRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -159,6 +175,8 @@ export interface FileRoutesById {
   '/shop': typeof ShopRoute
   '/success': typeof SuccessRoute
   '/admin/login': typeof AdminLoginRoute
+  '/api/checkout': typeof ApiCheckoutRoute
+  '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/productDetails/$id': typeof ProductDetailsIdRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -179,6 +197,8 @@ export interface FileRouteTypes {
     | '/shop'
     | '/success'
     | '/admin/login'
+    | '/api/checkout'
+    | '/api/stripe-webhook'
     | '/productDetails/$id'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -197,6 +217,8 @@ export interface FileRouteTypes {
     | '/shop'
     | '/success'
     | '/admin/login'
+    | '/api/checkout'
+    | '/api/stripe-webhook'
     | '/productDetails/$id'
     | '/admin'
   id:
@@ -215,6 +237,8 @@ export interface FileRouteTypes {
     | '/shop'
     | '/success'
     | '/admin/login'
+    | '/api/checkout'
+    | '/api/stripe-webhook'
     | '/productDetails/$id'
     | '/admin/'
   fileRoutesById: FileRoutesById
@@ -234,6 +258,8 @@ export interface RootRouteChildren {
   ShopRoute: typeof ShopRoute
   SuccessRoute: typeof SuccessRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  ApiCheckoutRoute: typeof ApiCheckoutRoute
+  ApiStripeWebhookRoute: typeof ApiStripeWebhookRoute
   ProductDetailsIdRoute: typeof ProductDetailsIdRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
@@ -345,6 +371,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/checkout': {
+      id: '/api/checkout'
+      path: '/api/checkout'
+      fullPath: '/api/checkout'
+      preLoaderRoute: typeof ApiCheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/stripe-webhook': {
+      id: '/api/stripe-webhook'
+      path: '/api/stripe-webhook'
+      fullPath: '/api/stripe-webhook'
+      preLoaderRoute: typeof ApiStripeWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/productDetails/$id': {
       id: '/productDetails/$id'
       path: '/productDetails/$id'
@@ -370,6 +410,8 @@ const rootRouteChildren: RootRouteChildren = {
   ShopRoute: ShopRoute,
   SuccessRoute: SuccessRoute,
   AdminLoginRoute: AdminLoginRoute,
+  ApiCheckoutRoute: ApiCheckoutRoute,
+  ApiStripeWebhookRoute: ApiStripeWebhookRoute,
   ProductDetailsIdRoute: ProductDetailsIdRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
