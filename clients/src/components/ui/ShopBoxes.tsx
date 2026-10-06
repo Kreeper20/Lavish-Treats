@@ -12,10 +12,13 @@ import { formatCurrency } from "../utils/formatCurrency";
 import { useAlertPopup } from "../context/Toast-context";
 import { IconShoppingCartPlus } from "@tabler/icons-react"
 import { Link } from "@tanstack/react-router";
+import { ShopData } from "../data/ShopData";
 
-export const ShopBoxes = ({ id, name, description, imageUrl, price, link, product }: ShopBoxesProps & { product: any }) => {
+export const ShopBoxes = ({ id, name, description, imageUrl, price, link, product, }: ShopBoxesProps & { product: any;}) => {
     const show = useAlertPopup();
-    const { increaseCartQuantityWithMinimum } = UseShoppingCart();
+    const { increaseCartQuantityWithMinimum, } = UseShoppingCart();
+     const item = ShopData.find((item) => item.id === id);
+        if (item == null) return null;
 
     return (
         <>
@@ -45,6 +48,8 @@ export const ShopBoxes = ({ id, name, description, imageUrl, price, link, produc
                     </div>
                 </Link>
 
+
+
                 <div className="px-1 pb-2 pt-3 border-t border-border-soft mt-auto flex items-center justify-between gap-3">
                     <span className="text-xl font-semibold text-purple-bright tabular-nums">
                         {formatCurrency(price)}
@@ -66,9 +71,9 @@ export const ShopBoxes = ({ id, name, description, imageUrl, price, link, produc
                             <IconShoppingCartPlus className="h-5 w-5" />
                         </button>
                     )}
+    
                 </div>
             </motion.div>
         </>
     );
 };
-

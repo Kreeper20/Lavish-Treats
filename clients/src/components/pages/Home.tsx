@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import Cake from '../../assets/HeroCake.png'
+import Cake from '../../assets/HeroCake.webp'
 import { MultiLayered } from '../utils/imports'
 import bake from '../../assets/Bg/bake.svg'
 import { pastryData } from '../data/PastryData'
@@ -22,8 +22,8 @@ export const Home = () => {
         "Premium quality ingredients",
         "Beautiful handcrafted designs",
         "Personalised celebrations",
-        "Attention to every detail",
         "Reliable ordering process",
+        "5-star food hygiene rating",
     ]
     return (
 

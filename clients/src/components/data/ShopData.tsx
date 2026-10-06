@@ -1,15 +1,20 @@
 import { TwelveCupcake, SixCupCake, BentaCuppCake, CakeLoaf, CakeParfait, Drink, Meatpie,  MiniCakeLoaf, MiniTreatBox, TreatBoxes, TreatBoxesTwo, CustomMadeCake, puffPuff, smallChops, springRolls } from '../utils/imports'
 
+
+
+
 export const ShopData  = [
-    {
+     {
         id: 1,
-        name: "Fruity Hibiscus Drink",
+        name: "Fruity Hibiscus Drink (250ml)",
         description: "A refreshing drink made with fruity hibiscus.\n£3 for 250ml\n£5 for 450ml",
         image: Drink,
         price: 3,
         category: "Drinks",
-        quantity: 1,
+        quantity: 1, 
+                 
     },
+    
     {
         id: 2,
         name: "Bento Cake Box",
@@ -142,5 +147,14 @@ export const ShopData  = [
         category: "Pastries & Small Chops",
         quantity: 1,
     },
-
+     {
+        id: 16,
+        name: "Fruity Hibiscus Drink (450ml)",
+        description: "A refreshing drink made with fruity hibiscus.\n£3 for 250ml\n£5 for 450ml",
+        image: Drink,
+        price: 5,
+        category: "Drinks",
+        quantity: 1, 
+                 
+    },
    ]

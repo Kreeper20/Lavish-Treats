@@ -47,7 +47,6 @@ export const EnquiryForm = () => {
 
             if (!response.ok) throw new Error("Submission failed");
 
-            // setisSubmitted(true);
             form.reset();
             setFirstFileName(null);
             setSecondFileName(null);
@@ -90,6 +89,7 @@ export const EnquiryForm = () => {
                             <li>Minimum Notice:<span className="font-light pl-2">5 days prior to delivery</span></li>
                             <li>Rush orders:<span className="font-light pl-2">Within 48 hours from £20, subject to availability.</span></li>
                             <li>Collection:<span className="font-light pl-2">Kettering, United Kingdom.</span></li>
+                            <li>Payment:<span className="font-light pl-2">A deposit of 70% is required to confirm your order. The balance is due 2 days before the scheduled collection date.</span></li>
                         </ul>
                         <p className="font-light italic text-shadow-dark-text mt-4 text-sm md:text-base">
                             All products are freshly made to order; pricing may vary depending on customisation and design complexity.
@@ -160,6 +160,7 @@ export const EnquiryForm = () => {
                                     placeholder="###-###-####"
                                     required
                                     className={boxStyles}
+                                    
                                 />
                             </div>
                         </div>
@@ -236,6 +237,7 @@ export const EnquiryForm = () => {
                                             <input
                                                 type="radio"
                                                 name="addons"
+                                                value={addon}
                                                 id={id}
                                                 className="w-5 h-5 mr-3 accent-black cursor-pointer"
                                                 onChange={() => setOrderaddon(addon === "Other")}
@@ -244,7 +246,12 @@ export const EnquiryForm = () => {
                                                 {addon}
                                             </label>
                                             {addon === "Other" && Orderaddon && (
-                                                <input type="text" placeholder="Please specify" className={`${boxStyles} w-full ml-2`} />
+                                                <input
+                                                    type="text"
+                                                    name="addons-other"
+                                                    placeholder="Please specify"
+                                                    className={`${boxStyles} w-full ml-2`}
+                                                />
                                             )}
                                         </div>
                                     );
@@ -268,7 +275,7 @@ export const EnquiryForm = () => {
                                     className={boxStyles}
                                     onChange={(e) => setCelebration(e.target.value)}
                                 >
-                                    <option value="" disabled>
+                                    <option value=""  disabled>
                                         Please select an option
                                     </option>
                                     {[
@@ -338,6 +345,7 @@ export const EnquiryForm = () => {
                                                 <input
                                                     type="radio"
                                                     name="cakeSize"
+                                                    value={cakeSize.trim()}
                                                     id={id}
                                                     className="w-5 h-5 mr-3 accent-black cursor-pointer"
                                                     onChange={() => {
@@ -395,6 +403,7 @@ export const EnquiryForm = () => {
                                                 <input
                                                     type="radio"
                                                     name="cake-shapes"
+                                                    value={cakeShape}
                                                     id={id}
                                                     className="w-5 h-5 mr-3 accent-black cursor-pointer"
                                                 />
@@ -463,6 +472,7 @@ export const EnquiryForm = () => {
                                                 <input
                                                     type="radio"
                                                     name="flavours"
+                                                    value={flavor}
                                                     id={id}
                                                     className="w-5 h-5 mr-3 accent-black cursor-pointer"
                                                 />
@@ -547,6 +557,7 @@ export const EnquiryForm = () => {
                                                 <input
                                                     type="radio"
                                                     name="icings"
+                                                    value={icing}
                                                     id={id}
                                                     className="w-5 h-5 mr-3 accent-black cursor-pointer"
                                                 />
@@ -560,18 +571,6 @@ export const EnquiryForm = () => {
                             </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label htmlFor="budget" className="block text-sm font-medium text-gray-700">
-                                    Budget (Optional)
-                                </label>
-                                <input
-                                    type="text"
-                                    name="budget"
-                                    id="budget"
-                                    placeholder="Please specify your budget"
-                                    className={boxStyles}
-                                />
-                            </div>
                             <div>
                                 <label htmlFor="collection" className="block text-sm font-medium text-gray-700">
                                     How will you be collecting your order?
@@ -601,13 +600,13 @@ export const EnquiryForm = () => {
                                     <div>
                                         <input
                                             type="text"
-                                            name="collection-delivery"
+                                            name="collection-delivery-address"
                                             placeholder="Delivery Address"
                                             required
                                             className={boxStyles}
                                         />
                                         <textarea
-                                            name="collection-delivery"
+                                            name="collection-delivery-notes"
                                             placeholder="Delivery Notes"
                                             rows={2}
                                             required
@@ -636,21 +635,9 @@ export const EnquiryForm = () => {
                             <a onClick={() => setShowModal(true)} target="_blank" rel="noopener noreferrer" className="text-purple-deep hover:text-purple-dark underline text-sm cursor-pointer">
                                 Terms and Conditions
                             </a>
-                            
+
                         </div>
-                        <motion.div
-                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.5 }}
-                        className="bg-lilac-100 p-6 md:p-12 w-fit mx-auto rounded-lg mb-6">
-                        <h2 className="text-2xl font-serif text-gray-800 mb-4">Before submitting your enquiry, please confirm that you understand the following:</h2>
-                        <ul className="list-disc pl-5 space-y-1 font-semibold text-shadow-dark-text text-sm md:text-base">
-                            <li>Minimum Notice:<span className="font-light pl-2">5 days prior to delivery</span></li>
-                            <li>Rush orders:<span className="font-light pl-2">Within 48 hours from £20, subject to availability.</span></li>
-                            <li>Collection:<span className="font-light pl-2">Kettering, United Kingdom.</span></li>
-                        </ul>
-                        <p className="font-light italic text-shadow-dark-text mt-4 text-sm md:text-base">
-                            All products are freshly made to order; pricing may vary depending on customisation and design complexity.
-                        </p>
-                    </motion.div>
+                        
                         <div className="flex items-center justify-center mt-4">
                             <button type="submit" disabled={!termsAccepted || isSubmitting} className="bg-purple-deep disabled:bg-gray-300 hover:bg-purple-dark text-white font-semibold p-2 rounded-md transition duration-300 cursor-pointer w-full">
                                 {isSubmitting ? "Submitting..." : "Submit Enquiry"}

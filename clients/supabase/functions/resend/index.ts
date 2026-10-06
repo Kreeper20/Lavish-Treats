@@ -4,8 +4,9 @@ const ORDER_WEBHOOK_SECRET = Deno.env.get('ORDER_WEBHOOK_SECRET');
 if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY is required');
 if (!ORDER_WEBHOOK_SECRET) throw new Error('ORDER_WEBHOOK_SECRET is required');
 
-const FROM_EMAIL = 'orders@jennyose.com';
-const BUSINESS_EMAIL = 'oodianose@gmail.com';
+const FROM_EMAIL = 'orders@lavishtreats.co.uk';
+const BUSINESS_EMAIL = 'lavishtreats.24@gmail.com';
+
 
 function escapeHtml(value: unknown): string {
   return String(value ?? '')
