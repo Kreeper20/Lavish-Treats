@@ -104,9 +104,11 @@ export const TAndCModal = ({ showModal, onClose}: { showModal: boolean; onClose:
                     </p>
                   </section>
                 </div>
-              </div>
-            </div>
+                    <div className="flex justify-center p-4"><img src="/LavishTreatsLogo.webp" alt="Lavish Treats Logo" className="h-12 w-auto" /></div>
 
+              </div>
+              
+            </div>
           </div>
         </div>
       )}

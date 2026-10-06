@@ -1,7 +1,7 @@
 import { UseShoppingCart } from "../context/ShoppingCartContext";
 import { ShopData } from "../data/ShopData";
 import { formatCurrency } from "../utils/formatCurrency";
-import {IconTrash} from "@tabler/icons-react";
+import { IconTrash } from "@tabler/icons-react";
 
 type CartItemsProps = {
     id: number;

@@ -25,6 +25,7 @@ type cartItems = {
     id: number;
     quantity: number;
     note?: string;
+    variants?: { size: string; price: number }[];
 };
 
 
@@ -127,6 +128,7 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
         );
 
     };
+  
 
 
 

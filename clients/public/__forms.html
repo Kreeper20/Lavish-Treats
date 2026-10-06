@@ -1,19 +1,44 @@
 <html>
 
 <body>
-  <form name="Custom-Order-Enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data"
-    hidden>
-    <input type="hidden" name="Custom-Order-Enquiry" value="Custom-Order-Enquiry" />
-    <input name="bot-field" />
-    <input name="date" type="date"/>
-    <input name="name" />
+  <form name="Custom-Order-Enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+    enctype="multipart/form-data" hidden>
+    <input type="hidden" name="form-name" value="Custom-Order-Enquiry" />
+    <input type="hidden" name="bot-field" />
+    <input name="date" type="date" />
+    <input name="name" type="text" />
     <input name="email" type="email" />
     <input name="phone" type="tel" />
     <textarea name="message"></textarea>
-    <input name="flavours" type="radio" />
-    <input name="icings" type="radio" />
-    <input name="toppings" type="checkbox" />
+    <input name="flavours" type="radio" value="Red Velvet" />
+    <input name="icings" type="radio" value="Buttercream" />
+    <input name="toppings" type="checkbox" value="Cake Spheres" />
     <input name="images" type="file" />
+    <input name="images-2" type="file" />
+    <input name="addons" type="radio" value="Cupcakes" />
+    <select name="celebration">
+      <option value="Birthday">Birthday</option>
+    </select>
+    <input name="celebration-other" type="text" />
+    <input name="servings" type="number" />
+    <input name="cakeSize" type="radio" value="4 inch" />
+    <textarea name="wording"></textarea>
+    <input name="Top-Tier" type="text" />
+    <input name="Middle-Tier" type="text" />
+    <input name="Bottom-Tier" type="text" />
+    <input name="cake-shapes" type="radio" value="Round" />
+    <select name="style">
+      <option value="Elegant &amp; Minimal">Elegant &amp; Minimal</option>
+    </select>
+    <input type="text" name="cakeStyle-other" />
+    <input name="preferred-colour-scheme" type="text" />
+    <input type="text" name="Name-Inscription" />
+    <input type="text" name="Age-Inscription" />
+    <select name="collection">
+      <option value="Collection From Kettering">Collection From Kettering</option>
+    </select>
+    <input type="text" name="collection-delivery-address" />
+    <textarea name="collection-delivery-notes"></textarea>
   </form>
 
   <form name="Contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data"
