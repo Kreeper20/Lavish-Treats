@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { supabase } from "../../../../server/supabase"
+import { supabase } from "../../../src/supabase";
 
 const parseOrderItems = (items: unknown): any[] => {
     if (Array.isArray(items)) return items
