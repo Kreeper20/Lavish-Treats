@@ -8,20 +8,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import Stripe from "stripe";
 import { ShopData } from "../../components/data/ShopData";
 
-const stripeKey = process.env.STRIPE_SECRET_KEY;
-
-if (!stripeKey) {
-    throw new Error("Stripe API Key is missing. Check your environment variables.");
-}
-const stripe = new Stripe(stripeKey);
-
-
-
 export const Route = createFileRoute('/api/checkout')({
     server: {
         handlers: {
             POST: async ({ request }) => {
                 try {
+                    const stripeKey = process.env.STRIPE_SECRET_KEY;
+
+                    if (!stripeKey) {
+                        console.error("Stripe API Key is missing. Check the Netlify environment variables.");
+                        return new Response(
+                            JSON.stringify({ error: "Payment service is not configured" }),
+                            { status: 503, headers: { "Content-Type": "application/json" } }
+                        );
+                    }
+
+                    const stripe = new Stripe(stripeKey);
                     const { cartItems, orderDetails } = await request.json();
 
                     if (!Array.isArray(cartItems) || cartItems.length === 0) {
