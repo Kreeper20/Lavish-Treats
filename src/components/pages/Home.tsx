@@ -8,7 +8,6 @@ import { GalleryBoxes } from '../ui/GalleryBoxes'
 import { motion } from 'framer-motion'
 import { TestimonialsBox } from '../sections/Testimonials'
 import { Helmet } from "react-helmet-async";
-import { useState } from 'react'
 
 
 
