@@ -68,6 +68,9 @@ export const EnquiryForm = () => {
     const [cakeInscription, setCakeInscription] = useState(false);
     const [cakeStyle, setCakeStyle] = useState("");
 
+ 
+
+
     return (
         <>
             <Helmet>
@@ -164,7 +167,7 @@ export const EnquiryForm = () => {
                                     placeholder="###-###-####"
                                     required
                                     className={boxStyles}
-                                    
+
                                 />
                             </div>
                         </div>
@@ -279,7 +282,7 @@ export const EnquiryForm = () => {
                                     className={boxStyles}
                                     onChange={(e) => setCelebration(e.target.value)}
                                 >
-                                    <option value=""  disabled>
+                                    <option value="" disabled>
                                         Please select an option
                                     </option>
                                     {[
@@ -466,7 +469,7 @@ export const EnquiryForm = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Cake Flavours <span className="text-xs font-light">(Choose One)</span>
+                                    Cake Flavours <span className="text-xs font-light">(Choose up to 2)</span>
                                 </label>
                                 <div className="flex flex-col gap-3">
                                     {["Red Velvet", "Carrot Cake", "Cookies & Cream", "Classic Vanilla", "Rich Chocolate"].map((flavor) => {
@@ -474,7 +477,10 @@ export const EnquiryForm = () => {
                                         return (
                                             <div key={id} className="flex ">
                                                 <input
-                                                    type="radio"
+                                                    type="checkbox"
+                                                    max={2}
+                                                    min={1}
+                                                    
                                                     name="flavours"
                                                     value={flavor}
                                                     id={id}
@@ -549,30 +555,7 @@ export const EnquiryForm = () => {
                                 </div>
                             </div>
 
-                            <div className="order-first md:order-last">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Icings <span className="text-xs font-light">(Choose One)</span>
-                                </label>
-                                <div className="flex flex-col gap-3">
-                                    {["Buttercream", "Ganache Frosting"].map((icing) => {
-                                        const id = `icing-${icing.replace(/\s+/g, "-").toLowerCase()}`;
-                                        return (
-                                            <div key={id} className="flex items-center">
-                                                <input
-                                                    type="radio"
-                                                    name="icings"
-                                                    value={icing}
-                                                    id={id}
-                                                    className="w-5 h-5 mr-3 accent-black cursor-pointer"
-                                                />
-                                                <label htmlFor={id} className="text-sm text-gray-700 cursor-pointer">
-                                                    {icing}
-                                                </label>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
+
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
@@ -641,7 +624,7 @@ export const EnquiryForm = () => {
                             </a>
 
                         </div>
-                        
+
                         <div className="flex items-center justify-center mt-4">
                             <button type="submit" disabled={!termsAccepted || isSubmitting} className="bg-purple-deep disabled:bg-gray-300 hover:bg-purple-dark text-white font-semibold p-2 rounded-md transition duration-300 cursor-pointer w-full">
                                 {isSubmitting ? "Submitting..." : "Submit Enquiry"}

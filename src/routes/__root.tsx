@@ -34,12 +34,7 @@ export const Route = createRootRoute({
       {
         title: 'Lavish Treats',
         description: 'Lavish Treats is a bakery that specializes in custom cakes and pastries.',
-        links: [
-          { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        ],
       },
-
-      //open graph meta tags
       {
         property: 'og:title',
         content: 'Lavish Treats',
@@ -55,6 +50,13 @@ export const Route = createRootRoute({
       {
         property: 'og:url',
         content: 'https://lavishtreats.co.uk',
+      },
+    ],
+    links: [
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: '/favicon.svg',
       },
     ],
   }),

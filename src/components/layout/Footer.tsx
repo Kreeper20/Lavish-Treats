@@ -1,76 +1,179 @@
 import { Link } from "@tanstack/react-router"
 import { Logo } from "../utils/imports"
-import { IconBrandInstagram, IconBrandWhatsapp, IconMail } from "@tabler/icons-react"
+import { IconBrandInstagram,IconBrandWhatsapp, IconMail,} from "@tabler/icons-react"
 import { TAndCModal } from "../ui/T&Cmodal"
-import { useState } from "react"
+import { useState, type FormEvent } from "react"
 
+const linkStyle =
+  "text-text-dim font-extralight hover:text-purple-light transition duration-300 ease-in-out"
+const iconStyle =
+  "text-white hover:text-purple-light transition duration-300 ease-in-out"
 
-const linkStyle = "text-text-dim font-extralight hover:text-purple-light transition duration-300 ease-in-out block"
-const iconStly = "text-white mt-4 hover:text-purple-light transition duration-300 ease-in-out cursor-pointer"
+const socials = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/lavishtreats_/",
+    Icon: IconBrandInstagram,
+    external: true,
+  },
+  {
+    label: "WhatsApp",
+    href: "https://api.whatsapp.com/message/2JTPML3URTPUE1",
+    Icon: IconBrandWhatsapp,
+    external: true,
+  },
+  {
+    label: "Email us",
+    href: "mailto:info@lavishtreats.co.uk",
+    Icon: IconMail,
+    external: false,
+  },
+]
+
+const linkGroups = [
+  {
+    title: "Quick Links",
+    links: [
+      { to: "/", label: "Home" },
+      { to: "/about", label: "About Us" },
+      { to: "/contact", label: "Contact" },
+    ],
+  },
+  {
+    title: "Our Menu",
+    links: [
+      { to: "/cakes", label: "Celebration Cakes" },
+      { to: "/shop", label: "Shop" },
+    ],
+  },
+  {
+    title: "Explore",
+    links: [{ to: "/gallery", label: "Gallery" }],
+  },
+]
 
 export const Footer = () => {
-      const [showModal, setShowModal] = useState(false);
-  
+  const [showModal, setShowModal] = useState(false)
+  const [email, setEmail] = useState("")
+  const [subscribed, setSubscribed] = useState(false)
+
+  const handleSubscribe = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    //newslettrer
+    setSubscribed(true)
+    setEmail("")
+  }
+
   return (
-    <footer className="border-t items-center bg-purple-deep w-full ">
-      <div className="mx-auto max-w-6xl py-12 px-8">
-        <div className="items-center grid grid-cols-1 md:grid-cols-2">
+    <footer className="bg-purple-deep w-full mt-16 border-t border-purple-light/30">
+      <div className="mx-auto max-w-7xl px-8 py-12">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 items-center">
           <div>
-            <img src={Logo} alt="Lavish Treats Logo" className="max-w-22 block bg-white rounded-2xl p-2" />
-            <h1 className="text-white font-serif text-2xl font-semibold mt-4">Lavish Treats</h1>
-            <p className="text-text-dim font-extralight mt-2 max-w-xs">Lavish Treats is a bakery that specializes in custom cakes and pastries.</p>
-            <div className="flex gap-3">
-              <a href="https://www.instagram.com/lavishtreats_/" target="_blank" rel="noopener noreferrer">
-                <IconBrandInstagram className={iconStly} size={25} stroke={1.5} />
-              </a>
-              <a href="https://api.whatsapp.com/message/2JTPML3URTPUE1" target="_blank" rel="noopener noreferrer">
-                <IconBrandWhatsapp className={iconStly} size={25} stroke={1.5} />
-              </a>
-              <a href="mailto:lavishtreats.24@gmail.com" target="_blank" rel="noopener noreferrer">
-                <IconMail className={iconStly} size={25} stroke={1.5} />
-              </a>
+            <img
+              src={Logo}
+              alt="Lavish Treats logo"
+              className="max-w-22 bg-white rounded-2xl p-2"
+            />
+            <h2 className="text-white font-serif text-2xl font-semibold mt-4">
+              Lavish Treats
+            </h2>
+            <p className="text-text-dim font-extralight mt-2 max-w-xs">
+              Lavish Treats is a bakery that specializes in custom cakes and
+              pastries.
+            </p>
+            <div className="flex gap-3 mt-4">
+              {socials.map(({ label, href, Icon, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  {...(external && {
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  })}
+                >
+                  <Icon className={iconStyle} size={25} stroke={1.5} />
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className=" flex gap-8 flex-col md:flex-row justify-between mt-8 md:mt-0">
-            <div>
-              <h3 className="text-lg font-semibold text-white">Quick Links</h3>
-              <div className="text-text-dim font-extralight flex flex-col gap-2 mt-2">
-                <Link aria-label="Go to Home" to={"/"} className={linkStyle}>Home</Link>
-                <Link aria-label="Go to About" to={"/about"} className={linkStyle}>About Us</Link>
-                <Link aria-label="Go to Contact" to={"/contact"} className={linkStyle}>Contact</Link>
+          <nav
+            aria-label="Footer"
+            className="flex flex-col gap-8 md:flex-row md:justify-between"
+          >
+            {linkGroups.map((group) => (
+              <div key={group.title}>
+                <h3 className="text-lg font-semibold text-white">
+                  {group.title}
+                </h3>
+                <ul className="mt-2 flex flex-col gap-2">
+                  {group.links.map((link) => (
+                    <li key={link.label}>
+                      <Link to={link.to} className={linkStyle}>
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white">Our Menu</h3>
-              <div className="text-text-dim font-extralight flex flex-col gap-2 mt-2">
-                <Link aria-label="Go to Celebration Cakes" to={"/cakes"} className={linkStyle}>Celebration Cakes</Link>
-                <Link aria-label="Go to Shop" to={"/shop"} className={linkStyle}>Shop</Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white">Explore</h3>
-              <div className="text-text-dim font-extralight flex flex-col gap-2 mt-2">
-                <Link aria-label="Go to Gallery" to={"/gallery"} className={linkStyle}>Gallery</Link>
-                <Link aria-label="Go to Contact" to={"/contact"} className={linkStyle}>Contact</Link>
-              </div>
-            </div>
+            ))}
+          </nav>
 
+          <div className="lg:ml-auto">
+            <h3 className="text-lg font-semibold text-white">
+              Subscribe to our newsletter
+            </h3>
+            <p className="text-text-dim font-extralight mt-2 max-w-xs">
+              Get the latest updates on new products and special offers.
+            </p>
+
+            {subscribed ? (
+              <p role="status" className="mt-3 text-purple-light">
+                Thanks for subscribing!!
+              </p>
+            ) : (
+              <form onSubmit={handleSubscribe} className="mt-3 flex max-w-sm">
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="newsletter-email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="min-w-0 flex-1 px-4 py-2 rounded-l-md bg-white text-gray-900 border border-purple-light focus:outline-none focus:ring-2 focus:ring-purple-light focus:border-transparent"
+                />
+                <button
+                  type="submit"
+                  className="bg-purple-primary text-white px-4 py-2 rounded-r-md hover:bg-purple-light transition duration-300 ease-in-out"
+                >
+                  Subscribe
+                </button>
+              </form>
+            )}
           </div>
-
         </div>
       </div>
 
-      <div className="text-center py-2 border-t border-purple-light pt-6 items-center flex flex-col md:flex-row justify-around">
+      <div className="border-t border-purple-light/30 ">
+      <div className="px-8 py-6 flex flex-col items-center gap-2 text-center md:flex-row md:justify-between mx-auto max-w-7xl">
         <p className="text-text-dim font-extralight">
           &copy; {new Date().getFullYear()} Lavish Treats. All rights reserved.
-        </p>    
-        <p className="text-text-dim font-extralight hover:text-purple-light" onClick={() => setShowModal(true)} style={{ cursor: "pointer" }}>
-           Terms of Service | Privacy Policy
         </p>
+        <button
+          type="button"
+          onClick={() => setShowModal(true)}
+          className="text-text-dim font-extralight hover:text-purple-light transition duration-300 ease-in-out cursor-pointer"
+        >
+          Terms of Service | Privacy Policy
+        </button>
       </div>
-               <TAndCModal showModal={showModal} onClose={() => setShowModal(false)} />
 
+      <TAndCModal showModal={showModal} onClose={() => setShowModal(false)} />
+        </div>
     </footer>
   )
 }

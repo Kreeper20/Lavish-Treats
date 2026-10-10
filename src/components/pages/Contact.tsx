@@ -43,7 +43,7 @@ export const Contact = () => {
                 Contact Information
               </h3>
               <p className="text-text-body font-extralight text-sm md:text-base lg:text-lg mt-1">
-                Email: <a href="mailto:lavishtreats.24@gmail.com" className="text-purple-primary hover:underline">lavishtreats.24@gmail.com</a>
+                Email: <a href="mailto:info@lavishtreats.co.uk" className="text-purple-primary hover:underline">info@lavishtreats.co.uk</a>
                 <br />
                 Whatsapp: <a href="https://api.whatsapp.com/message/2JTPML3URTPUE1" className="text-purple-primary hover:underline">Chat on WhatsApp</a>
                 <br />

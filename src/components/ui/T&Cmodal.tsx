@@ -31,12 +31,19 @@ export const TAndCModal = ({ showModal, onClose}: { showModal: boolean; onClose:
                   </p>
 
                   <section>
-                    <h3 className="font-semibold text-gray-900 mb-1">2. Orders</h3>
+                    <h3 className="font-semibold text-gray-900 mb-1">1. Orders</h3>
                     <ul className="list-disc list-inside space-y-1">
                       <li>All orders must be placed with a minimum of 7 days' notice.</li>
                       <li>Orders can be made via phone, email, online ordering system, or WhatsApp and our social media accounts.</li>
                       <li>We accept custom orders based on availability. Custom designs or cakes require clear communication of preferences, and additional charges may apply for custom designs.</li>
                       <li>Any changes to an order must be requested 3 days before the scheduled collection date.</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h3 className="font-semibold text-gray-900 mb-1">2 Cake design & inspiration</h3>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>Any photographs or reference images provided by the customer are for inspiration and guidance purposes only. Every effort will be made to incorporate the key features and overall style of the reference image; however, an exact replica cannot be guaranteed. Variations may occur in colours, shades, colour schemes, decorations, proportions, and design details. Each cake is individually handcrafted, and the final result will reflect the creative interpretation and professional expertise of Lavish Treats.</li>
                     </ul>
                   </section>
 
@@ -98,7 +105,7 @@ export const TAndCModal = ({ showModal, onClose}: { showModal: boolean; onClose:
                       <br />
                       Lavish Treats
                       <br />
-                      lavishtreats.24@gmail.com
+                      info@lavishtreats.co.uk
                       <br />
                       07849496465
                     </p>
