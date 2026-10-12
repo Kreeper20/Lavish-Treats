@@ -39,7 +39,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-helmet-async": "^3.0.0",
-    "resend": "^6.28.1",
+    "resend": "^6.32.1",
     "stripe": "^22.6.2",
     "tailwindcss": "^4.3.3",
     "tanstack": "^2.0.3"
@@ -50,7 +50,6 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
     "oxlint": "^1.71.0",
-    "pridepack": "^2.6.4",
     "supabase": "^2.115.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.9.3",

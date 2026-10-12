@@ -13,7 +13,6 @@ export const Shop = () => {
     "Cupcakes & Cake Treats",
     "Pastries & Small Chops",
     "Treat Boxes & Gifts",
-    "Drinks",
   ];
 
   return (

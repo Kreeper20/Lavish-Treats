@@ -108,23 +108,21 @@ Deno.serve(async (request: Request) => {
   const orderId = textValue(order.id);
   const createdAt = textValue(order.created_at);
 
-  const customerEmailPayload = {
-    from: FROM_EMAIL,
-    to: [customerEmail],
-    subject: 'Your order has been confirmed',
-    html: `
-      <h2>Thank you for your order, ${customerName}!</h2>
-      <p>Your order has been received and confirmed.</p>
-      <h3>Order details</h3>
-      <ul>
-        <li><strong>Items:</strong><ul>${itemsHtml}</ul></li>
-        <li><strong>Total:￡</strong> ${totalAmount}</li>
-        <li><strong>Collection date:</strong> ${collectionDate}</li>
-        <li><strong>Collection time:</strong> ${collectionTime}</li>
-      </ul>
-      <p>We look forward to preparing your order.</p>
-    `,
-  };
+ const customerEmailPayload = {
+  from: FROM_EMAIL,
+  to: [customerEmail],
+  subject: "Your order has been confirmed",
+  template: {
+    id: "your-order-has-been-confirmed-template",
+    variables: {
+      CUSTOMER_NAME: customerName,
+      ITEMS: itemsHtml,
+      TOTAL: totalAmount, 
+      COLLECTION_DATE: collectionDate,
+      COLLECTION_TIME: collectionTime,
+    },
+  },
+};
 
   const businessEmailPayload = {
     from: FROM_EMAIL,

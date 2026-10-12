@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router"
 import { Logo } from "../utils/imports"
-import { IconBrandInstagram,IconBrandWhatsapp, IconMail,} from "@tabler/icons-react"
+import { IconBrandInstagram, IconBrandWhatsapp, IconMail, } from "@tabler/icons-react"
 import { TAndCModal } from "../ui/T&Cmodal"
-import { useState, type FormEvent } from "react"
+import { useState } from "react"
 
 const linkStyle =
   "text-text-dim font-extralight hover:text-purple-light transition duration-300 ease-in-out"
@@ -48,7 +48,8 @@ const linkGroups = [
   },
   {
     title: "Explore",
-    links: [{ to: "/gallery", label: "Gallery" }],
+    links: [{ to: "/gallery", label: "Gallery" }, 
+      { to: "/custom-order", label: "Custom Order" }],
   },
 ]
 
@@ -57,15 +58,33 @@ export const Footer = () => {
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
 
-  const handleSubscribe = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    //newslettrer
-    setSubscribed(true)
-    setEmail("")
+  async function handleSubscribe(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+
+    setEmail(form.get("email") as string);
+    const res = await fetch("/api/newsletter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    })
+
+    const error = await res.text();
+    if (!res.ok) {
+      console.error(error);
+      return;
+    }
+
+    setSubscribed(true);
+    setEmail('');
   }
 
   return (
-    <footer className="bg-purple-deep w-full mt-16 border-t border-purple-light/30">
+    <footer className="bg-purple-deep w-full  border-t border-purple-light/30">
       <div className="mx-auto max-w-7xl px-8 py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 items-center">
           <div>
@@ -153,27 +172,28 @@ export const Footer = () => {
                   Subscribe
                 </button>
               </form>
+
             )}
           </div>
         </div>
       </div>
 
       <div className="border-t border-purple-light/30 ">
-      <div className="px-8 py-6 flex flex-col items-center gap-2 text-center md:flex-row md:justify-between mx-auto max-w-7xl">
-        <p className="text-text-dim font-extralight">
-          &copy; {new Date().getFullYear()} Lavish Treats. All rights reserved.
-        </p>
-        <button
-          type="button"
-          onClick={() => setShowModal(true)}
-          className="text-text-dim font-extralight hover:text-purple-light transition duration-300 ease-in-out cursor-pointer"
-        >
-          Terms of Service | Privacy Policy
-        </button>
-      </div>
-
-      <TAndCModal showModal={showModal} onClose={() => setShowModal(false)} />
+        <div className="px-8 py-6 flex flex-col items-center gap-2 text-center md:flex-row md:justify-between mx-auto max-w-7xl">
+          <p className="text-text-dim font-extralight">
+            &copy; {new Date().getFullYear()} Lavish Treats. All rights reserved.
+          </p>
+          <button
+            type="button"
+            onClick={() => setShowModal(true)}
+            className="text-text-dim font-extralight hover:text-purple-light transition duration-300 ease-in-out cursor-pointer"
+          >
+            Terms of Service | Privacy Policy
+          </button>
         </div>
+
+        <TAndCModal showModal={showModal} onClose={() => setShowModal(false)} />
+      </div>
     </footer>
   )
 }

@@ -27,6 +27,7 @@ import { Route as SuccessRouteImport } from './routes/success'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as ApiCheckoutRouteImport } from './routes/api/checkout'
+import { Route as ApiNewsletterRouteImport } from './routes/api/newsletter'
 import { Route as ApiStripeWebhookRouteImport } from './routes/api/stripe-webhook'
 import { Route as ProductDetailsIdRouteImport } from './routes/productDetails/$id'
 
@@ -120,6 +121,11 @@ const ApiCheckoutRoute = ApiCheckoutRouteImport.update({
   path: '/api/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiNewsletterRoute = ApiNewsletterRouteImport.update({
+  id: '/api/newsletter',
+  path: '/api/newsletter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiStripeWebhookRoute = ApiStripeWebhookRouteImport.update({
   id: '/api/stripe-webhook',
   path: '/api/stripe-webhook',
@@ -149,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/success': typeof SuccessRoute
   '/admin/login': typeof AdminLoginRoute
   '/api/checkout': typeof ApiCheckoutRoute
+  '/api/newsletter': typeof ApiNewsletterRoute
   '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/productDetails/$id': typeof ProductDetailsIdRoute
   '/admin/': typeof AdminIndexRoute
@@ -171,6 +178,7 @@ export interface FileRoutesByTo {
   '/success': typeof SuccessRoute
   '/admin/login': typeof AdminLoginRoute
   '/api/checkout': typeof ApiCheckoutRoute
+  '/api/newsletter': typeof ApiNewsletterRoute
   '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/productDetails/$id': typeof ProductDetailsIdRoute
   '/admin': typeof AdminIndexRoute
@@ -194,6 +202,7 @@ export interface FileRoutesById {
   '/success': typeof SuccessRoute
   '/admin/login': typeof AdminLoginRoute
   '/api/checkout': typeof ApiCheckoutRoute
+  '/api/newsletter': typeof ApiNewsletterRoute
   '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/productDetails/$id': typeof ProductDetailsIdRoute
   '/admin/': typeof AdminIndexRoute
@@ -218,6 +227,7 @@ export interface FileRouteTypes {
     | '/success'
     | '/admin/login'
     | '/api/checkout'
+    | '/api/newsletter'
     | '/api/stripe-webhook'
     | '/productDetails/$id'
     | '/admin/'
@@ -240,6 +250,7 @@ export interface FileRouteTypes {
     | '/success'
     | '/admin/login'
     | '/api/checkout'
+    | '/api/newsletter'
     | '/api/stripe-webhook'
     | '/productDetails/$id'
     | '/admin'
@@ -262,6 +273,7 @@ export interface FileRouteTypes {
     | '/success'
     | '/admin/login'
     | '/api/checkout'
+    | '/api/newsletter'
     | '/api/stripe-webhook'
     | '/productDetails/$id'
     | '/admin/'
@@ -285,6 +297,7 @@ export interface RootRouteChildren {
   SuccessRoute: typeof SuccessRoute
   AdminLoginRoute: typeof AdminLoginRoute
   ApiCheckoutRoute: typeof ApiCheckoutRoute
+  ApiNewsletterRoute: typeof ApiNewsletterRoute
   ApiStripeWebhookRoute: typeof ApiStripeWebhookRoute
   ProductDetailsIdRoute: typeof ProductDetailsIdRoute
   AdminIndexRoute: typeof AdminIndexRoute
@@ -418,6 +431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiCheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/newsletter': {
+      id: '/api/newsletter'
+      path: '/api/newsletter'
+      fullPath: '/api/newsletter'
+      preLoaderRoute: typeof ApiNewsletterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/stripe-webhook': {
       id: '/api/stripe-webhook'
       path: '/api/stripe-webhook'
@@ -453,6 +473,7 @@ const rootRouteChildren: RootRouteChildren = {
   SuccessRoute: SuccessRoute,
   AdminLoginRoute: AdminLoginRoute,
   ApiCheckoutRoute: ApiCheckoutRoute,
+  ApiNewsletterRoute: ApiNewsletterRoute,
   ApiStripeWebhookRoute: ApiStripeWebhookRoute,
   ProductDetailsIdRoute: ProductDetailsIdRoute,
   AdminIndexRoute: AdminIndexRoute,

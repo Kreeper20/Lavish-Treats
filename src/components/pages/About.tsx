@@ -9,6 +9,26 @@ export const About = () => {
     visible: { opacity: 1, y: 0 },
   };
 
+  const values = [
+    {
+      title: "Quality Without Compromise",
+      description: "Exceptional baking begins with exceptional ingredients. Every product is carefully prepared to taste just as wonderful as it looks.",
+    },
+    {
+      title: "Creativity",
+      description: "Every celebration is unique, and every cake should be too. We love transforming ideas into beautiful edible creations that reflect your style.",
+    },
+    {
+      title: "Customer Care",
+      description: "Every customer deserves a warm, friendly experience. We take time to understand your ideas and ensure your order is everything you hoped for.",
+    },
+    {
+      title:"5-Star food hygiene rating",
+      description: "We take food safety seriously. Our bakery has been awarded a 5-star food hygiene rating, reflecting our commitment to maintaining the highest standards of cleanliness and safety.",
+      link: "https://ratings.food.gov.uk/business/1993047/lavish-treats",
+    }
+  ];
+
   return (
     <>
       <Helmet>
@@ -89,31 +109,32 @@ export const About = () => {
             Every cake, pastry, and dessert we create is guided by our values of quality, care, and creativity. We believe that every order is an opportunity to bring joy to our customers and their loved ones.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-7xl mx-auto">
-          <div className="rounded-2xl  border-[0.1px] border-gold overflow-hidden p-6 left"
-            style={{ background: 'rgba(255, 255, 255, 0.08)' }}
-          >
-            <h1 className="text-xl md:text-2xl font-normal  text-gold-light font-serif">Quality Without Compromise</h1>
-            <p className="text-text-muted font-extralight text-sm lg:text-base mt-2">
-              Exceptional baking begins with exceptional ingredients. Every product is carefully prepared to taste just as wonderful as it looks.
-            </p>
-          </div>
-          <div className="rounded-2xl  border-[0.1px] border-gold overflow-hidden p-6 left"
-            style={{ background: 'rgba(255, 255, 255, 0.08)' }}
-          >
-            <h1 className="text-xl md:text-2xl font-normal  text-gold-light font-serif">Creativity</h1>
-            <p className="text-text-muted font-extralight text-sm lg:text-base mt-2">
-              Every celebration is unique, and every cake should be too. We love transforming ideas into beautiful edible creations that reflect your style.
-            </p>
-          </div>
-          <div className="rounded-2xl  border-[0.1px] border-gold overflow-hidden p-6 left"
-            style={{ background: 'rgba(255, 255, 255, 0.08)' }}
-          >
-            <h1 className="text-xl font-semibold  text-gold font-serif">Customer Care</h1>
-            <p className="text-text-muted font-extralight text-sm lg:text-base mt-2">
-              Every customer deserves a warm, friendly experience. We take time to understand your ideas and ensure your order is everything you hoped for.
-            </p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-12 max-w-5xl mx-auto">
+          {values.map((value, index) => (
+            <div
+              key={index}
+              className="rounded-2xl  border-[0.1px] border-gold overflow-hidden p-6 left"
+              style={{ background: 'rgba(255, 255, 255, 0.08)' }}
+            >
+              <h1 className="text-xl md:text-2xl font-normal  text-gold-light font-serif">{value.title}</h1>
+              <p className="text-text-muted font-extralight text-sm lg:text-base mt-2">
+                {value.description}
+              </p>
+              {value.link && (
+                <a
+                  href={value.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-light hover:text-purple-lighter transition-colors duration-300 font-semibold text-sm lg:text-base mt-2 inline-block"
+                >
+                  View Food Hygiene Rating
+                </a>
+              )}
+          
+            </div>
+          ))}
+          
+          
         </div>
       </section>
 

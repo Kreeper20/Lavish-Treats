@@ -1,6 +1,6 @@
 export const PROMOTION_DISCOUNT = 0.05;
 export const PROMOTION_DISCOUNT_LARGE = 0.10;
-export const PROMOTION_END_DATE = new Date("2026-10-31T23:59:59");
+export const PROMOTION_END_DATE = new Date("2026-10-17T23:59:59");
 
 export const getSalePrice = (price: number) =>
     Math.round(price * (1 - PROMOTION_DISCOUNT) * 100) / 100;

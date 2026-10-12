@@ -9,7 +9,6 @@ import {
     GalleryCelebrationCake,
     GalleryCustomMadeCake,
     GalleryMeatpie,
-    GalleryMiniTreatBox,
     GalleryTreatBoxes,
     GalleryBentaCuppCake,
     GalleryMiniCakeLoaf,
@@ -19,6 +18,7 @@ import {
     GalleryCake,
     GalleryChristmasCupcakes,
     GalleryLevel8Cake,
+    GalleryenckCake,
 } from '../utils/imports'
 
 export const pastryData = [
@@ -78,9 +78,9 @@ export const pastryData = [
         image: GalleryCustomMadeCake,
     },
     {
-        name: "Mini Treat Box",
-        description: "A selection of freshly made sweet treats",
-        image: GalleryMiniTreatBox, 
+        name: "Custom Made Cake",
+        description: "A bespoke cake created for your celebration",
+        image: GalleryenckCake, 
     },
     {
         name: "Treat Boxes",
