@@ -119,7 +119,7 @@ export const TAndCModal = ({
                   Online shop orders are paid securely by card through Stripe.
                 </li>
                 <li>
-                  Custom orders require a 70% deposit to confirm the booking.
+                  Custom orders above £100 require a 70% deposit to confirm the booking.
                   The balance is due 2 days before the scheduled collection or
                   delivery date.
                 </li>
@@ -141,9 +141,9 @@ export const TAndCModal = ({
               </h3>
               <ul className="list-disc space-y-1 pl-5">
                 <li>
-                  Custom orders cancelled at least 4 days before the scheduled
+                  Custom orders cancelled at least 5 days before the scheduled
                   date are eligible for a full refund of the deposit. For
-                  cancellations within 2 days of the scheduled date, the
+                  cancellations within 3 days of the scheduled date, the
                   deposit will be forfeited.
                 </li>
                 <li>
