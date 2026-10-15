@@ -120,7 +120,7 @@ export const TAndCModal = ({
                 </li>
                 <li>
                   Custom orders above £100 require a 70% deposit to confirm the booking.
-                  The balance is due 2 days before the scheduled collection or
+                  The balance is due 4 days before the scheduled collection or
                   delivery date.
                 </li>
                 <li>
