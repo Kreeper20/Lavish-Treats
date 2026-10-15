@@ -134,10 +134,11 @@ export const Home = () => {
                 <div className="grid grid-cols-1 justify-self-center md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 px-6 lg:px-4 max-w-7xl mx-auto">
                     {pastryData.filter((_, i) => [0, 1, 2, 3].includes(i)).map((pastry) => (
                         <PastriesBoxes
-                            key={pastry.name}
+                            key={pastry.id}
                             name={pastry.name}
                             description={pastry.description}
                             imageUrl={pastry.image}
+                            link={pastry.link}
                         />
                     ))}
                 </div>

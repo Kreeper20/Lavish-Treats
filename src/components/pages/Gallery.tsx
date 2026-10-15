@@ -37,7 +37,7 @@ export const Gallery = () => {
                         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
                             {pastryData.map((image) => (
                                 <motion.div initial={{ opacity: 0, scale: 0.95, }} whileInView={{ opacity: 1, scale: 1, }} viewport={{ once: true }} transition={{ duration: 0.5 }}
-                                    key={image.name}
+                                    key={image.id}
                                     className="aspect-3/4 overflow-hidden  bg-gray-100">
                                     <motion.img
                                         src={image.image}

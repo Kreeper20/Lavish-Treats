@@ -70,25 +70,25 @@ export const TestimonialsBox = () => {
 
                 {fetchError && <p className="text-red-500">{fetchError}</p>}
                 <p className="text-center text-gray-500 text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
-                            {succesMessage && "Thank you for your testimonial! It has been submitted successfully."}
+                    {succesMessage && "Thank you for your testimonial! It has been submitted successfully."}
                 </p>
                 {testimonialt && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-8">
-                        
+
                         {testimonialt.filter((_, i) => showAllTestimonials || i < 3).map((testimonial) => (
                             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
                         ))}
                     </div>
                 )}
                 <div className="flex flex-row gap-x-6 items-center justify-center">
-                     <button onClick={toggleTestimonials} className="mt-6 bg-purple-primary text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out">
-                    {showAllTestimonials ? 'Show Less' : 'Show All'}
-                </button>
-                <button onClick={() => setAddTestimonial(true)} className="mt-6 bg-white border border-purple-dark  text-purple-primary px-6 py-3 rounded-full hover:bg-white/40 transition delay-100 duration-300 ease-in-out">
-                    Add Yours
-                </button>
-                    </div>
-               
+                    <button onClick={toggleTestimonials} className="mt-6 uppercase cursor-pointer bg-purple-primary text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out">
+                        {showAllTestimonials ? 'Show Less' : 'Show All'}
+                    </button>
+                    <button onClick={() => setAddTestimonial(true)} className="mt-6 cursor-pointer uppercase bg-white border border-purple-dark  text-purple-primary px-6 py-3 rounded-full hover:bg-white/40 transition delay-100 duration-300 ease-in-out">
+                        Add Yours
+                    </button>
+                </div>
+
                 {addTestimonial && (
                     <div className="bg-white p-8 rounded-lg w-full max-w-md">
                         <h2 className="text-xl font-bold mb-4">Add Testimonial</h2>
@@ -120,7 +120,7 @@ export const TestimonialsBox = () => {
                                 />
                             </div>
                             {error && <p className="text-red-500 mb-4">{error}</p>}
-                            <button type="submit" onClick={handleSubmit} className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
+                            <button type="submit" onClick={handleSubmit} className="bg-black  text-white px-4 py-2 rounded hover:bg-gray-800">
                                 Submit
                             </button>
                             <button type="button" onClick={() => setAddTestimonial(false)} className="ml-4 bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400">

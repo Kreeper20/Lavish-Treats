@@ -1,4 +1,5 @@
 import { Link, type LinkProps } from '@tanstack/react-router'
+import { motion } from 'framer-motion'
 
 
 export function NavLink({ children, ...props }: LinkProps) {
@@ -6,6 +7,7 @@ export function NavLink({ children, ...props }: LinkProps) {
     const activeNavLinkClassName = "bg-transparent shadow-2xs font-normal shadow-gold  transition-shadow duration-300 rounded-lg px-4 py-2 lg:px-2 lg:py-1 text-purple-primary"
     
   return (
+    <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
     <Link
       {...props}
       className={navLinkClassName }
@@ -18,5 +20,6 @@ export function NavLink({ children, ...props }: LinkProps) {
     >
       {children}
     </Link>
+    </motion.div>
   )
 }

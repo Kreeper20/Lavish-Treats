@@ -116,7 +116,6 @@ export const ProductDetails = () => {
                         </Link>
                     ))}
                 </div>
-
             </section >
         </>
 

@@ -67,8 +67,8 @@ export const ShopData  = [
     },
     {
         id: 7,
-        name: "Chicken/Meat Pie",
-        description: "A delicious pie made with chicken or beef \n Minimum order of 6",
+        name: "Meat Pie",
+        description: "A delicious pie made with beef \n Minimum order of 6",
         image: Meatpie,
         price: 2.70,
         category: "Pastries & Small Chops",
@@ -98,6 +98,7 @@ export const ShopData  = [
         description: "A selection of freshly made pastries and treats \n 4 meat or chicken pie,\n 6 puff puff,\n 2 mini cake loaves",
         image: MiniTreatBox,
         price: 25,
+        allowsPersonalisation: true,
         category: "Treat Boxes & Gifts",
         quantity: 1,
     },
@@ -157,5 +158,14 @@ export const ShopData  = [
         category: "Drinks",
         quantity: 1, 
                  
+    },
+     {
+        id: 17,
+        name: "Chicken Pie",
+        description: "A delicious pie made with chicken \n Minimum order of 6",
+        image: Meatpie,
+        price: 2.70,
+        category: "Pastries & Small Chops",
+        quantity: 6,
     },
    ]
