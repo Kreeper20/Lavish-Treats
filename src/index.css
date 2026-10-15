@@ -9,7 +9,7 @@
   --color-purple-deep: #2A0E33;
   --color-purple-primary: #9126C9;
   --color-purple-dark: #5E1A86;
-  --color-purple-bright: #B24DE0;
+  --color-purple-bright: #8B2DB1;
   --color-purple-light: #C99BE0;
   --color-purple-lighter: #E0BCF2;
   --color-purple-mid: #C55BE6;
@@ -33,14 +33,14 @@
   --color-text-body: #6E5776;
   --color-text-card: #3A2144;
   --color-text-muted: #8E7A9C;
-  --color-text-dim: #8A6E96;
+  --color-text-dim: #795B85;
 
   --color-dark-bg: #2A0E33;
   --color-dark-text: #F6ECFA;
   --color-dark-muted: #C6AFD1;
   --color-dark-border: #6E3A8C;
 
-  --color-gold: #C9A24B;
+  --color-gold: #8A6420;
   --color-gold-light: #EFD08A;
   --color-gold-pale: #EBD79A;
   --color-gold-dark: #8A6420;

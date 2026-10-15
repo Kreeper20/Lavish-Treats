@@ -69,12 +69,14 @@ export const About = () => {
             className="relative mt-8 lg:mt-0"
           >
             <div
-              className="relative w-full rounded-3xl aspect-square overflow-hidden z-10 shadow-xl shadow-lilac-panel"
+              className="relative w-full rounded-3xl overflow-hidden z-10 shadow-xl shadow-lilac-panel"
             >
               <img
                 src={Ose}
                 alt="Lavish Treats"
-                className="w-full h-full  object-cover hover:scale-105 duration-500"
+                width="1152"
+                height="1456"
+                className="w-full h-auto object-cover hover:scale-105 duration-500"
               />
             </div>
           </motion.aside>
@@ -105,7 +107,7 @@ export const About = () => {
           <h2 className="font-serif text-purple-soft text-4xl lg:text-5xl mb-3 font-semibold">
             What Guides Everything We Bake
           </h2>
-          <p className=" text-text-body font-extralight text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
+          <p className=" text-dark-muted font-extralight text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
             Every cake, pastry, and dessert we create is guided by our values of quality, care, and creativity. We believe that every order is an opportunity to bring joy to our customers and their loved ones.
           </p>
         </div>
@@ -117,7 +119,7 @@ export const About = () => {
               style={{ background: 'rgba(255, 255, 255, 0.08)' }}
             >
               <h1 className="text-xl md:text-2xl font-normal  text-gold-light font-serif">{value.title}</h1>
-              <p className="text-text-muted font-extralight text-sm lg:text-base mt-2">
+              <p className="text-dark-muted font-extralight text-sm lg:text-base mt-2">
                 {value.description}
               </p>
               {value.link && (

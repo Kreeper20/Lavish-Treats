@@ -34,6 +34,8 @@ export const ShopBoxes = ({ id, name, description, imageUrl, price, link, produc
                         <img
                             src={imageUrl}
                             alt={name}
+                            width="400"
+                            height="400"
                             className="w-full h-64 object-cover group-hover:scale-105 duration-700 ease-out"
                         />
                     </div>

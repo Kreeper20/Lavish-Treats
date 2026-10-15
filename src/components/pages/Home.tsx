@@ -111,7 +111,7 @@ export const Home = () => {
                         There are birthdays you will never forget. Baby showers filled with <br className='lg:block hidden' /> laughter. Anniversaries worth celebrating. Quiet Sundays <br className='lg:block hidden' /> that deserve something sweet.
 
                     </p>
-                    <p className=" text-sm md:text-base lg:text-lg text-text-dim mx-auto max-w-2xl font-light mb-4">
+                    <p className=" text-sm md:text-base lg:text-lg text-dark-muted mx-auto max-w-2xl font-light mb-4">
                         At Lavish Treats, every order is created with one purpose, to make those moments feel even more special. Each cake is baked fresh to order.
                         Every pastry is prepared with care. Every detail matters, because we know it isn't just dessert.
                     </p>
@@ -203,7 +203,9 @@ export const Home = () => {
                             <img
                                 src={MultiLayered}
                                 alt="Lavish Treats"
-                                className="w-full h-full object-fit hover:scale-101 duration-500"
+                                width="1173"
+                                height="1282"
+                                className="w-full h-auto object-cover hover:scale-101 duration-500"
                             />
                         </div>
                     </motion.aside>

@@ -76,6 +76,7 @@ const Mobilenav = () => {
 
                         <button
                             onClick={openCart}
+                            aria-label={`Open shopping cart${cartQuantity > 0 ? `, ${cartQuantity} items` : ""}`}
                             style={{ width: "3rem", height: "3rem", position: "relative" }}
                             className="rounded-full border items-center justify-center flex hover:bg-purple-mid hover:text-white transition delay-100 duration-300 ease-in-out"
                         >

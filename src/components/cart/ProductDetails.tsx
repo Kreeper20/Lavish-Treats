@@ -35,7 +35,7 @@ export const ProductDetails = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-3">
                     <div className="p-4 bg-accent-lavender dark:bg-lilac-50 rounded-xl">
                         <div className=" h-full max-h-122.5 rounded-xl flex items-center justify-center overflow-hidden">
-                            <img src={product.image} alt={product.name} className="drop-shadow-md hover:cursor-zoom-in drop-shadow-gray-900 w-full h-full object-cover" />
+                            <img src={product.image} alt={product.name} width="600" height="600" className="drop-shadow-md hover:cursor-zoom-in drop-shadow-gray-900 w-full h-full object-cover" />
 
                         </div>
                     </div>
@@ -107,7 +107,7 @@ export const ProductDetails = () => {
                             params={{ id: String(relatedProduct.id) }}
                         >
                             <div key={relatedProduct.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                                <img src={relatedProduct.image} alt={relatedProduct.name} className="w-full h-48 object-cover" />
+                                <img src={relatedProduct.image} alt={relatedProduct.name} width="400" height="400" className="w-full h-48 object-cover" />
                                 <div className="p-4">
                                     <h3 className="text-lg font-semibold">{relatedProduct.name}</h3>
                                     <span className="text-purple-deep">£{relatedProduct.price}</span>

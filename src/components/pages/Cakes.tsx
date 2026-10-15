@@ -94,7 +94,7 @@ export const Cakes = () => {
                 />
               ))}
               <div className="relative">
-                <img src={SixCupCake} className="w-full h-80 object-cover rounded-2xl" />
+                <img src={SixCupCake} alt="Six cupcakes" width="400" height="400" className="w-full h-80 object-cover rounded-2xl" />
                 <div className="bg-white shadow-xl rounded-xl p-6 -mt-16 mx-6 relative z-10">
                   <h3 className="text-xl font-bold tracking-wide uppercase text-left">Pastries/Desserts</h3>
                   <p className="text-left mb-4">View our menu here:</p>

@@ -9,7 +9,7 @@ export const GalleryBoxes = ({ name, imageUrl }: GalleryBoxesProps) => {
         <>
             <div className="overflow-hidden rounded-2xl">
                 <div className=" overflow-hidden group  hover:scale-105 duration-500" >
-                    <img src={imageUrl} alt={name}  loading="lazy" className="object-cover w-full group-hover:scale-105 duration-500" />
+                    <img src={imageUrl} alt={name} width="400" height="400" loading="lazy" className="object-cover w-full aspect-square group-hover:scale-105 duration-500" />
                     <div className="absolute inset-0 flex items-end justify-center pb-3
                   bg-linear-to-t from-purple-dark/60 via-purple-light/20 to-transparent
                   opacity-0 pointer-events-none

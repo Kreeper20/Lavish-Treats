@@ -6,9 +6,9 @@ import { PrivacyPolicyModal } from "../ui/PrivacyPolicyModal"
 import { useState } from "react"
 
 const linkStyle =
-  "text-text-dim font-extralight hover:text-purple-light transition duration-300 ease-in-out"
+  "text-dark-muted font-extralight hover:text-purple-lighter transition duration-300 ease-in-out"
 const iconStyle =
-  "text-white hover:text-purple-light transition duration-300 ease-in-out"
+  "text-white hover:text-purple-lighter transition duration-300 ease-in-out"
 
 const socials = [
   {
@@ -64,14 +64,19 @@ export const Footer = () => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
 
-    setEmail(form.get("email") as string);
+    const submittedEmail = form.get("email");
+    if (typeof submittedEmail !== "string") {
+      console.error("Newsletter subscription requires an email address");
+      return;
+    }
+
     const res = await fetch("/api/newsletter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email,
+        email: submittedEmail,
       }),
     })
 
@@ -93,12 +98,14 @@ export const Footer = () => {
             <img
               src={Logo}
               alt="Lavish Treats logo"
+              width="96"
+              height="96"
               className="max-w-22 bg-white rounded-2xl p-2"
             />
             <h2 className="text-white font-serif text-2xl font-semibold mt-4">
               Lavish Treats
             </h2>
-            <p className="text-text-dim font-extralight mt-2 max-w-xs">
+            <p className="text-dark-muted font-extralight mt-2 max-w-xs">
               Lavish Treats is a bakery that specializes in custom cakes and
               pastries.
             </p>
@@ -145,13 +152,13 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold text-white">
               Subscribe to our newsletter
             </h3>
-            <p className="text-text-dim font-extralight mt-2 max-w-xs">
+            <p className="text-dark-muted font-extralight mt-2 max-w-xs">
               Get the latest updates on new products and special offers.
             </p>
 
             {subscribed ? (
-              <p role="status" className="mt-3 text-purple-light">
-                Thanks for subscribing!!
+              <p role="status" className="mt-3 text-purple-lighter">
+                Thanks for subscribing!
               </p>
             ) : (
               <form onSubmit={handleSubscribe} className="mt-3 flex max-w-sm">
@@ -182,10 +189,10 @@ export const Footer = () => {
 
       <div className="border-t border-purple-light/30 ">
         <div className="px-8 py-6 flex flex-col items-center gap-2 text-center md:flex-row md:justify-between mx-auto max-w-7xl">
-          <p className="text-text-dim font-extralight">
+          <p className="text-dark-muted font-extralight">
             &copy; {new Date().getFullYear()} Lavish Treats. All rights reserved.
           </p>
-          <div className="flex gap-2 text-text-dim font-extralight">
+          <div className="flex gap-2 text-dark-muted font-extralight">
             <button
               type="button"
               onClick={() => setShowTermsModal(true)}

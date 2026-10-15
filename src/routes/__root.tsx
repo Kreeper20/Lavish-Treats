@@ -15,6 +15,7 @@ import { ShoppingCartProvider } from '../components/context/ShoppingCartContext'
 import { AlertProvider } from '../components/cart/Toast'
 import { PromoBar } from '../components/promotions/PromoBar'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,9 @@ export const Route = createRootRoute({
   head: () => ({
     meta: [
       {
+        title: 'Lavish Treats',
+      },
+      {
         charSet: 'utf-8',
       },
       {
@@ -30,8 +34,12 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Lavish Treats',
-        description: 'Lavish Treats is a bakery that specializes in custom cakes and pastries.',
+        name: 'description',
+        content: 'Lavish Treats is a bakery that specializes in custom cakes and pastries.',
+      },
+      {
+        name: 'theme-color',
+        content: '#2A0E33',
       },
       {
         property: 'og:title',
@@ -56,6 +64,14 @@ export const Route = createRootRoute({
         type: 'image/svg+xml',
         href: '/favicon.svg',
       },
+      {
+        rel: 'manifest',
+        href: '/manifest.webmanifest',
+      },
+      {
+        rel: 'apple-touch-icon',
+        href: '/icons/icon-192.png',
+      },
     ],
   }),
   component: RootComponent,
@@ -69,6 +85,14 @@ export const Route = createRootRoute({
 
 
 function RootComponent() {
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch((error) => {
+        console.error("Service worker registration failed", error);
+      });
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ShoppingCartProvider>
@@ -87,7 +111,7 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html>
+    <html lang="en-GB">
       <head>
         <HeadContent />
       </head>

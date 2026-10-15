@@ -21,8 +21,9 @@ export const Navbar = () => {
               whileHover={{ rotate: -4, scale: 1.06 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
               src={Logo}
-              loading="lazy"
               alt="Lavish Treats Logo"
+              width="64"
+              height="64"
               className="max-w-16 block cursor-pointer"
             />
           </Link>
@@ -35,6 +36,7 @@ export const Navbar = () => {
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.94 }}
             onClick={openCart}
+            aria-label={`Open shopping cart${cartQuantity > 0 ? `, ${cartQuantity} items` : ""}`}
             style={{ width: "3rem", height: "3rem", position: "relative" }}
             className="rounded-full border cursor-pointer items-center justify-center flex hover:bg-purple-mid hover:text-white transition delay-100 duration-300 ease-in-out"
           >

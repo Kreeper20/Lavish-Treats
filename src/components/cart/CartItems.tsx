@@ -21,6 +21,8 @@ export const CartItems = ({ id, quantity, note }: CartItemsProps) => {
                 <img
                     src={item.image}
                     alt={item.name}
+                    width="64"
+                    height="64"
                     className="h-16 w-16 rounded-xl object-cover border border-lilac-300"
                 />
                 <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-purple-deep text-[11px] font-semibold text-white">
