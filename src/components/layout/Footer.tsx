@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router"
 import { Logo } from "../utils/imports"
 import { IconBrandInstagram, IconBrandWhatsapp, IconMail, } from "@tabler/icons-react"
 import { TAndCModal } from "../ui/T&Cmodal"
+import { PrivacyPolicyModal } from "../ui/PrivacyPolicyModal"
 import { useState } from "react"
 
 const linkStyle =
@@ -54,7 +55,8 @@ const linkGroups = [
 ]
 
 export const Footer = () => {
-  const [showModal, setShowModal] = useState(false)
+  const [showTermsModal, setShowTermsModal] = useState(false)
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false)
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
 
@@ -183,16 +185,37 @@ export const Footer = () => {
           <p className="text-text-dim font-extralight">
             &copy; {new Date().getFullYear()} Lavish Treats. All rights reserved.
           </p>
-          <button
-            type="button"
-            onClick={() => setShowModal(true)}
-            className="text-text-dim font-extralight hover:text-purple-light transition duration-300 ease-in-out cursor-pointer"
-          >
-            Terms of Service | Privacy Policy
-          </button>
+          <div className="flex gap-2 text-text-dim font-extralight">
+            <button
+              type="button"
+              onClick={() => setShowTermsModal(true)}
+              className="hover:text-purple-light transition duration-300 ease-in-out cursor-pointer"
+            >
+              Terms of Service
+            </button>
+            <span aria-hidden="true">|</span>
+            <button
+              type="button"
+              onClick={() => setShowPrivacyModal(true)}
+              className="hover:text-purple-light transition duration-300 ease-in-out cursor-pointer"
+            >
+              Privacy Policy
+            </button>
+          </div>
         </div>
 
-        <TAndCModal showModal={showModal} onClose={() => setShowModal(false)} />
+        <TAndCModal
+          showModal={showTermsModal}
+          onClose={() => setShowTermsModal(false)}
+          onPrivacyPolicy={() => {
+            setShowTermsModal(false)
+            setShowPrivacyModal(true)
+          }}
+        />
+        <PrivacyPolicyModal
+          showModal={showPrivacyModal}
+          onClose={() => setShowPrivacyModal(false)}
+        />
       </div>
     </footer>
   )
