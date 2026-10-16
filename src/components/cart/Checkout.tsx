@@ -115,6 +115,18 @@ export const Checkout = () => {
         },
     });
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const selected = new Date(e.target.value);
+        const day = selected.getUTCDay();
+
+        if (day === 0 || day === 5) {
+            setError("Sundays are not available. Please choose another date.");
+            setCollectionDate(""); // Clear the invalid input
+        } else {
+            setCollectionDate(e.target.value);
+        }
+    };
+  
     return (
         <>
             <motion.section
@@ -289,15 +301,21 @@ export const Checkout = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label htmlFor="collectionDate" className={labelStyles}>
-                                        {fulfillmentType === "delivery" ? "Delivery Date*" : "Collection Date*"}
+                                        {fulfillmentType === "delivery" ? "Delivery Date*" : "Collection Date*"}<span className="text-xs text-text-muted block">Sundays are not available</span>
                                     </label>
                                     <input
                                         type="date"
+                                        placeholder="mm-dd-yy"
+
                                         name="collectionDate"
                                         id="collectionDate"
                                         className={boxStyles}
                                         value={collectionDate}
-                                        onChange={(e) => setCollectionDate(e.target.value)}
+                                        onChange={(e) => {
+                                            setCollectionDate(e.target.value);
+                                            handleChange(e);
+                                        }}
+
                                     />
                                 </div>
                                 <div>
