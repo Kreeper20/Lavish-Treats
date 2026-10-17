@@ -67,6 +67,19 @@ export const EnquiryForm = () => {
     const [cakeSizeCustom, setCakeSizeCustom] = useState(false);
     const [cakeInscription, setCakeInscription] = useState(false);
     const [cakeStyle, setCakeStyle] = useState("");
+    const [collectionDate, setCollectionDate] = useState("");
+
+     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const selected = new Date(e.target.value);
+        const day = selected.getUTCDay();
+
+        if (day === 0 || day === 5) {
+            setError("Sundays are not available. Please choose another date.");
+            setCollectionDate(""); // Clear the invalid input
+        } else {
+            setCollectionDate(e.target.value);
+        }
+    };
 
  
 
@@ -115,14 +128,18 @@ export const EnquiryForm = () => {
                         onSubmit={handleSubmit}
                     >
                         <input type="hidden" name="form-name" value="Custom-Order-Enquiry" />
+                        <input type="hidden" name="bot-field" />
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label htmlFor="email" className={"block text-sm font-medium text-gray-700"}>
                                     Pickup/Delivery Date
                                 </label>
+                                {error && <p className="text-red-500 text-sm">{error}</p>}
                                 <input
                                     type="date"
                                     name="date"
+                                    value={collectionDate}
+                                    onChange={handleChange}
                                     placeholder="Pick a date"
                                     id="date"
                                     required
@@ -514,7 +531,7 @@ export const EnquiryForm = () => {
                                                 <input
                                                     type="checkbox"
                                                     name="toppings"
-                                                    value={topping}
+                                                    value={topping.trim()}
                                                     id={id}
                                                     className="w-5 h-5 mr-3 accent-black cursor-pointer"
                                                     onChange={(event) => {

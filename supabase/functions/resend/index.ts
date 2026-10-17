@@ -5,7 +5,7 @@ if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY is required');
 if (!ORDER_WEBHOOK_SECRET) throw new Error('ORDER_WEBHOOK_SECRET is required');
 
 const FROM_EMAIL = 'orders@lavishtreats.co.uk';
-const BUSINESS_EMAIL = 'lavishtreats.24@gmail.com';
+const BUSINESS_EMAIL = 'orders@lavishtreats.co.uk';
 
 
 function escapeHtml(value: unknown): string {
@@ -36,12 +36,11 @@ function formatItems(items: unknown): string {
       }) => `
         <li style="margin-bottom: 8px;">
           <strong>${escapeHtml(item.name)}</strong>
-          &times; ${item.quantity ?? 0}
-          ${
-            item.note
-              ? `<br><small>Note: ${escapeHtml(item.note)}</small>`
-              : ''
-          }
+          &times; ${escapeHtml(item.quantity ?? 0)}
+          ${item.note
+          ? `<br><small>Note: ${escapeHtml(item.note)}</small>`
+          : ''
+        }
         </li>
       `,
     )
@@ -107,22 +106,27 @@ Deno.serve(async (request: Request) => {
   const notes = textValue(order.notes);
   const orderId = textValue(order.id);
   const createdAt = textValue(order.created_at);
+  const fulfillmentType = textValue(order.fulfillment_type);
+  const addressLine = textValue(order.address_line);
+  const city = textValue(order.city);
+  const postcode = textValue(order.postal_code);
+  const status = textValue(order.status);
 
- const customerEmailPayload = {
-  from: FROM_EMAIL,
-  to: [customerEmail],
-  subject: "Your order has been confirmed",
-  template: {
-    id: "your-order-has-been-confirmed-template",
-    variables: {
-      CUSTOMER_NAME: customerName,
-      ITEMS: itemsHtml,
-      TOTAL: totalAmount, 
-      COLLECTION_DATE: collectionDate,
-      COLLECTION_TIME: collectionTime,
+  const customerEmailPayload = {
+    from: FROM_EMAIL,
+    to: [customerEmail],
+    subject: "Your order has been confirmed",
+    template: {
+      id: "your-order-has-been-confirmed-template",
+      variables: {
+        CUSTOMER_NAME: customerName,
+        ITEMS: itemsHtml,
+        TOTAL: totalAmount,
+        COLLECTION_DATE: collectionDate,
+        COLLECTION_TIME: collectionTime,
+      },
     },
-  },
-};
+  };
 
   const businessEmailPayload = {
     from: FROM_EMAIL,
@@ -139,13 +143,21 @@ Deno.serve(async (request: Request) => {
       <h3>Order details</h3>
       <ul>
         <li><strong>Order ID:</strong> ${orderId}</li>
-        <li><strong>Items:</strong><ul>${itemsHtml}</ul></li>
-        <li><strong>Total:￡</strong> ${totalAmount}</li>
+        <li>
+          <strong>Items:</strong>
+          <ul>${itemsHtml}</ul>
+        </li>
+        <li><strong>Total:</strong> &pound;${totalAmount}</li>
         <li><strong>Collection date:</strong> ${collectionDate}</li>
         <li><strong>Collection time:</strong> ${collectionTime}</li>
         <li><strong>Notes:</strong> ${notes}</li>
         <li><strong>Created:</strong> ${createdAt}</li>
-      </ul>
+        <li><strong>Fulfillment:</strong> ${fulfillmentType}</li>
+        <li><strong>Address:</strong> ${addressLine}</li>
+        <li><strong>City:</strong> ${city}</li>
+        <li><strong>Postcode:</strong> ${postcode}</li>
+        <li><strong>Status:</strong> ${status}</li>
+     </ul>
     `,
   };
 

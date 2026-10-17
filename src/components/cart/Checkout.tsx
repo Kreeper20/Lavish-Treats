@@ -56,7 +56,10 @@ export const Checkout = () => {
         setIsSubmitting(true);
         setError(null);
 
-        if (!customerName || !email || !phone || !collectionDate || !collectionTime) {
+        const missingDeliveryDetails = fulfillmentType === "delivery" &&
+            (!addressLine.trim() || !city.trim() || !postcode.trim());
+
+        if (!customerName.trim() || !email.trim() || !phone.trim() || !collectionDate || !collectionTime || missingDeliveryDetails) {
             setError("Please fill in all required fields.");
             setIsSubmitting(false);
             return;
@@ -261,6 +264,7 @@ export const Checkout = () => {
                                             id="addressLine"
                                             placeholder="123 High Street"
                                             className={boxStyles}
+                                            required
                                             value={addressLine}
                                             onChange={(e) => setAddressLine(e.target.value)}
                                         />
@@ -276,6 +280,7 @@ export const Checkout = () => {
                                                 id="city"
                                                 placeholder="Kettering"
                                                 className={boxStyles}
+                                                required
                                                 value={city}
                                                 onChange={(e) => setCity(e.target.value)}
                                             />
@@ -290,6 +295,7 @@ export const Checkout = () => {
                                                 id="postcode"
                                                 placeholder="NN15 6XX"
                                                 className={boxStyles}
+                                                required
                                                 value={postcode}
                                                 onChange={(e) => setPostcode(e.target.value)}
                                             />
@@ -310,6 +316,7 @@ export const Checkout = () => {
                                         name="collectionDate"
                                         id="collectionDate"
                                         className={boxStyles}
+                                        required
                                         value={collectionDate}
                                         onChange={(e) => {
                                             setCollectionDate(e.target.value);
@@ -326,6 +333,7 @@ export const Checkout = () => {
                                         name="collectionTime"
                                         id="collectionTime"
                                         className={boxStyles}
+                                        required
                                         value={collectionTime}
                                         onChange={(e) => setCollectionTime(e.target.value)}
                                     >

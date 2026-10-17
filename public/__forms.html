@@ -11,11 +11,11 @@
     <input name="phone" type="tel" />
     <textarea name="message"></textarea>
     <input name="flavours" type="checkbox" value="Red Velvet" />
-    <input name="icings" type="radio" value="Buttercream" />
     <input name="toppings" type="checkbox" value="Cake Spheres" />
     <input name="images" type="file" />
     <input name="images-2" type="file" />
     <input name="addons" type="radio" value="Cupcakes" />
+    <input name="addons-other" type="text" />
     <select name="celebration">
       <option value="Birthday">Birthday</option>
     </select>
@@ -39,11 +39,12 @@
     </select>
     <input type="text" name="collection-delivery-address" />
     <textarea name="collection-delivery-notes"></textarea>
+    <input name="terms" type="checkbox" />
   </form>
 
   <form name="Contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data"
     hidden>
-    <input type="hidden" name="Contact" value="Contact" />
+    <input type="hidden" name="form-name" value="Contact" />
     <input name="bot-field" />
     <input name="name" />
     <input name="email" type="email" />

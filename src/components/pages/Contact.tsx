@@ -1,10 +1,45 @@
 import { Link } from "@tanstack/react-router"
 import { motion } from "framer-motion"
+import { useState, type FormEvent } from "react";
 import { Helmet } from "react-helmet-async";
 
 export const Contact = () => {
+
   const boxStyles = "mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-purple-deep focus:border-purple-deep sm:text-sm"
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/__forms.html", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+
+      form.reset();
+      setError(null);
+      setSuccessMessage(null);
+
+      console.log("Form submitted successfully");
+      setSuccessMessage("Thank you for your message! We'll get back to you soon.");
+      
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <>
       <Helmet>
@@ -64,10 +99,12 @@ export const Contact = () => {
               data-netlify="true"
               netlify-honeypot="bot-field"
               encType="multipart/form-data"
+              onSubmit={handleSubmit}
             >
               <input type="hidden" name="form-name" value="Contact" />
+              <input type="hidden" name="bot-field" />
               <div>
-                <label htmlFor="name"  className="mb-2 block text-base font-medium text-text-body">Name</label>
+                <label htmlFor="name" className="mb-2 block text-base font-medium text-text-body">Name</label>
                 <input type="text" required id="name" name="name" className={boxStyles} />
               </div>
               <div>
@@ -82,10 +119,13 @@ export const Contact = () => {
                 <label htmlFor="message" className="mb-2 block text-base font-medium text-text-body">Message</label>
                 <textarea id="message" required name="message" rows={5} className={`${boxStyles} resize-none`}></textarea>
               </div>
-              <button type="submit" className="w-full rounded-xl bg-purple-deep px-5 py-4 text-xl font-medium text-white transition duration-300 ease-in-out hover:bg-purple-mid">
-                Send Message
+              {successMessage && <p className="text-green-500 text-sm">{successMessage}</p>}
+              {error && <p className="text-red-500 text-sm">{error}</p>}
+              <button type="submit" disabled={isSubmitting} className={`w-full rounded-xl bg-purple-deep px-5 py-4 text-xl font-medium text-white transition duration-300 ease-in-out hover:bg-purple-mid ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
+            
           </motion.aside>
         </div>
         <div className="mt-12 max-w-6xl mx-auto bg-lilac-panel grid grid-cols-1 lg:grid-cols-2 rounded-2xl p-6 md:p-12 items-center">
