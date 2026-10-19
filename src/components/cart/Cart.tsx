@@ -2,8 +2,8 @@ import { UseShoppingCart } from "../context/ShoppingCartContext";
 import { ShopData } from "../data/ShopData";
 import { CartItems } from "./CartItems";
 import { Link } from "@tanstack/react-router";
-import { getDiscountedTotal, } from "../promotions/promotion";
-import { DiscountedPrice } from "../promotions/DiscountedPrice";
+
+import { formatCurrency } from "../utils/formatCurrency";
 
 type CartProps = {
   isOpen: boolean;
@@ -16,8 +16,7 @@ export const Cart = ({ isOpen }: CartProps) => {
     return total + (item?.price || 0) * cartItem.quantity;
   }, 0);
 
-  const total = getDiscountedTotal(subtotal);
-
+  const total = formatCurrency(subtotal);
   return (
     <>
       <div
@@ -74,20 +73,10 @@ export const Cart = ({ isOpen }: CartProps) => {
 
         {cartItems.length > 0 && (
           <div className="border-t border-line bg-lilac-50 p-6">
-            {subtotal.valueOf() < 100 ? (
-              <p className="text-sm text-text-muted mb-4 text-center">
-                5% discont applied to your order.
-              </p>
-            ) : (
-              <p className="text-sm text-text-muted mb-4 text-center">
-                10% discont applied to your order.
-              </p>
-            )
-            }
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-purple-deep">Order Total</h2>
               <p className="text-lg font-semibold text-purple-deep">
-                <DiscountedPrice total={subtotal} price={total} className="text-base" />
+                {total}
               </p>
             </div>
             <p className="text-sm text-text-muted mb-4">

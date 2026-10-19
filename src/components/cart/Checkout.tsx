@@ -3,8 +3,6 @@ import { UseShoppingCart } from "../context/ShoppingCartContext";
 import { ShopData } from "../data/ShopData";
 import { formatCurrency } from "../utils/formatCurrency";
 import { motion } from "framer-motion";
-import { getDiscountedTotal } from "../promotions/promotion";
-import { DiscountedPrice } from "../promotions/DiscountedPrice";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -24,8 +22,6 @@ export const Checkout = () => {
         return total + (item?.price || 0) * cartItem.quantity;
     }, 0);
 
-    const total = getDiscountedTotal(subtotal);
-    const savings = subtotal - total;
 
     const boxStyles =
         "mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2.5 px-3 text-text-body focus:outline-none focus:ring-1 focus:ring-purple-deep focus:border-purple-deep sm:text-sm";
@@ -65,7 +61,6 @@ export const Checkout = () => {
             return;
         }
 
-        // REPLACED the Supabase insert — just hand everything to checkout now
         checkout({
             customerName,
             email,
@@ -73,7 +68,7 @@ export const Checkout = () => {
             collectionDate,
             collectionTime,
             notes,
-            totalAmount: total,
+            totalAmount: subtotal,
             fulfillmentType,
             addressLine,
             city,
@@ -122,10 +117,11 @@ export const Checkout = () => {
         const selected = new Date(e.target.value);
         const day = selected.getUTCDay();
 
-        if (day === 0 || day === 5) {
+        if (day === 0 || day === 8 ) {
             setError("Sundays are not available. Please choose another date.");
             setCollectionDate(""); // Clear the invalid input
         } else {
+            setError("");
             setCollectionDate(e.target.value);
         }
     };
@@ -213,6 +209,11 @@ export const Checkout = () => {
 
                             <div>
                                 <label className={labelStyles}>How would you like your order?</label>
+                                {fulfillmentType === "delivery" && (
+                                <div className="flex justify-between text-text-muted">
+                                    <span className="text-text-card">You will be contacted about the delivery fee once location is confirmed.</span>
+                                </div>
+                            )}
                                 <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-3">
                                     {(
                                         [
@@ -227,6 +228,7 @@ export const Checkout = () => {
                                                 : "border-gray-300 bg-white"
                                                 }`}
                                         >
+                                            
                                             <input
                                                 type="radio"
                                                 name="fulfillmentType"
@@ -238,6 +240,7 @@ export const Checkout = () => {
                                                 }}
                                                 className="accent-purple-deep"
                                             />
+                                            
                                             <span>
                                                 <span className="block text-sm font-semibold text-text-card">
                                                     {option.title}
@@ -431,18 +434,18 @@ export const Checkout = () => {
                                 <span>Subtotal</span>
                                 <span className="text-text-card">{formatCurrency(subtotal)}</span>
                             </div>
-                            {savings > 0 && (
+                            {fulfillmentType === "delivery" && (
                                 <div className="flex justify-between text-text-muted">
-                                    <span>Discount</span>
-                                    <span className="text-purple-deep">
-                                        &minus;{formatCurrency(savings)}
-                                    </span>
+                                    <span>Delivery Fee</span>
+                                    <span className="text-text-card">Decide upon location confirmation.</span>
                                 </div>
                             )}
-                            <div className="flex justify-between text-text-muted">
-                                <span>Collection</span>
-                                <span className="text-text-card">Free</span>
-                            </div>
+                            {fulfillmentType === "pickup" && (
+                                <div className="flex justify-between text-text-muted">
+                                    <span>Collection</span>
+                                    <span className="text-text-card">Free</span>
+                                </div>
+                            )}
                         </div>
 
                         <div className="mt-4 flex items-end justify-between border-t border-lilac-300 pt-5">
@@ -450,10 +453,9 @@ export const Checkout = () => {
                                 Total
                             </span>
                             <strong className="font-serif text-4xl text-purple-primary">
-                                <DiscountedPrice total={subtotal} price={total} />
-                            </strong>
+                                    {formatCurrency(subtotal)}
+                                </strong>
                         </div>
-
                         <button
                             onClick={openCart}
                             className="mt-5 block rounded-full w-full border cursor-pointer border-purple-primary px-5 py-3 text-center text-sm font-semibold uppercase tracking-widest text-purple-primary transition hover:bg-purple-primary hover:text-white duration-300 ease-in-out"

@@ -1,9 +1,8 @@
 import { IconShoppingBagCheck, IconChevronDown } from "@tabler/icons-react";
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { UseShoppingCart } from "../src/components/context/ShoppingCartContext";
 import { ShopData } from "../src/components/data/ShopData";
-import { getDiscountedTotal } from "../src/components/promotions/promotion";
 import { formatCurrency } from "../src/components/utils/formatCurrency";
 
 export const Success = () => {
@@ -13,14 +12,14 @@ export const Success = () => {
     return total + (item?.price || 0) * cartItem.quantity;
   }, 0);
 
-  const total = getDiscountedTotal(subtotal);
+  const total = formatCurrency(subtotal);
 
 
   useEffect(() => {
     return () => {
       clearCart();
     };
-  }, []);
+  }, [clearCart]);
 
   const [summaryOpen, setSummaryOpen] = useState(true);
   return (
@@ -34,37 +33,54 @@ export const Success = () => {
         <div className="border rounded-xl border-line bg-lilac-50 p-6">
           <div className="flex items-center justify-between mb-4 border-b border-line pb-2">
             <h2 className="text-lg font-semibold text-purple-deep">Order Summary</h2>
-            <IconChevronDown onClick={() => setSummaryOpen(!summaryOpen)} className={`w-5 h-5 text-purple-primary transition-transform ${summaryOpen ? 'rotate-180' : ''}`} />
+            <button
+              type="button"
+              onClick={() => setSummaryOpen(open => !open)}
+              aria-expanded={summaryOpen}
+              aria-controls="order-summary-details"
+              className="rounded focus:outline-none focus:ring-2 focus:ring-purple-primary"
+            >
+              <IconChevronDown
+                aria-hidden="true"
+                className={`w-5 h-5 text-purple-primary transition-transform ${summaryOpen ? 'rotate-180' : ''}`}
+              />
+              <span className="sr-only">{summaryOpen ? "Hide" : "Show"} order summary</span>
+            </button>
           </div>
-          <div className={`transition-all duration-300 ${summaryOpen ? 'max-h-screen' : 'max-h-0 overflow-hidden'}`}>
+          <div
+            id="order-summary-details"
+            className={`transition-all duration-300 ${summaryOpen ? 'max-h-screen' : 'max-h-0 overflow-hidden'}`}
+          >
             <div className="flex flex-col mb-4 transition">
               <div className="space-y-2 flex flex-col justify-between gap-6">
-                {cartItems.map((cartItem) => {
+                {cartItems.map(cartItem => {
                   const item = ShopData.find(item => item.id === cartItem.id);
                   if (!item) return null;
                   return (
-                    <>
-                      <div className="flex items-center gap-6 p-2 ">
-                        <img src={item.image} alt="" className="h-18.75 w-31.25 rounded-xl "></img>
+                    <Fragment key={cartItem.id}>
+                      <div
+                        className="flex items-center gap-6 p-2"
+                      >
+                        <img src={item.image} alt={item.name} className="h-18.75 w-31.25 rounded-xl" />
                         <div className="me-auto">
                           <div className="text-text-body text-xl font-semibold font-serif">
                             {item.name}{" "}
                           </div>
-                          <div className="text-text-muted font-light text-xs left-0">{formatCurrency(getDiscountedTotal(item.price))} each</div>
+                          <div className="text-text-muted font-light text-xs left-0">{formatCurrency(item.price)} each</div>
                           <span className="min-w-2 text-center text-sm font-medium text-text-muted">
-                            Qty: {item.quantity}
+                            Qty: {cartItem.quantity}
                           </span>
                         </div>
-                        <p className="text-text-body text-lg font-semibold">{formatCurrency(getDiscountedTotal(item.price) * item.quantity)}</p>
+                        <p className="text-text-body text-lg font-semibold">{formatCurrency(item.price * item.quantity)}</p>
                       </div>
                       <div className="border-t border-line" />
-                    </>
+                    </Fragment>
                   );
                 })}
                 <div className="flex items-center justify-between mt-4">
                   <h2 className="text-base font-semibold text-purple-deep">Order Total</h2>
                   <p className="text-base font-semibold text-purple-deep">
-                    {formatCurrency(total)}
+                    {total}
 
                   </p>
                 </div>
@@ -84,4 +100,3 @@ export const Success = () => {
     </>
   )
 }
-

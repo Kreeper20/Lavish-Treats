@@ -69,17 +69,18 @@ export const EnquiryForm = () => {
     const [cakeStyle, setCakeStyle] = useState("");
     const [collectionDate, setCollectionDate] = useState("");
 
-     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selected = new Date(e.target.value);
         const day = selected.getUTCDay();
 
-        if (day === 0 || day === 5) {
+        if (day === 0 || day === 8 ) {
             setError("Sundays are not available. Please choose another date.");
             setCollectionDate(""); // Clear the invalid input
         } else {
+            setError("");
             setCollectionDate(e.target.value);
         }
-    };
+    };;
 
  
 
@@ -109,7 +110,7 @@ export const EnquiryForm = () => {
                             <li>Minimum Notice:<span className="font-light pl-2">5 days prior to delivery</span></li>
                             <li>Rush orders:<span className="font-light pl-2">Within 48 hours from £20, subject to availability.</span></li>
                             <li>Collection:<span className="font-light pl-2">Kettering, United Kingdom.</span></li>
-                            <li>Payment:<span className="font-light pl-2">A deposit of 70% is required to confirm your order. The balance is due 2 days before the scheduled collection date.</span></li>
+                            <li>Payment:<span className="font-light pl-2">A deposit of 70% is required to confirm your order. The balance is due 4 days before the scheduled collection date.</span></li>
                         </ul>
                         <p className="font-light italic text-shadow-dark-text mt-4 text-sm md:text-base">
                             All products are freshly made to order; pricing may vary depending on customisation and design complexity.
@@ -129,11 +130,12 @@ export const EnquiryForm = () => {
                     >
                         <input type="hidden" name="form-name" value="Custom-Order-Enquiry" />
                         <input type="hidden" name="bot-field" />
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
                             <div>
                                 <label htmlFor="email" className={"block text-sm font-medium text-gray-700"}>
-                                    Pickup/Delivery Date
+                                    Pickup/Delivery Date*
                                 </label>
+                                <span className="text-xs text-text-muted block">Sundays are not available</span>
                                 {error && <p className="text-red-500 text-sm">{error}</p>}
                                 <input
                                     type="date"
@@ -189,7 +191,7 @@ export const EnquiryForm = () => {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-6 items-center">
+                        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-6 items-start">
                             <div>
                                 <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                                     Order Details

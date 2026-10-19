@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 import { Cart } from "../cart/Cart";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -50,7 +50,7 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
 
     const openCart = () => setIsOpen(true);
     const closeCart = () => setIsOpen(false);
-    const clearCart = () => setCartItems([]);
+    const clearCart = useCallback(() => setCartItems([]), [setCartItems]);
     const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
     const getMinimumOrderQuantity = (id: number): number => {
         return minimumOrderQuantities[id] || 1;

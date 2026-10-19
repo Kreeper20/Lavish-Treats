@@ -64,14 +64,17 @@ export const Route = createFileRoute('/api/checkout')({
                         (sum, item) => sum + item.price * item.quantity,
                         0
                     );
-                    const discountRate = subtotal > 100 ? 0.1 : 0.05;
-                    const discountedItems = validItems.map((item) => ({
-                        ...item,
-                        price: Math.round(item.price * (1 - discountRate) * 100) / 100,
+                    
+
+                    const totalAmount = subtotal;
+                    const lineItems = validItems.map((item) => ({
+                        price_data: {
+                            currency: "gbp",
+                            product_data: { name: item.name },
+                            unit_amount: Math.round(item.price * 100),
+                        },
+                        quantity: item.quantity,
                     }));
-                    const totalAmount = Math.round(
-                        subtotal * (1 - discountRate) * 100
-                    ) / 100;
 
                     const session = await stripe.checkout.sessions.create({
                         payment_method_types: ["card"],
@@ -89,21 +92,16 @@ export const Route = createFileRoute('/api/checkout')({
                                 addressLine: orderDetails.addressLine ?? "",
                                 city: orderDetails.city ?? "",
                                 postcode: orderDetails.postcode ?? "",
-                                items: JSON.stringify(discountedItems),
+                                items: JSON.stringify(validItems)
                             },
                         },
-                        line_items: discountedItems.map((item) => ({
-                            price_data: {
-                                currency: "gbp",
-                                product_data: { name: item.name },
-                                unit_amount: Math.round(item.price * 100),
-                            },
-                            quantity: item.quantity,
-                        })),
+                        line_items: lineItems,
+
                         mode: "payment",
                         success_url: `${process.env.FRONTEND_URL}/success`,
                         cancel_url: `${process.env.FRONTEND_URL}/cancel`,
                     });
+
 
                     return new Response(JSON.stringify({ url: session.url }), { status: 200 });
                 } catch (error) {
