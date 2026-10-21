@@ -1,32 +1,16 @@
-# React + TypeScript + Vite
+<img width="1710" height="890" alt="Screenshot 2026-10-21 at 23 00 27" src="https://github.com/user-attachments/assets/dea1607c-b7be-4bc6-8813-9e597ee9983a" />
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+# Online Storefront for Lavish Treats, A bakery based in Kathering UK.
 
-Currently, two official plugins are available:
+[Live Preview](https://lavishtreats.co.uk)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Built using: 
+# React + TypeScript + TailwindCss + Tanstack Start
+Also uses:
+- Supabse for storage
+- Resend for sending mails
+- Stripe to handle payments
 
-## React Compiler
+Cart logic works using `local storage` that saves temporary data to the users browser while they shop and add items to cart so cart items does not delete when the user accidentally refrehes or closes the site for a moment, and also uses `useContext` to communicate with each component across the website/codebase.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+It's a simple website maybe more features would be added or layout would be updated overtime 🙏
