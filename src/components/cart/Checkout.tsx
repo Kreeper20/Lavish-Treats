@@ -101,6 +101,7 @@ export const Checkout = () => {
                     return {
                         id: item.id,
                         name: product?.name ?? "",
+                        size: item.size,
                         price: item.price ?? (
                             typeof product?.price === "number" ? product.price : undefined
                         ),
@@ -413,8 +414,13 @@ export const Checkout = () => {
 
                                         <div className="flex-1">
                                             <p className="font-medium text-text-card">{product.name}</p>
+                                            {cartItem.size && (
+                                                <p className="text-xs text-text-muted">
+                                                    Size: {cartItem.size}
+                                                </p>
+                                            )}
                                             <p className="text-xs text-text-muted">
-                                                {formatCurrency(cartItem.price ?? 0)} each each
+                                                {cartItem.quantity} x {formatCurrency(cartItem.price ?? 0)} each
                                             </p>
                                             {cartItem.note && (
                                                 <p className="mt-1 text-xs text-text-muted">

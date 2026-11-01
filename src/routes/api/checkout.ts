@@ -3,7 +3,7 @@ type itemType = {
     name: string;
     price: number;
     quantity: number;
-    size?: string; 
+    size: string | undefined;
 };
 
 type cartItemInput = {
@@ -62,9 +62,10 @@ export const Route = createFileRoute('/api/checkout')({
 
                         return {
                             id: product.id,
-                            name: item.size ? `${product.name} (${item.size})` : product.name,
+                            name: product.name,
                             price,
                             quantity: item.quantity,
+                            size: item.size,
                         };
                     });
                     if (items.some((item) => item === null)) {
@@ -86,7 +87,9 @@ export const Route = createFileRoute('/api/checkout')({
                     const lineItems = validItems.map((item) => ({
                         price_data: {
                             currency: "gbp",
-                            product_data: { name: item.name + (item.size ? ` (${item.size})` : "") },
+                            product_data: {
+                                name: item.size ? `${item.name} (${item.size})` : item.name,
+                            },
                             unit_amount: Math.round(item.price * 100),
                         },
                         quantity: item.quantity,
