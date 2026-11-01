@@ -13,6 +13,7 @@ export const Shop = () => {
     "Cupcakes & Cake Treats",
     "Pastries & Small Chops",
     "Treat Boxes & Gifts",
+    "Drinks"
   ];
 
   return (
@@ -43,14 +44,14 @@ export const Shop = () => {
                     {category}
                   </h2>
                   <div className="grid gap-3 md:gap-6 grid-cols-2 lg:grid-cols-4">
-                    {items.map((item) => (
+                    {items.map((item, index) => (
                       <ShopBoxes
-                        key={item.id}
+                        key={index}
                         id={item.id}
                         name={item.name}
                         description={item.description}
                         imageUrl={item.image}
-                        price={item.price}
+                        price={item.price? Array.isArray(item.price) ? item.price[0] : item.price : 0}
                         product={item}
                         link={item.link}
                       />

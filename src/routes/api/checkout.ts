@@ -3,6 +3,14 @@ type itemType = {
     name: string;
     price: number;
     quantity: number;
+    size?: string; 
+};
+
+type cartItemInput = {
+    id: number;
+    price?: unknown;
+    quantity: number;
+    size?: string;
 };
 import { createFileRoute } from "@tanstack/react-router";
 import Stripe from "stripe";
@@ -33,11 +41,19 @@ export const Route = createFileRoute('/api/checkout')({
                         );
                     }
 
-                    const items = (cartItems as itemType[]).map((item) => {
+                    const items = (cartItems as cartItemInput[]).map((item) => {
                         const product = ShopData.find((entry) => entry.id === item.id);
+                        const price = typeof item.price === "number"
+                            ? item.price
+                            : product && typeof product.price === "number"
+                                ? product.price
+                                : undefined;
 
                         if (
                             !product ||
+                            typeof price !== "number" ||
+                            !Number.isFinite(price) ||
+                            price <= 0 ||
                             !Number.isInteger(item.quantity) ||
                             item.quantity < 1
                         ) {
@@ -46,8 +62,8 @@ export const Route = createFileRoute('/api/checkout')({
 
                         return {
                             id: product.id,
-                            name: product.name,
-                            price: product.price,
+                            name: item.size ? `${product.name} (${item.size})` : product.name,
+                            price,
                             quantity: item.quantity,
                         };
                     });
@@ -64,13 +80,13 @@ export const Route = createFileRoute('/api/checkout')({
                         (sum, item) => sum + item.price * item.quantity,
                         0
                     );
-                    
+                   
 
                     const totalAmount = subtotal;
                     const lineItems = validItems.map((item) => ({
                         price_data: {
                             currency: "gbp",
-                            product_data: { name: item.name },
+                            product_data: { name: item.name + (item.size ? ` (${item.size})` : "") },
                             unit_amount: Math.round(item.price * 100),
                         },
                         quantity: item.quantity,

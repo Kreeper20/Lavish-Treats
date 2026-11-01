@@ -7,10 +7,10 @@ import { formatCurrency } from "../src/components/utils/formatCurrency";
 
 export const Success = () => {
   const { cartItems, clearCart } = UseShoppingCart();
-  const subtotal = cartItems.reduce((total, cartItem) => {
-    const item = ShopData.find(item => item.id === cartItem.id);
-    return total + (item?.price || 0) * cartItem.quantity;
-  }, 0);
+ const subtotal = cartItems.reduce(
+  (total, cartItem) => total + (cartItem.price ?? 0) * cartItem.quantity,
+  0
+);
 
   const total = formatCurrency(subtotal);
 
@@ -53,11 +53,11 @@ export const Success = () => {
           >
             <div className="flex flex-col mb-4 transition">
               <div className="space-y-2 flex flex-col justify-between gap-6">
-                {cartItems.map(cartItem => {
+                {cartItems.map((cartItem, index) => {
                   const item = ShopData.find(item => item.id === cartItem.id);
                   if (!item) return null;
                   return (
-                    <Fragment key={cartItem.id}>
+                    <Fragment key={index}>
                       <div
                         className="flex items-center gap-6 p-2"
                       >
@@ -66,12 +66,12 @@ export const Success = () => {
                           <div className="text-text-body text-xl font-semibold font-serif">
                             {item.name}{" "}
                           </div>
-                          <div className="text-text-muted font-light text-xs left-0">{formatCurrency(item.price)} each</div>
+                          <div className="text-text-muted font-light text-xs left-0">{formatCurrency((cartItem.price ?? 0))} each</div>
                           <span className="min-w-2 text-center text-sm font-medium text-text-muted">
                             Qty: {cartItem.quantity}
                           </span>
                         </div>
-                        <p className="text-text-body text-lg font-semibold">{formatCurrency(item.price * item.quantity)}</p>
+                        <p className="text-text-body text-lg font-semibold">{formatCurrency((cartItem.price ?? 0) * cartItem.quantity)}</p>
                       </div>
                       <div className="border-t border-line" />
                     </Fragment>

@@ -17,10 +17,10 @@ export const Checkout = () => {
     // cart access
     const { cartItems, openCart } = UseShoppingCart();
 
-    const subtotal = cartItems.reduce((total, cartItem) => {
-        const item = ShopData.find((item) => item.id === cartItem.id);
-        return total + (item?.price || 0) * cartItem.quantity;
-    }, 0);
+    const subtotal = cartItems.reduce(
+        (total, cartItem) => total + (cartItem.price ?? 0) * cartItem.quantity,
+        0
+    );
 
 
     const boxStyles =
@@ -101,7 +101,9 @@ export const Checkout = () => {
                     return {
                         id: item.id,
                         name: product?.name ?? "",
-                        price: product?.price ?? 0,
+                        price: item.price ?? (
+                            typeof product?.price === "number" ? product.price : undefined
+                        ),
                         quantity: item.quantity,
                     };
                 }),
@@ -117,7 +119,7 @@ export const Checkout = () => {
         const selected = new Date(e.target.value);
         const day = selected.getUTCDay();
 
-        if (day === 0 || day === 8 ) {
+        if (day === 0 || day === 8) {
             setError("Sundays are not available. Please choose another date.");
             setCollectionDate(""); // Clear the invalid input
         } else {
@@ -125,7 +127,7 @@ export const Checkout = () => {
             setCollectionDate(e.target.value);
         }
     };
-  
+
     return (
         <>
             <motion.section
@@ -210,10 +212,10 @@ export const Checkout = () => {
                             <div>
                                 <label className={labelStyles}>How would you like your order?</label>
                                 {fulfillmentType === "delivery" && (
-                                <div className="flex justify-between text-text-muted">
-                                    <span className="text-text-card">You will be contacted about the delivery fee once location is confirmed.</span>
-                                </div>
-                            )}
+                                    <div className="flex justify-between text-text-muted">
+                                        <span className="text-text-card">You will be contacted about the delivery fee once location is confirmed.</span>
+                                    </div>
+                                )}
                                 <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-3">
                                     {(
                                         [
@@ -228,7 +230,7 @@ export const Checkout = () => {
                                                 : "border-gray-300 bg-white"
                                                 }`}
                                         >
-                                            
+
                                             <input
                                                 type="radio"
                                                 name="fulfillmentType"
@@ -240,7 +242,7 @@ export const Checkout = () => {
                                                 }}
                                                 className="accent-purple-deep"
                                             />
-                                            
+
                                             <span>
                                                 <span className="block text-sm font-semibold text-text-card">
                                                     {option.title}
@@ -393,11 +395,11 @@ export const Checkout = () => {
                         </h2>
 
                         <div className="divide-y divide-lilac-300">
-                            {cartItems.map((cartItem) => {
+                            {cartItems.map((cartItem, index) => {
                                 const product = ShopData.find((item) => item.id === cartItem.id);
                                 if (!product) return null;
                                 return (
-                                    <div key={cartItem.id} className="flex items-start gap-4 py-4">
+                                    <div key={index} className="flex items-start gap-4 py-4">
                                         <div className="relative shrink-0">
                                             <img
                                                 src={product.image}
@@ -412,7 +414,7 @@ export const Checkout = () => {
                                         <div className="flex-1">
                                             <p className="font-medium text-text-card">{product.name}</p>
                                             <p className="text-xs text-text-muted">
-                                                {formatCurrency(product.price)} each
+                                                {formatCurrency(cartItem.price ?? 0)} each each
                                             </p>
                                             {cartItem.note && (
                                                 <p className="mt-1 text-xs text-text-muted">
@@ -422,7 +424,7 @@ export const Checkout = () => {
                                         </div>
 
                                         <p className="font-semibold text-purple-dark whitespace-nowrap">
-                                            {formatCurrency(product.price * cartItem.quantity)}
+                                            {formatCurrency((cartItem.price ?? 0) * cartItem.quantity)}
                                         </p>
                                     </div>
                                 );
@@ -453,8 +455,8 @@ export const Checkout = () => {
                                 Total
                             </span>
                             <strong className="font-serif text-4xl text-purple-primary">
-                                    {formatCurrency(subtotal)}
-                                </strong>
+                                {formatCurrency(subtotal)}
+                            </strong>
                         </div>
                         <button
                             onClick={openCart}

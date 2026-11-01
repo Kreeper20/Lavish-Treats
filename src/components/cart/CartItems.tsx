@@ -6,21 +6,23 @@ import { IconTrash } from "@tabler/icons-react";
 type CartItemsProps = {
     id: number;
     quantity: number;
+    size?: string;
+    price?: number;
     note?: string;
 };
 
-export const CartItems = ({ id, quantity, note }: CartItemsProps) => {
+export const CartItems = ({ id, quantity, note, price, size }: CartItemsProps) => {
     const { removeFromCart, increaseCartQuantity, decreaseCartQuantity, updateItemNote } =
         UseShoppingCart();
-    const item = ShopData.find((item) => item.id === id);
-    if (item == null) return null;
+    const product = ShopData.find((item) => item.id === id);
+    if (product == null) return null;
 
     return (
         <div className="flex items-start justify-between gap-3 border border-lilac-300 bg-white p-3 rounded-xl shadow-xs">
             <div className="relative shrink-0">
                 <img
-                    src={item.image}
-                    alt={item.name}
+                    src={product.image}
+                    alt={product.name}
                     width="64"
                     height="64"
                     className="h-16 w-16 rounded-xl object-cover border border-lilac-300"
@@ -33,25 +35,26 @@ export const CartItems = ({ id, quantity, note }: CartItemsProps) => {
             <div className="min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-2">
                     <p className="truncate text-text-body text-xl font-semibold font-serif">
-                        {item.name}
+                        {product.name} <br/>{size && <span className="text-base font-sans text-text-muted">
+                            ({size})
+                        </span>}
                     </p>
                     <span className="shrink-0 font-semibold text-purple-dark">
-                        {formatCurrency(item.price * quantity)}
+                        {formatCurrency((price ?? 0) * quantity)}
                     </span>
                 </div>
-
                 <div className="text-text-muted font-light text-xs">
-                    {formatCurrency(item.price)} each
+                    {formatCurrency(price ?? 0)} each
                 </div>
 
                 <div className="mt-2 flex items-center justify-between gap-2">
                     <div className="inline-flex items-center rounded-full border border-lilac-300 bg-white px-1 py-1 gap-2">
                         <button
                             type="button"
-                            onClick={() => decreaseCartQuantity(item.id)}
+                            onClick={() => decreaseCartQuantity(product.id, size, price)}
                             disabled={quantity <= 1}
                             className="h-5 w-5 rounded-full text-text-body font-semibold leading-none transition duration-200 hover:bg-accent-lavender/50 hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent"
-                            aria-label={`Decrease quantity of ${item.name}`}
+                            aria-label={`Decrease quantity of ${product.name}`}
                         >
                             -
                         </button>
@@ -63,9 +66,9 @@ export const CartItems = ({ id, quantity, note }: CartItemsProps) => {
                         </span>
                         <button
                             type="button"
-                            onClick={() => increaseCartQuantity(item.id)}
+                            onClick={() => increaseCartQuantity(product.id, size, price)}
                             className="h-5 w-5 rounded-full text-text-body font-semibold leading-none transition duration-200 hover:bg-accent-lavender/50 hover:opacity-90"
-                            aria-label={`Increase quantity of ${item.name}`}
+                            aria-label={`Increase quantity of ${product.name}`}
                         >
                             +
                         </button>
@@ -73,18 +76,18 @@ export const CartItems = ({ id, quantity, note }: CartItemsProps) => {
 
                     <button
                         type="button"
-                        onClick={() => removeFromCart(item.id)}
+                        onClick={() => removeFromCart(product.id, size, price)}
                         className="text-xs text-text-muted underline transition duration-200 hover:cursor-pointer hover:text-purple-primary"
                     >
                         <IconTrash className="h-4 w-4 text-red-500" />
                     </button>
                 </div>
 
-                {item.allowsPersonalisation && (
+                {product.allowsPersonalisation && (
                     <input
                         type="text"
                         value={note ?? ""}
-                        onChange={(event) => updateItemNote(item.id, event.target.value)}
+                        onChange={(event) => updateItemNote(product.id, event.target.value)}
                         placeholder="Message on cake / personalisation"
                         className="mt-3 w-full rounded-xl border border-lilac-300 bg-lilac-50 px-4 py-3"
                     />

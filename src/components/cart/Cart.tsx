@@ -1,5 +1,4 @@
 import { UseShoppingCart } from "../context/ShoppingCartContext";
-import { ShopData } from "../data/ShopData";
 import { CartItems } from "./CartItems";
 import { Link } from "@tanstack/react-router";
 
@@ -11,10 +10,10 @@ type CartProps = {
 
 export const Cart = ({ isOpen }: CartProps) => {
   const { closeCart, cartItems, cartQuantity, } = UseShoppingCart();
-  const subtotal = cartItems.reduce((total, cartItem) => {
-    const item = ShopData.find(item => item.id === cartItem.id);
-    return total + (item?.price || 0) * cartItem.quantity;
-  }, 0);
+  const subtotal = cartItems.reduce(
+    (total, cartItem) => total + (cartItem.price ?? 0) * cartItem.quantity,
+    0
+  );
 
   const total = formatCurrency(subtotal);
   return (
@@ -61,9 +60,11 @@ export const Cart = ({ isOpen }: CartProps) => {
             <div className="space-y-4">
               {cartItems.map((item) => (
                 <CartItems
-                  key={item.id}
+                  key={`${item.id}-${item.size ?? "default"}`}
                   id={item.id}
                   quantity={item.quantity}
+                  size={item.size}
+                  price={item.price}
                   note={item.note}
                 />
               ))}

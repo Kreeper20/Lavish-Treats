@@ -16,6 +16,7 @@ import { AlertProvider } from '../components/cart/Toast'
 import { PromoBar } from '../components/promotions/PromoBar'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
+import { NotFound } from '../components/pages/404'
 
 const queryClient = new QueryClient();
 
@@ -75,11 +76,7 @@ export const Route = createRootRoute({
     ],
   }),
   component: RootComponent,
-  notFoundComponent: () => (
-    <RootDocument>
-      <h1>404 - Not Found</h1>
-    </RootDocument>
-  ),
+  notFoundComponent: NotFound,
 })
 
 

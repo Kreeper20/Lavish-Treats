@@ -6,12 +6,14 @@ import { TwelveCupcake, SixCupCake, BentaCuppCake, CakeLoaf, CakeParfait, Drink,
 export const ShopData  = [
      {
         id: 1,
-        name: "Fruity Hibiscus Drink (250ml)",
+        name: "Fruity Hibiscus Drink",
+        size: ["250ml", "450ml"],
+        price: [3, 5],
         description: "A refreshing drink made with fruity hibiscus.\n£3 for 250ml\n£5 for 450ml",
         image: Drink,
-        price: 3,
         category: "Drinks",
-        quantity: 1, 
+        quantity: 1,    
+        preorder: true,     
                  
     },
     
@@ -148,19 +150,8 @@ export const ShopData  = [
         category: "Pastries & Small Chops",
         quantity: 1,
     },
-
      {
         id: 16,
-        name: "Fruity Hibiscus Drink (450ml)",
-        description: "A refreshing drink made with fruity hibiscus.\n£3 for 250ml\n£5 for 450ml",
-        image: Drink,
-        price: 5,
-        category: "Drinks",
-        quantity: 1, 
-                 
-    },
-     {
-        id: 17,
         name: "Chicken Pie",
         description: "A delicious pie made with chicken \n Minimum order of 6",
         image: Meatpie,
