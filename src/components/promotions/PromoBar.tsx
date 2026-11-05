@@ -18,7 +18,7 @@ export const PromoBar = () => {
 
     return (
         <aside className="bg-gold-panel px-4 py-2.5 text-center text-purple-deep " aria-label="Current promotion">
-            <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
+            <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs md:text-sm">
                 <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-wide">
                     Fruity Hibiscus Drink is now available for preorder! <Link to="/productDetails/$id"
                         params={{ id: "1" }} className="underline hover:text-purple-primary transition duration-300">Order Now</Link>

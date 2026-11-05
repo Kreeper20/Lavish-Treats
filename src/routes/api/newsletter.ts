@@ -14,11 +14,9 @@ export const Route = createFileRoute('/api/newsletter')({
           email,
           unsubscribed: false,
         });
-
         if (error) {
           return Response.json({ error }, { status: 500 });
         }
-
         return Response.json(data);
       },
     },

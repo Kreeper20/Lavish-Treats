@@ -21,6 +21,7 @@ export { default as CustomMadeCake } from '../../assets/ShopItems/Custom_made_ca
 export { default as smallChops } from '../../assets/ShopItems/smallChops.webp'
 export { default as puffPuff } from '../../assets/ShopItems/puffPuff.webp'
 export { default as springRolls } from '../../assets/ShopItems/springRolls.webp'
+export {default as classicCake} from '../../assets/ShopItems/classicCake.webp'
 
 // Gallery exports
 export { default as GalleryCustom } from '../../assets/Gallery/CustomCake.webp'
@@ -48,3 +49,6 @@ export { default as GalleryCupcake } from '../../assets/Gallery/galleryCupcake.w
 export { default as GalleryChristmasCupcakes } from '../../assets/Gallery/qxda5lqnu08qb3veff1hasmyf0hu.webp'
 export { default as GalleryLevel8Cake } from '../../assets/Gallery/Level8Cake.webp'
 export { default as GalleryenckCake } from '../../assets/Gallery/enckCake.webp'
+export {default as galleryNew} from '../../assets/Gallery/galleryNew.webp'
+export {default as galleryNew2} from '../../assets/Gallery/galleryNew2.webp'
+export {default as galleryNew3} from '../../assets/Gallery/galleryNew3.webp'

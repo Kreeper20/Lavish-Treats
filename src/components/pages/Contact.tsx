@@ -69,8 +69,7 @@ export const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-text-body font-extralight text-sm md:text-base lg:text-lg mt-1 max-w-xl"
-            >
+               className="mt-3 max-w-2xl font-light text-base leading-7 text-text-body md:text-lg">
               Whether you have a question about our products, need assistance with an order, or just want to say hello, we're here to help. Reach out to us and we'll get back to you as soon as possible.
             </motion.p>
             <div className="flex flex-col justify-start text-left">

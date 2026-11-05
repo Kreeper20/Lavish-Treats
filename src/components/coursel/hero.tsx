@@ -67,6 +67,10 @@ export const Hero = () => {
                             }}
                             src={Cake}
                             alt="Lavish Treats"
+                            width={1291}
+                            height={1456}
+                            fetchPriority="high"
+                            decoding="async"
                             className="w-full h-full object-cover"
                         />
                     </div>
@@ -102,7 +106,7 @@ export const Hero2 = () => {
                         Festive cakes, bakes and gift boxes for the table, the party and the people you love. Handcrafted in Kettering and baked fresh to order.
                     </motion.p>
                     <div className="flex flex-wrap md:justify-center mx-auto gap-4 mt-6">
-                        <Link to="/custom-order" className="bg-purple-primary uppercase text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
+                        <Link  to="/shop" className="bg-purple-primary uppercase text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
                             Preorder now
                         </Link>
                         <Link to="/gallery" className=" border border-purple-primary text-purple-primary px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out hover:-translate-y-1">

@@ -14,23 +14,28 @@ export const Gallery = () => {
                 <title>Gallery | Lavish Treats</title>
                 <meta name="description" content="Browse a collection of some of our favourite cakes, pastries, and desserts created for birthdays, weddings, baby showers, anniversaries, and special occasions." />
             </Helmet>
-            <section className="bg-lilac-50 py-12 lg:py-28">
+            <section className="relative overflow-hidden border-b border-line bg-lilac-100 px-4 py-16 md:px-8 lg:py-24">
+                <div className="pointer-events-none absolute -right-20 -top-32 h-80 w-80 rounded-full border-36 border-white/50" />
                 <motion.div
                     initial="hidden"
                     animate="visible"
                     variants={motionVariants}
-                    className="text-center items-center px-4 mx-auto"
+                    className="md:text-center items-center px-4 mx-auto"
                 >
                     <h1 className=" text-purple-bright font-light mb-3 uppercase tracking-widest">Gallery</h1>
-                    <h2 className="font-serif text-purple-deep text-4xl lg:text-6xl mb-3 font-semibold">
+                   <motion.h2 variants={motionVariants} className="font-serif text-5xl font-semibold leading-none text-purple-deep md:text-7xl">
                         Every Creation Is Made With Love
-                    </h2>
-                    <p className=" text-text-body font-extralight text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
+                    </motion.h2>
+                  <p className="mt-6  font-light text-base leading-7 text-text-body md:text-lg">
                         Browse a collection of some of our favourite cakes, pastries, and desserts created for <br className='hidden md:block' /> birthdays, weddings, baby showers, anniversaries, and special occasions.
                     </p>
+                    
                 </motion.div>
+            </section>
 
 
+
+            <section className="bg-lilac-50 py-12 lg:py-28">
                 <div aria-labelledby="gallery-heading" className="px-4 md:px-8 mt-6 md:mt-12">
                     <h2 id="gallery-heading" className="sr-only">Image Gallery</h2>
                     <div className="max-w-7xl mx-auto">

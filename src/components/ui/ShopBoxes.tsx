@@ -1,7 +1,7 @@
 type ShopBoxesProps = {
     id: number;
     name: string;
-    description?: string;
+    description?: string | boolean;
     price: number;
     imageUrl: string;
     link?: string;
@@ -43,53 +43,53 @@ export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: S
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-b-2xl overflow-hidden flex h-full flex-col group"
+                className="group flex h-full flex-col overflow-hidden border border-line bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
 
                 <Link to={'/productDetails/' + product.id}>
-                    <div className="relative overflow-hidden">
+                    <div className="relative overflow-hidden bg-lilac-100">
                         <img
                             src={imageUrl}
                             alt={name}
                             width="400"
                             height="400"
-                            className="h-64 w-full object-cover group-hover:scale-105 duration-700 ease-out"
+                            className="aspect-square w-full object-cover transition duration-700 ease-out group-hover:scale-105"
                         />
 
                         {product.preorder && (
-                            <div className="absolute right-2 top-2 z-10 rounded-full bg-purple-lighter text-purple-900 px-2 py-1 text-xs font-bold ">
+                            <div className="absolute left-3 top-3 z-10 bg-white px-2.5 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-purple-deep shadow-sm">
                                 Pre-order
+                            </div>
+                        )}
+                        {product.category === "Christmas Menu" && (
+                            <div className="absolute right-3 top-3 z-10 bg-purple-deep px-2.5 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
+                                Seasonal
                             </div>
                         )}
                     </div>
 
-                    <div className="px-1 pt-4 pb-1 flex-1">
-                        <h1 className="text-lg font-medium font-sans text-purple-deep tracking-tight">
+                    <div className="flex-1 px-4 pb-3 pt-4">
+                        <h2 className="line-clamp-2 min-h-12 font-serif text-xl font-semibold leading-tight text-purple-deep">
                             {name}
-                        </h1>
-                        <p className="text-text-dim font-light text-sm line-clamp-1 mt-0.5">
-                            {description}
+                        </h2>
+                        <p className="mt-2 line-clamp-2 min-h-10 text-sm font-light leading-5 text-text-dim">
+                            {typeof description === "string" ? description : "Introducing The Lavish Classic, a beautifully finished 6-inch celebration cake from our Lavish Treats Signature Collection."}
                         </p>
                     </div>
                 </Link>
 
 
 
-                <div className="px-1 pb-2 pt-3 border-t border-border-soft mt-auto flex items-center justify-between gap-3">
-                    {product.size ? (
-                        <span className="text-xl font-semibold text-purple-bright tabular-nums">
-                            {formatCurrency(displayPrice)}
-                        </span>
-                    ) : (
-                        <span className="text-xl font-semibold text-purple-bright tabular-nums">
-                            {formatCurrency(displayPrice)}
-                        </span>
-                    )}
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-border-soft px-4 py-4">
+                    <span className="font-sans text-lg font-semibold tabular-nums text-purple-bright">
+                        {formatCurrency(displayPrice)}
+                    </span>
                     {product.size && product.size.length > 0 && (
                         <select
                             value={selectedSize}
                             onChange={(e) => setSelectedSize(e.target.value)}
-                            className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                            aria-label={`Choose an option for ${name}`}
+                            className="min-w-0 flex-1 border border-border-soft bg-lilac-50 p-2 text-xs text-text-body focus:border-purple-primary focus:outline-none"
                         >
                             {product.size.map((s: string) => (
                                 <option key={s} value={s}>
@@ -102,7 +102,7 @@ export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: S
                         <Link to={link}>
                             <button
                                 aria-label={`Custom order for ${name}`}
-                                className="text-xs font-semibold text-purple-primary border border-purple-primary px-4 py-2 rounded-full hover:bg-purple-primary hover:text-white transition duration-300">
+                                className="border border-purple-primary px-3 py-2 text-xs font-semibold text-purple-primary transition duration-300 hover:bg-purple-primary hover:text-white">
                                 Custom Order
                             </button>
                         </Link>
@@ -113,7 +113,7 @@ export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: S
                                 show?.alertOpen(`${product.quantity}x ${name} has been added to your cart!`);
                             }}
                             aria-label={`Add ${name} to cart`}
-                            className="bg-purple-primary hover:cursor-pointer text-white w-11 h-11 rounded-full flex items-center justify-center hover:bg-purple-dark transition duration-300 shrink-0"
+                            className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center bg-purple-primary text-white transition duration-300 hover:bg-purple-dark"
                         >
                             <IconShoppingCartPlus className="h-5 w-5" />
                         </button>

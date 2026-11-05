@@ -1,5 +1,4 @@
 import { Link } from '@tanstack/react-router'
-import Cake from '../../assets/HeroCake.webp'
 import { MultiLayered } from '../utils/imports'
 import bake from '../../assets/Bg/bake.svg'
 import { pastryData } from '../data/PastryData'
@@ -8,16 +7,21 @@ import { GalleryBoxes } from '../ui/GalleryBoxes'
 import { motion } from 'framer-motion'
 import { TestimonialsBox } from '../sections/Testimonials'
 import { Helmet } from "react-helmet-async";
+import { Coursel } from '../coursel/coursel'
+import { Hero, Hero2 } from '../coursel/hero'
 
 
 
 
 export const Home = () => {
-    const motionVariants = {
+   
+   {/* const motionVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
 
     };
+    */}
+   
 
     const reasons = [
         "Freshly baked to order",
@@ -27,6 +31,7 @@ export const Home = () => {
         "Reliable ordering process",
         "5-star food hygiene rating",
     ]
+    const slides = [<Hero />, <Hero2 />];
    
     return (
 
@@ -36,6 +41,7 @@ export const Home = () => {
                 <meta name="description" content="Lavish Treats is a bakery that specializes in custom cakes and pastries based in Kettering UK." />
             </Helmet>
 
+            {/* 
             <motion.section
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -101,6 +107,10 @@ export const Home = () => {
 
                 </div>
             </motion.section>
+             */}
+
+            <Coursel slides={slides}/>
+
             <section className="bg-purple-deep py-12 md:py-28">
                 <div className=" text-center items-center px-6 mx-auto">
 

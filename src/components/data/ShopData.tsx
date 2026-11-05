@@ -1,4 +1,4 @@
-import { TwelveCupcake, SixCupCake, BentaCuppCake, CakeLoaf, CakeParfait, Drink, Meatpie,  MiniCakeLoaf, MiniTreatBox, TreatBoxes, TreatBoxesTwo, CustomMadeCake, puffPuff, smallChops, springRolls } from '../utils/imports'
+import { TwelveCupcake, SixCupCake, BentaCuppCake, CakeLoaf, CakeParfait, Drink, Meatpie,  MiniCakeLoaf, MiniTreatBox, TreatBoxes, TreatBoxesTwo, CustomMadeCake, puffPuff, smallChops, springRolls, classicCake } from '../utils/imports'
 
 
 
@@ -8,7 +8,7 @@ export const ShopData  = [
         id: 1,
         name: "Fruity Hibiscus Drink",
         size: ["250ml", "450ml"],
-        price: [3, 5],
+        price: [2.5, 5],
         description: "A refreshing drink made with fruity hibiscus.\n£3 for 250ml\n£5 for 450ml",
         image: Drink,
         category: "Drinks",
@@ -116,10 +116,10 @@ export const ShopData  = [
     {
         id: 12,
         name: "Custom Made Cake",
-        description: "A custom cake created around your theme and occasion starting from £45.00 \n A deposit of 80% is required to confirm your order.",
+        description: "A custom cake created around your theme and occasion starting from £45.00 \n A deposit of 70% is required to confirm your order.",
         image: CustomMadeCake,
         link: "/custom-order",
-        price:45,
+        price:65,
         category: "Celebration Cakes",
         quantity: 1,
     },
@@ -159,4 +159,81 @@ export const ShopData  = [
         category: "Pastries & Small Chops",
         quantity: 6,
     },
+    {
+        id: 17,
+        name: "The Lavish Classic – 6-Inch Celebration Cake",
+        size: ["White", "Peach"],
+        description: true, 
+        image: classicCake,
+        price: [50, 50],
+        category: "Celebration Cakes",
+        quantity: 1,
+    },
+
+    // Christmas Menu
+    {
+        id: 18,
+        name: "Santa's Sweet Box",
+        description: "A delightful box of festive treats containing: \n4 meat pies \n10 puff-puff",
+        image: classicCake,
+        price: 15.99,
+        preorder: true,
+        category: "Christmas Menu",
+        quantity: 1,
+    },
+     {
+        id: 19,
+        name: "Festive Feast Box",
+        description: "A delightful box of festive treats containing: \n5 meat pies \n15 puff-puff \n6 spring rolls",
+        image: classicCake,
+        price: 25.99,
+        preorder: true,
+        category: "Christmas Menu",
+        quantity: 1,
+    },
+     {
+        id: 20,
+        name: "Lavish Christmas Hamper",
+        description: "A delightful hamper of festive treats containing: \n5 meat pies \n5 mini cake loaves \n15 puff-puff\nComplimentary bottle of exotic zobo drink",
+        image: classicCake,
+        price: 50,
+                preorder: true,
+        category: "Christmas Menu",
+        quantity: 1,
+    },
+     {
+        id: 21,
+        name: "Christmas Celebration Cake - 8 inches (single layer)",
+        description: "A delicious celebration cake perfect for the holiday season. \n8 inches in diameter, single layer.",
+        image: classicCake,
+                preorder: true,
+
+        price: 50,
+        category: "Christmas Menu",
+        quantity: 1,
+    },
+     {
+        id: 22,
+        name: "12 Cupcakes - Christmas Special",
+        description: "A delightful selection of 12 cupcakes, perfect for the holiday season.",
+        image: TwelveCupcake,
+                preorder: true,
+
+        price: 26,
+        category: "Christmas Menu",
+        quantity: 1,
+    },
+     {
+        id: 23,
+        name: "6 Cupcakes - Christmas Special",
+        description: "A delightful selection of 6 cupcakes, perfect for the holiday season.",
+        image: SixCupCake,
+                preorder: true,
+
+        price: 14,
+        category: "Christmas Menu",
+        quantity: 1,
+    },
+    
+    
    ]

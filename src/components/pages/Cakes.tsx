@@ -16,9 +16,36 @@ export const Cakes = () => {
         <title>Celebration Cakes | Lavish Treats</title>
         <meta name="description" content="Lavish Treats offers a variety of celebration cakes for birthdays, weddings, and special occasions. Explore our cake menu and find the perfect cake for your event." />
       </Helmet>
-      <section className=" py-12 lg:py-28 px-6 text-shadow-2xs"
 
-      >
+      <section className="relative overflow-hidden border-b border-line bg-lilac-100 px-4 py-16 md:px-8 lg:py-24">
+        <div className="pointer-events-none absolute -right-20 -top-32 h-80 w-80 rounded-full border-36 border-white/50" />
+        <motion.div
+          initial="hidden" animate="visible" variants={motionVariants}
+          className="relative mx-auto max-w-7xl"
+        >
+          <div className="max-w-3xl">
+            <p className="text-purple-bright font-light mb-3 uppercase tracking-widest">Celebration Cakes</p>
+            <motion.h1 variants={motionVariants} className="font-serif text-5xl font-semibold leading-none text-purple-deep md:text-7xl">
+             Cakes for Every Occasion
+            </motion.h1>
+            <p className="mt-6 max-w-2xl text-base font-light leading-7 text-text-body md:text-lg">
+            Beautifully handcrafted buttercream cakes designed to become the centrepiece of your celebration. Every cake is made fresh to order and customised to match your theme, colours, and occasion.
+            </p>
+          </div>
+          <div className="flex items-center text-center max-w-xl mt-6  gap-y-2 gap-x-4 flex-col md:flex-row">
+            <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-full  hover:bg-purple-dark transition duration-300 ease-in-out">
+              Enquire about your Cake
+            </Link>
+            <Link to="/shop" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-full hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
+              Explore Shop
+            </Link>
+          </div>
+          
+        </motion.div>
+      </section>
+
+      {/*  
+      <section className=" py-12 lg:py-28 px-6 text-shadow-2xs" >
         <motion.div
           initial="hidden" animate="visible" variants={motionVariants}
           className="mx-auto max-w-7xl items-center text-center">
@@ -43,7 +70,9 @@ export const Cakes = () => {
             </Link>
           </div>
         </motion.div>
-      </section>
+      </section> 
+      */}
+       
 
       <section className="testimonials py-12 items-center">
         <div className="mx-auto max-w-5xl px-6 text-center">
@@ -110,16 +139,16 @@ export const Cakes = () => {
             </p>
           </div>
         </div>
-         <div className="flex items-center max-w-xl text-center px-6 md:px-0 mt-6 mx-auto justify-center gap-y-2 gap-x-4 flex-col md:flex-row">
-            <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-full  hover:bg-purple-dark transition duration-300 ease-in-out">
-              Enquire about your Cake
-            </Link>
-            <Link to="/gallery" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-full hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
-              Explore Gallery
-            </Link>
-          </div>
+        <div className="flex items-center max-w-xl text-center px-6 md:px-0 mt-6 mx-auto justify-center gap-y-2 gap-x-4 flex-col md:flex-row">
+          <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-full  hover:bg-purple-dark transition duration-300 ease-in-out">
+            Enquire about your Cake
+          </Link>
+          <Link to="/gallery" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-full hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
+            Explore Gallery
+          </Link>
+        </div>
       </section>
-      
+
 
 
     </>

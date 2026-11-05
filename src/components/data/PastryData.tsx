@@ -19,6 +19,9 @@ import {
     GalleryChristmasCupcakes,
     GalleryLevel8Cake,
     GalleryenckCake,
+    galleryNew,
+    galleryNew2,
+    galleryNew3,
 } from '../utils/imports'
 
 export const pastryData = [
@@ -145,6 +148,24 @@ export const pastryData = [
         name: "Level 8 Celebration Cake",
         description: "A colourful celebration cake for a special milestone",
         image: GalleryLevel8Cake,
+    },
+    {
+        id: 21,
+        name: "Lavish Treats New Cake",
+        description: "A new cake design from Lavish Treats",
+        image: galleryNew,
+    },
+    {
+        id: 22,
+        name: "Lavish Treats New Cake 2",
+        description: "Another new cake design from Lavish Treats",
+        image: galleryNew2,
+    },
+    {
+        id: 23,
+        name: "Lavish Treats New Cake 3",
+        description: "Yet another new cake design from Lavish Treats",
+        image: galleryNew3,
     },
 
    ]
