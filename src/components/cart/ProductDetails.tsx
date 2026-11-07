@@ -58,15 +58,15 @@ export const ProductDetails = () => {
 
                 <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,.95fr)] lg:gap-16">
                     <div className="lg:sticky lg:top-24 lg:self-start">
-                        <div className="relative overflow-hidden border border-purple-light bg-lilac-100 p-3 md:p-5">
-                            <img src={product.image} alt={product.name} width="800" height="800" className="aspect-square w-full object-cover" />
+                        <div className="relative overflow-hidden border border-purple-light bg-lilac-100 p-3 md:p-5 rounded-xl">
+                            <img src={product.image} alt={product.name} width="800" height="800" className="aspect-square w-full object-cover rounded-xl" />
                             <div className="absolute bottom-7 left-7 bg-white/95 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-purple-deep shadow-sm">
                                 {product.category}
                             </div>
                         </div>
                         <div className="mt-4 grid grid-cols-2 gap-3 text-xs text-text-body">
-                            <div className="border border-border-soft bg-white p-3"><IconTruckDelivery size={18} className="mb-2 text-purple-primary" /><span>Pick-up and delivery options available</span></div>
-                            <div className="border border-border-soft bg-white p-3"><IconClock size={18} className="mb-2 text-purple-primary" /><span>Made fresh to order</span></div>
+                            <div className="border rounded-xl border-border-soft bg-white p-3"><IconTruckDelivery size={18} className="mb-2 text-purple-primary" /><span>Pick-up and delivery options available</span></div>
+                            <div className="border rounded-xl border-border-soft bg-white p-3"><IconClock size={18} className="mb-2 text-purple-primary" /><span>Made fresh to order</span></div>
                         </div>
                     </div>
 
@@ -89,7 +89,7 @@ export const ProductDetails = () => {
                                         name="variant"
                                         value={selectedSize}
                                         onChange={(event) => setSelectedSize(event.target.value)}
-                                        className="w-full border border-border-soft bg-white px-4 py-3 text-sm text-text-body focus:border-purple-primary focus:outline-none"
+                                        className="w-full border border-border-soft bg-white px-4 py-3 text-sm text-text-body focus:border-purple-primary  rounded-xl focus:outline-none"
                                     >
                                         {product.size.map((variant, index) => (
                                             <option key={variant} value={variant}>{variant} - {formatCurrency(product.price[index])}</option>
@@ -99,9 +99,9 @@ export const ProductDetails = () => {
                             )}
                             <div className="mt-6">
                                 {isCustomOrder ? (
-                                    <Link to={product.link!} className="flex w-full items-center justify-center bg-purple-primary px-6 py-4 text-sm font-semibold text-white transition hover:bg-purple-dark">Enquire about this cake</Link>
+                                    <Link to={product.link!} className="flex w-full rounded-xl items-center justify-center bg-purple-primary px-6 py-4 text-sm font-semibold text-white transition hover:bg-purple-dark">Custom enquiry form</Link>
                                 ) : (
-                                    <button onClick={handleAddToCart} className="flex w-full items-center justify-center gap-2 bg-purple-primary px-6 py-4 text-sm font-semibold text-white transition hover:bg-purple-dark">
+                                    <button onClick={handleAddToCart} className="flex w-full rounded-xl items-center justify-center gap-2 bg-purple-primary px-6 py-4 text-sm font-semibold text-white transition hover:bg-purple-dark">
                                         <IconShoppingCartPlus size={19} /> Add to basket
                                     </button>
                                 )}
@@ -132,11 +132,11 @@ export const ProductDetails = () => {
                             <div><p className="mb-2 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-purple-bright">Keep browsing</p><h2 className="font-serif text-4xl font-semibold text-purple-deep">You may also like</h2></div>
                             <Link to="/shop" className="hidden text-sm font-semibold text-purple-primary sm:block">View all treats</Link>
                         </div>
-                        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+                        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6 ">
                             {relatedProducts.map((relatedProduct) => (
-                                <Link key={relatedProduct.id} to="/productDetails/$id" params={{ id: String(relatedProduct.id) }} className="group overflow-hidden border border-line bg-lilac-50 transition hover:-translate-y-1 hover:shadow-lg">
-                                    <img src={relatedProduct.image} alt={relatedProduct.name} width="400" height="400" className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" />
-                                    <div className="p-4"><h3 className="font-serif text-xl font-semibold leading-tight text-purple-deep">{relatedProduct.name}</h3><span className="mt-2 block font-sans text-sm font-semibold text-purple-bright">{formatCurrency(Array.isArray(relatedProduct.price) ? relatedProduct.price[0] : relatedProduct.price)}</span></div>
+                                <Link key={relatedProduct.id} to="/productDetails/$id" params={{ id: String(relatedProduct.id) }} className="group overflow-hidden  rounded-t-xl border border-line bg-lilac-50 transition hover:-translate-y-1 hover:shadow-lg">
+                                    <img  src={relatedProduct.image} alt={relatedProduct.name} width="400" height="400" className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105 rounded-t-xl" />
+                                    <div className="p-4"><h3 className="font-serif text-xl font-semibold leading-tight  rounded-t-xl text-purple-deep">{relatedProduct.name}</h3><span className="mt-2 block font-sans text-sm font-semibold   text-purple-bright">{formatCurrency(Array.isArray(relatedProduct.price) ? relatedProduct.price[0] : relatedProduct.price)}</span></div>
                                 </Link>
                             ))}
                         </div>

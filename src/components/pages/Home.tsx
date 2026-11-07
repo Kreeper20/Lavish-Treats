@@ -73,10 +73,10 @@ export const Home = () => {
                             <span>Made fresh</span>
                         </div>
                         <div className="flex flex-wrap gap-4 mt-6">
-                            <Link to="/custom-order" className="bg-purple-primary uppercase text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
+                            <Link to="/custom-order" className="bg-purple-primary uppercase text-white px-6 py-3 rounded-2xl hover:bg-purple-dark transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
                                 request a cake quote
                             </Link>
-                            <Link to="/gallery" className=" border border-purple-primary text-purple-primary px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
+                            <Link to="/gallery" className=" border border-purple-primary text-purple-primary px-6 py-3 rounded-2xl hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out hover:-translate-y-1">
                                 EXPLORE GALLERY
                             </Link>
                         </div>
@@ -129,6 +129,7 @@ export const Home = () => {
                         It's part of your story.
                     </h2>
                 </div>
+                
             </section>
 
             <section className="py-12 md:py-28">
@@ -152,6 +153,7 @@ export const Home = () => {
                         />
                     ))}
                 </div>
+            
             </section>
 
             <section className="bg-lilac-panel py-12 md:py-28">
@@ -193,7 +195,7 @@ export const Home = () => {
                             Buttercream Celebration Cakes
                         </h2>
 
-                        <p className=" text-text-body font-extralight text-sm md:text-base lg:text-lg">
+                        <p className=" text-text-body font-extralight text-base md:text-lg ">
                             Our signature buttercream cakes combine elegant designs with rich flavours, making them the perfect centrepiece for your celebration.
                             Available in multiple sizes with custom design options to suit your occasion.
                         </p>
@@ -255,12 +257,12 @@ export const Home = () => {
             </section>
 
             <section className="bg-lilac-50 py-12 ">
-                <div className="text-center items-center px-6 mx-auto">
+                <div className="md:text-center items-center px-6 mx-auto">
                     <h1 className=" text-purple-bright font-light mb-3 uppercase tracking-widest">Gallery</h1>
                     <h2 className="font-serif text-purple-deep text-4xl lg:text-5xl mb-3 font-semibold">
                         Every Creation Is Made With Love
                     </h2>
-                    <p className=" text-text-body font-extralight text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
+                    <p className=" text-text-body font-extralight text-base md:text-lg max-w-2xl mx-auto">
                         Browse a collection of some of our favourite cakes, pastries, and desserts created for birthdays, weddings, baby showers, anniversaries, and special occasions.
                     </p>
                     <div className="grid mb-8 md:mb-12 justify-self-center grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mt-8  max-w-6xl mx-auto">
@@ -272,7 +274,7 @@ export const Home = () => {
                             />
                         ))}
                     </div>
-                    <Link to="/gallery" className=" text-purple-bright border border-purple-bright px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition-colors duration-300 uppercase tracking-widest">
+                    <Link to="/gallery" className=" text-purple-bright border border-purple-bright px-6 py-3 rounded-2xl hover:bg-purple-dark hover:text-white transition-colors duration-300 uppercase tracking-widest">
                         VIew Gallery
                     </Link>
                 </div>
@@ -306,10 +308,10 @@ export const Home = () => {
                         Whether you're celebrating a milestone or simply treating yourself, we'd love to <br className='hidden lg:block' /> create something unforgettable.
                     </p>
                     <div className=" flex flex-wrap justify-center gap-3 md:gap-4 mt-6">
-                        <Link to="/cakes" className="bg-white w-full md:w-fit text-purple-dark px-6 py-3 rounded-full hover:bg-gold hover:text-white transition delay-100 duration-300 ease-in-out">
+                        <Link to="/cakes" className="bg-white w-full md:w-fit text-purple-dark px-6 py-3 rounded-2xl hover:bg-gold hover:text-white transition delay-100 duration-300 ease-in-out">
                             ORDER TODAY
                         </Link>
-                        <Link to="/contact" className=" border w-full md:w-fit text-white px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out ">
+                        <Link to="/contact" className=" border w-full md:w-fit text-white px-6 py-3 rounded-2xl hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out ">
                             CONTACT US
                         </Link>
                     </div>

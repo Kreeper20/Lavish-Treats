@@ -64,7 +64,7 @@ export const Success = () => {
                         <img src={item.image} alt={item.name} className="h-18.75 w-31.25 rounded-xl" />
                         <div className="me-auto">
                           <div className="text-text-body text-xl font-semibold font-serif">
-                            {item.name}{" "}
+                            {item.name}{""} {cartItem.size ? `(${cartItem.size})` : ""}
                           </div>
                           <div className="text-text-muted font-light text-xs left-0">{formatCurrency((cartItem.price ?? 0))} each</div>
                           <span className="min-w-2 text-center text-sm font-medium text-text-muted">

@@ -22,6 +22,10 @@ export { default as smallChops } from '../../assets/ShopItems/smallChops.webp'
 export { default as puffPuff } from '../../assets/ShopItems/puffPuff.webp'
 export { default as springRolls } from '../../assets/ShopItems/springRolls.webp'
 export {default as classicCake} from '../../assets/ShopItems/classicCake.webp'
+export {default as christmasHamper} from '../../assets/ShopItems/christmasHamper.webp'
+export {default as festiveBox} from '../../assets/ShopItems/festiveBox.webp'
+export {default as eightInchCake } from '../../assets/ShopItems/8inchCake.webp'
+
 
 // Gallery exports
 export { default as GalleryCustom } from '../../assets/Gallery/CustomCake.webp'
@@ -52,3 +56,6 @@ export { default as GalleryenckCake } from '../../assets/Gallery/enckCake.webp'
 export {default as galleryNew} from '../../assets/Gallery/galleryNew.webp'
 export {default as galleryNew2} from '../../assets/Gallery/galleryNew2.webp'
 export {default as galleryNew3} from '../../assets/Gallery/galleryNew3.webp'
+export  {default as grad} from '../../assets/Gallery/grad.webp'
+export {default as ggradBento2} from '../../assets/Gallery/gradBento.webp'
+export {default as birthday} from '../../assets/Gallery/birthday.webp'

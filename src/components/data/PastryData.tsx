@@ -7,10 +7,8 @@ import {
     GalleryTwoTierCelebrationCake,
     GalleryBabyShowerCake,
     GalleryCelebrationCake,
-    GalleryCustomMadeCake,
     GalleryMeatpie,
     GalleryTreatBoxes,
-    GalleryBentaCuppCake,
     GalleryMiniCakeLoaf,
     GallerySixCupCake,
     GalleryTwelveCupcake,
@@ -22,6 +20,9 @@ import {
     galleryNew,
     galleryNew2,
     galleryNew3,
+    grad,
+    ggradBento2,
+    birthday,
 } from '../utils/imports'
 
 export const pastryData = [
@@ -90,12 +91,6 @@ export const pastryData = [
         image: GalleryCelebrationCake,
     },
     {
-        id: 11,
-        name: "Custom Made Cake",
-        description: "A bespoke cake created for your celebration",
-        image: GalleryCustomMadeCake,
-    },
-    {
         id: 12,
         name: "Custom Made Cake",
         description: "A bespoke cake created for your celebration",
@@ -107,12 +102,7 @@ export const pastryData = [
         description: "A selection of freshly made sweet treats in a box",
         image: GalleryTreatBoxes,
     },
-    {
-        id: 14,
-        name: "Benta & Cupcake",
-        description: "A benta cake with a box of 6 cupcakes in any flavour of choice",
-        image: GalleryBentaCuppCake,
-    },
+   
     {
         id: 15,
         name: "Mini Cake Loaf",
@@ -167,5 +157,23 @@ export const pastryData = [
         description: "Yet another new cake design from Lavish Treats",
         image: galleryNew3,
     },
-
-   ]
+    {
+        id: 24,
+        name: "Lavish Treats Graduation Cake",
+        description: "A cake design for graduation celebrations",
+        image: grad,
+    },
+    {
+        id: 25,
+        name: "Lavish Treats Graduation Bento Cake",
+        description: "A bento cake design for graduation celebrations",
+        image: ggradBento2,
+    },
+    {
+        id: 26,
+        name: "Lavish Treats Birthday Cake",
+        description: "A cake design for birthday celebrations",
+        image: birthday,
+    }
+]
+    

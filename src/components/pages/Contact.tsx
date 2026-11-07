@@ -33,7 +33,7 @@ export const Contact = () => {
 
       console.log("Form submitted successfully");
       setSuccessMessage("Thank you for your message! We'll get back to you soon.");
-      
+
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -69,7 +69,7 @@ export const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-               className="mt-3 max-w-2xl font-light text-base leading-7 text-text-body md:text-lg">
+              className="mt-3 max-w-2xl font-light text-base leading-7 text-text-body md:text-lg">
               Whether you have a question about our products, need assistance with an order, or just want to say hello, we're here to help. Reach out to us and we'll get back to you as soon as possible.
             </motion.p>
             <div className="flex flex-col justify-start text-left">
@@ -120,31 +120,31 @@ export const Contact = () => {
               </div>
               {successMessage && <p className="text-green-500 text-sm">{successMessage}</p>}
               {error && <p className="text-red-500 text-sm">{error}</p>}
-              <button type="submit" disabled={isSubmitting} className={`w-full rounded-xl bg-purple-deep px-5 py-4 text-xl font-medium text-white transition duration-300 ease-in-out hover:bg-purple-mid ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}>
+              <button type="submit" disabled={isSubmitting} className={`w-full rounded-xl bg-purple-primary px-5 py-4 text-xl font-medium text-white transition duration-300 ease-in-out hover:bg-purple-dark cursor-pointer ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}>
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
-            
+
           </motion.aside>
         </div>
-        <div className="mt-12 max-w-6xl mx-auto bg-lilac-panel grid grid-cols-1 lg:grid-cols-2 rounded-2xl p-6 md:p-12 items-center">
-          <div className="text-left">
-            <h2 className="text-purple-deep font-serif text-3xl lg:text-4xl mb-3 font-semibold">
-              Explore More of Our Bakery
-            </h2>
-            <p className=" text-text-body font-extralight text-sm md:text-basel g:text-lg max-w-2xl ">
+        <div className="mt-12 max-w-6xl mx-auto">
+         <div className="grid items-center gap-8 border  rounded-2xl border-purple-light bg-lilac-panel p-7 md:p-12 lg:grid-cols-[1.3fr_1fr]">
+          <div>
+            <p className="mb-3 font-sans text-xs font-light uppercase tracking-[0.18em] text-purple-bright">Explore Our Bakery</p>
+            <h2 className="font-serif text-4xl font-semibold text-purple-deep md:text-5xl">Explore More of Our Bakery</h2>
+            <p className="mt-4 max-w-xl text-sm leading-6 text-text-body md:text-base">
               Visit our gallery to see our creations or explore our shop to place an order. We look forward to delighting you with our treats!
             </p>
           </div>
-          <div className="flex flex-col md:flex-row justify-start lg:justify-center gap-2 text-center  items-center mt-6 lg:mt-0 ">
-            <Link to="/gallery" className="bg-purple-primary w-full uppercase  text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out ">
-              Gallery
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <Link to="/gallery" className="bg-purple-primary px-6 uppercase  rounded-xl py-3 text-center text-sm font-semibold text-white transition hover:bg-purple-dark">              Gallery
             </Link>
-            <Link to="/shop" className=" border border-purple-primary w-full text-purple-primary px-6 py-3 rounded-full hover:bg-purple-dark hover:text-white transition delay-100 duration-300 ease-in-out">
-              EXPLORE SHOP
+            <Link to="/shop" className="border border-purple-primary px-6  rounded-xl py-3 text-center text-sm font-semibold text-purple-primary transition hover:bg-purple-primary hover:text-white">              EXPLORE SHOP
             </Link>
           </div>
         </div>
+        </div>
+        
       </motion.section>
 
 

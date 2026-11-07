@@ -52,7 +52,7 @@ export const Cart = ({ isOpen }: CartProps) => {
             <div className="text-center">
               <h1 className="text-2xl font-serif mb-2">Your cart is empty</h1>
               <p className="text-text-body text-sm font-light max-w-xs mx-auto">Browse the shop for pastries, desserts, drinks, gift boxes and party packs.</p>
-              <Link to="/shop" onClick={closeCart} className="bg-purple-primary text-white  uppercase text-xs px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out mt-4 inline-block">
+              <Link to="/shop" onClick={closeCart} className="bg-purple-primary text-white  uppercase text-xs px-6 py-3 rounded-2xl hover:bg-purple-dark transition delay-100 duration-300 ease-in-out mt-4 inline-block">
                 Go to shop
               </Link>
             </div>
@@ -83,7 +83,7 @@ export const Cart = ({ isOpen }: CartProps) => {
             <p className="text-sm text-text-muted mb-4">
               Collection from Kettering. Payment is arranged directly with us once your order is confirmed.
             </p>
-            <Link to="/checkout" onClick={closeCart} className="bg-purple-primary uppercase text-white px-6 py-3 rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out w-full block text-center">
+            <Link to="/checkout" onClick={closeCart} className="bg-purple-primary uppercase text-white px-6 py-3 rounded-2xl hover:bg-purple-dark transition delay-100 duration-300 ease-in-out w-full block text-center">
               Checkout
             </Link>
           </div>

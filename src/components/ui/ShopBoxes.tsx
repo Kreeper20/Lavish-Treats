@@ -43,11 +43,11 @@ export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: S
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="group flex h-full flex-col overflow-hidden border border-line bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group flex h-full rounded-t-2xl flex-col overflow-hidden border border-line bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
 
                 <Link to={'/productDetails/' + product.id}>
-                    <div className="relative overflow-hidden bg-lilac-100">
+                    <div className="relative overflow-hidden rounded-2xl">
                         <img
                             src={imageUrl}
                             alt={name}
@@ -56,16 +56,19 @@ export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: S
                             className="aspect-square w-full object-cover transition duration-700 ease-out group-hover:scale-105"
                         />
 
-                        {product.preorder && (
-                            <div className="absolute left-3 top-3 z-10 bg-white px-2.5 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-purple-deep shadow-sm">
-                                Pre-order
-                            </div>
-                        )}
-                        {product.category === "Christmas Menu" && (
-                            <div className="absolute right-3 top-3 z-10 bg-purple-deep px-2.5 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
-                                Seasonal
-                            </div>
-                        )}
+                        <div className="grid grid-cols-2 gap-2 p-3">
+                            {product.preorder && (
+                                <div className="absolute left-3 top-3 z-10 bg-white px-2.5 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-purple-deep shadow-sm">
+                                    Pre-order
+                                </div>
+                            )}
+                            {product.category === "Christmas Menu" && (
+                                <div className="absolute right-3 top-3 z-10 bg-purple-deep px-2.5 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
+                                    Seasonal
+                                </div>
+                            )}
+                        </div>
+
                     </div>
 
                     <div className="flex-1 px-4 pb-3 pt-4">
@@ -89,7 +92,7 @@ export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: S
                             value={selectedSize}
                             onChange={(e) => setSelectedSize(e.target.value)}
                             aria-label={`Choose an option for ${name}`}
-                            className="min-w-0 flex-1 border border-border-soft bg-lilac-50 p-2 text-xs text-text-body focus:border-purple-primary focus:outline-none"
+                            className="min-w-0 flex-1 border rounded-xl cursor-pointer border-border-soft bg-lilac-50 p-2 text-xs text-text-body focus:border-purple-primary focus:outline-none"
                         >
                             {product.size.map((s: string) => (
                                 <option key={s} value={s}>
@@ -102,7 +105,7 @@ export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: S
                         <Link to={link}>
                             <button
                                 aria-label={`Custom order for ${name}`}
-                                className="border border-purple-primary px-3 py-2 text-xs font-semibold text-purple-primary transition duration-300 hover:bg-purple-primary hover:text-white">
+                                className="border rounded-xl cursor-pointer border-purple-primary px-3 py-2 text-xs font-semibold text-purple-primary transition duration-300 hover:bg-purple-primary hover:text-white">
                                 Custom Order
                             </button>
                         </Link>
@@ -113,7 +116,7 @@ export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: S
                                 show?.alertOpen(`${product.quantity}x ${name} has been added to your cart!`);
                             }}
                             aria-label={`Add ${name} to cart`}
-                            className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center bg-purple-primary text-white transition duration-300 hover:bg-purple-dark"
+                            className="flex h-10 w-10 shrink-0 rounded-xl cursor-pointer items-center justify-center bg-purple-primary text-white transition duration-300 hover:bg-purple-dark"
                         >
                             <IconShoppingCartPlus className="h-5 w-5" />
                         </button>

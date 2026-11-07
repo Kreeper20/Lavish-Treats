@@ -13,7 +13,9 @@ type cartItemInput = {
     size?: string;
 };
 import { createFileRoute } from "@tanstack/react-router";
+
 import Stripe from "stripe";
+
 import { ShopData } from "../../components/data/ShopData";
 
 export const Route = createFileRoute('/api/checkout')({
@@ -81,7 +83,7 @@ export const Route = createFileRoute('/api/checkout')({
                         (sum, item) => sum + item.price * item.quantity,
                         0
                     );
-                   
+
 
                     const totalAmount = subtotal;
                     const lineItems = validItems.map((item) => ({

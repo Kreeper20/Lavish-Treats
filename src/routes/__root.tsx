@@ -66,10 +66,6 @@ export const Route = createRootRoute({
         href: '/favicon.svg',
       },
       {
-        rel: 'manifest',
-        href: '/manifest.webmanifest',
-      },
-      {
         rel: 'apple-touch-icon',
         href: '/icons/icon-192.png',
       },
@@ -95,8 +91,9 @@ function RootComponent() {
       <ShoppingCartProvider>
         <AlertProvider>
           <RootDocument>
+                        <PromoBar />
+
             <Navbar />
-            <PromoBar />
             <Outlet />
             <Footer />
           </RootDocument>

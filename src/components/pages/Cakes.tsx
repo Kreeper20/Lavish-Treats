@@ -17,7 +17,11 @@ export const Cakes = () => {
         <meta name="description" content="Lavish Treats offers a variety of celebration cakes for birthdays, weddings, and special occasions. Explore our cake menu and find the perfect cake for your event." />
       </Helmet>
 
-      <section className="relative overflow-hidden border-b border-line bg-lilac-100 px-4 py-16 md:px-8 lg:py-24">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="relative overflow-hidden border-b border-line bg-lilac-100 px-4 py-16 md:px-8 lg:py-24">
         <div className="pointer-events-none absolute -right-20 -top-32 h-80 w-80 rounded-full border-36 border-white/50" />
         <motion.div
           initial="hidden" animate="visible" variants={motionVariants}
@@ -26,23 +30,23 @@ export const Cakes = () => {
           <div className="max-w-3xl">
             <p className="text-purple-bright font-light mb-3 uppercase tracking-widest">Celebration Cakes</p>
             <motion.h1 variants={motionVariants} className="font-serif text-5xl font-semibold leading-none text-purple-deep md:text-7xl">
-             Cakes for Every Occasion
+              Cakes for Every Occasion
             </motion.h1>
-            <p className="mt-6 max-w-2xl text-base font-light leading-7 text-text-body md:text-lg">
-            Beautifully handcrafted buttercream cakes designed to become the centrepiece of your celebration. Every cake is made fresh to order and customised to match your theme, colours, and occasion.
-            </p>
+            <motion.p variants={motionVariants} className="mt-6 max-w-2xl text-base font-light leading-7 text-text-body md:text-lg">
+              Beautifully handcrafted buttercream cakes designed to become the centrepiece of your celebration. Every cake is made fresh to order and customised to match your theme, colours, and occasion.
+            </motion.p>
           </div>
           <div className="flex items-center text-center max-w-xl mt-6  gap-y-2 gap-x-4 flex-col md:flex-row">
-            <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-full  hover:bg-purple-dark transition duration-300 ease-in-out">
+            <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-2xl  hover:bg-purple-dark transition duration-300 ease-in-out">
               Enquire about your Cake
             </Link>
-            <Link to="/shop" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-full hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
+            <Link to="/shop" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-2xl hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
               Explore Shop
             </Link>
           </div>
-          
+
         </motion.div>
-      </section>
+      </motion.section>
 
       {/*  
       <section className=" py-12 lg:py-28 px-6 text-shadow-2xs" >
@@ -62,17 +66,17 @@ export const Cakes = () => {
             Beautifully handcrafted buttercream cakes designed to become the centrepiece of your celebration. Every cake is made fresh to order and customised to match your theme, colours, and occasion.
           </p>
           <div className="flex items-center max-w-xl mt-6 mx-auto justify-center gap-y-2 gap-x-4 flex-col md:flex-row">
-            <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-full  hover:bg-purple-dark transition duration-300 ease-in-out">
+            <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-2xl  hover:bg-purple-dark transition duration-300 ease-in-out">
               Enquire about your Cake
             </Link>
-            <Link to="/shop" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-full hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
+            <Link to="/shop" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-2xl hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
               Explore Shop
             </Link>
           </div>
         </motion.div>
       </section> 
       */}
-       
+
 
       <section className="testimonials py-12 items-center">
         <div className="mx-auto max-w-5xl px-6 text-center">
@@ -128,7 +132,7 @@ export const Cakes = () => {
                   <h3 className="text-xl font-bold tracking-wide uppercase text-left">Pastries/Desserts</h3>
                   <p className="text-left mb-4">View our menu here:</p>
                   <Link
-                    to="/shop" className="bg-white cursor-pointer shadow-sm shadow-accent-lavender text-purple-deep uppercase  px-6 py-3 rounded-full mt-6 hover:bg-purple-deep hover:text-white transition duration-300 ease-in-out">
+                    to="/shop" className="bg-white cursor-pointer shadow-sm shadow-accent-lavender text-purple-deep uppercase  px-6 py-3 rounded-2xl mt-6 hover:bg-purple-deep hover:text-white transition duration-300 ease-in-out">
                     View offerings
                   </Link>
                 </div>
@@ -140,10 +144,10 @@ export const Cakes = () => {
           </div>
         </div>
         <div className="flex items-center max-w-xl text-center px-6 md:px-0 mt-6 mx-auto justify-center gap-y-2 gap-x-4 flex-col md:flex-row">
-          <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-full  hover:bg-purple-dark transition duration-300 ease-in-out">
+          <Link to="/custom-order" className="bg-purple-primary w-full  text-white uppercase  px-6 py-3 rounded-2xl  hover:bg-purple-dark transition duration-300 ease-in-out">
             Enquire about your Cake
           </Link>
-          <Link to="/gallery" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-full hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
+          <Link to="/gallery" className="border border-purple-primary text-purple-primary w-full uppercase  px-6 py-3 rounded-2xl hover:bg-purple-primary hover:text-white transition duration-300 ease-in-out">
             Explore Gallery
           </Link>
         </div>

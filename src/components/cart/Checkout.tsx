@@ -413,12 +413,17 @@ export const Checkout = () => {
                                         </div>
 
                                         <div className="flex-1">
-                                            <p className="font-medium text-text-card">{product.name}</p>
+                                            <p className="font-medium text-text-card">{product.name} ({cartItem.size})</p>
+
+
+                                          
+
                                             {cartItem.size && (
                                                 <p className="text-xs text-text-muted">
-                                                    Size: {cartItem.size}
+                                  {product.size?.length === 2 && product.size.includes("White") && product.size.includes("Peach") ? "Colour" : "Size"}: {cartItem.size}
                                                 </p>
                                             )}
+
                                             <p className="text-xs text-text-muted">
                                                 {cartItem.quantity} x {formatCurrency(cartItem.price ?? 0)} each
                                             </p>
@@ -466,7 +471,7 @@ export const Checkout = () => {
                         </div>
                         <button
                             onClick={openCart}
-                            className="mt-5 block rounded-full w-full border cursor-pointer border-purple-primary px-5 py-3 text-center text-sm font-semibold uppercase tracking-widest text-purple-primary transition hover:bg-purple-primary hover:text-white duration-300 ease-in-out"
+                            className="mt-5 block rounded-2xl w-full border cursor-pointer border-purple-primary px-5 py-3 text-center text-sm font-semibold uppercase tracking-widest text-purple-primary transition hover:bg-purple-primary hover:text-white duration-300 ease-in-out"
                         >
                             Edit Basket
                         </button>
