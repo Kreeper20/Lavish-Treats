@@ -24,8 +24,7 @@ export { default as springRolls } from '../../assets/ShopItems/springRolls.webp'
 export {default as classicCake} from '../../assets/ShopItems/classicCake.webp'
 export {default as christmasHamper} from '../../assets/ShopItems/christmasHamper.webp'
 export {default as festiveBox} from '../../assets/ShopItems/festiveBox.webp'
-export {default as eightInchCake } from '../../assets/ShopItems/8inchCake.webp'
-
+export { default as eightInchCake } from '../../assets/ShopItems/8InchCake.webp'
 
 // Gallery exports
 export { default as GalleryCustom } from '../../assets/Gallery/CustomCake.webp'
