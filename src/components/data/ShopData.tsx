@@ -5,11 +5,11 @@ export const ShopData = [
     {
         id: 1,
         name: "Fruity Hibiscus Drink",
-        size: ["250mls", "450mls"],
+        size: ["250ml", "450ml"],
         price: [2.5, 4.99],
         description: [
             p("A refreshing drink made with fruity hibiscus."),
-            list(["£3 for 250ml", "£5 for 450ml"]),
+            list(["£2.5 for 250ml", "£4.99 for 450ml"]),
         ],
         image: Drink,
         category: "Drinks",

@@ -1,4 +1,4 @@
-export { default as Logo } from '../../assets/lavish-logo.png'
+export { default as Logo } from '../../assets/lavish-logo.webp'
 export { default as Custom } from '../../assets/CustomCake.webp'
 export { default as Ose } from '../../assets/Ose.webp'
 export { default as MultiLayered } from '../../assets/Multi-Layered-Cake.webp'
