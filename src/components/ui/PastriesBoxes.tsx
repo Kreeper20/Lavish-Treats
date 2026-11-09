@@ -19,7 +19,7 @@ export const PastriesBoxes = ({ name, description, imageUrl, link }: PastriesBox
                     height={700}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-fit hover:scale-105 duration-500"
+                    className="w-full h-full object-cover hover:scale-105 duration-500"
                 />
             </div>
             <div className="p-6 border-t border-border-soft">

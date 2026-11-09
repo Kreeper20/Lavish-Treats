@@ -207,16 +207,15 @@ export const Home = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.7 }}
-                        className="relative   order-first"
+                        className="order-first"
                     >
                         <div
-                            className="relative w-full aspect-square rounded-3xl overflow-hidden z-10 "
+                            className="w-full rounded-2xl overflow-hidden z-10 "
                         >
                             <img
                                 src={MultiLayered}
                                 alt="Lavish Treats"
-                                width="1173"
-                                height="1282"
+                               
                                 className="w-full h-auto object-cover hover:scale-101 duration-500"
                             />
                         </div>

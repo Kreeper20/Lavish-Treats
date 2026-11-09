@@ -112,7 +112,7 @@ export const Hero2 = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="relative  mt-8 lg:mt-0 order-2 lg:order-1"
+                    className="relative mt-8 lg:mt-0 order-2 lg:order-1"
                 >
                     <div
                         className="relative w-full aspect-square rounded-3xl  overflow-hidden z-10 shadow-xl shadow-purple-lighter"
@@ -128,7 +128,6 @@ export const Hero2 = () => {
                             alt="Lavish Treats"
                             width={1291}
                             height={1456}
-                            fetchPriority="high"
                             decoding="async"
                             className="w-full h-full object-cover"
                         />
