@@ -24,7 +24,9 @@ export { default as springRolls } from '../../assets/ShopItems/springRolls.webp'
 export {default as classicCake} from '../../assets/ShopItems/classicCake.webp'
 export {default as christmasHamper} from '../../assets/ShopItems/christmasHamper.webp'
 export {default as festiveBox} from '../../assets/ShopItems/festiveBox.webp'
-export { default as eightInchCake } from '../../assets/ShopItems/8InchCake.webp'
+export {default as christmasCake} from '../../assets/ShopItems/christmasCake.webp'
+export { default as christmasCupcakes } from '../../assets/Gallery/christmasCupcake.webp'
+
 
 // Gallery exports
 export { default as GalleryCustom } from '../../assets/Gallery/CustomCake.webp'
@@ -49,7 +51,7 @@ export { default as GallerySixCupCake } from '../../assets/Gallery/6CupCake.webp
 export { default as GalleryBirthdayFourPhoto } from '../../assets/Gallery/galleryBirthday4.webp'
 export { default as GalleryCake } from '../../assets/Gallery/galleryCake.webp'
 export { default as GalleryCupcake } from '../../assets/Gallery/galleryCupcake.webp'
-export { default as GalleryChristmasCupcakes } from '../../assets/Gallery/qxda5lqnu08qb3veff1hasmyf0hu.webp'
+export { default as GalleryChristmasCupcakes } from '../../assets/Gallery/christmasCupcake.webp'
 export { default as GalleryLevel8Cake } from '../../assets/Gallery/Level8Cake.webp'
 export { default as GalleryenckCake } from '../../assets/Gallery/enckCake.webp'
 export {default as galleryNew} from '../../assets/Gallery/galleryNew.webp'

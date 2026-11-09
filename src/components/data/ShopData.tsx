@@ -1,32 +1,33 @@
-import { TwelveCupcake, SixCupCake, BentaCuppCake, CakeLoaf, CakeParfait, Drink, Meatpie, MiniCakeLoaf, MiniTreatBox, TreatBoxes, TreatBoxesTwo, CustomMadeCake, puffPuff, smallChops, springRolls, classicCake, christmasHamper, eightInchCake, festiveBox } from '../utils/imports'
-
-
-
+import { TwelveCupcake, SixCupCake, BentaCuppCake, CakeLoaf, CakeParfait, Drink, Meatpie, MiniCakeLoaf, MiniTreatBox, TreatBoxes, TreatBoxesTwo, CustomMadeCake, puffPuff, smallChops, springRolls, classicCake, christmasHamper, festiveBox, christmasCake, christmasCupcakes } from '../utils/imports'
+import { p, list, minOrder, containing, lavishClassicDescription, lavishCustomCakeDescription } from "./productDescriptions";
 
 export const ShopData = [
     {
         id: 1,
         name: "Fruity Hibiscus Drink",
-        size: ["250ml", "450ml"],
-        price: [2.5, 5],
-        description: "A refreshing drink made with fruity hibiscus.\n£3 for 250ml\n£5 for 450ml",
+        size: ["250mls", "450mls"],
+        price: [2.5, 4.99],
+        description: [
+            p("A refreshing drink made with fruity hibiscus."),
+            list(["£3 for 250ml", "£5 for 450ml"]),
+        ],
         image: Drink,
         category: "Drinks",
         quantity: 1,
         preorder: true,
-
     },
-
     {
         id: 2,
         name: "Bento Cake Box",
-        description: "4 inch bento cake with 5 cupcakes \nAny flavor of choice",
+        description: [
+            p("A 4 inch bento cake with 5 cupcakes."),
+            p("Any flavour of choice."),
+        ],
         image: BentaCuppCake,
         price: 45,
         category: "Celebration Cakes",
         allowsPersonalisation: true,
         quantity: 1,
-
     },
     {
         id: 3,
@@ -37,7 +38,6 @@ export const ShopData = [
         category: "Cupcakes & Cake Treats",
         allowsPersonalisation: true,
         quantity: 1,
-
     },
     {
         id: 4,
@@ -61,7 +61,7 @@ export const ShopData = [
     {
         id: 6,
         name: "Cake Parfait",
-        description: "Cake parfait with strawberry topping \nMinimum order of 6",
+        description: [p("Cake parfait with strawberry topping."), minOrder(6)],
         image: CakeParfait,
         price: 5,
         category: "Cupcakes & Cake Treats",
@@ -70,7 +70,7 @@ export const ShopData = [
     {
         id: 7,
         name: "Meat Pie",
-        description: "A delicious pie made with beef \n Minimum order of 6",
+        description: [p("A delicious pie made with beef."), minOrder(6)],
         image: Meatpie,
         price: 2.70,
         category: "Pastries & Small Chops",
@@ -88,7 +88,7 @@ export const ShopData = [
     {
         id: 9,
         name: "Mini Sweet Box",
-        description: "Contains:\n 4 meat/chicken pie and\n 6 puff puff",
+        description: containing("A mini sweet treat box containing:", ["4 meat/chicken pies", "6 puff puff"]),
         image: TreatBoxesTwo,
         price: 15,
         category: "Treat Boxes & Gifts",
@@ -97,7 +97,11 @@ export const ShopData = [
     {
         id: 10,
         name: "Lavish Treat Box",
-        description: "A selection of freshly made pastries and treats \n 4 meat or chicken pie,\n 6 puff puff,\n 2 mini cake loaves",
+        description: containing("A selection of freshly made pastries and treats:", [
+            "4 meat or chicken pies",
+            "6 puff puff",
+            "2 mini cake loaves",
+        ]),
         image: MiniTreatBox,
         price: 25,
         allowsPersonalisation: true,
@@ -107,7 +111,11 @@ export const ShopData = [
     {
         id: 11,
         name: "Lavish Hamper",
-        description: "A generous hamper filled with freshly made treats \n 5 meat pie,\n 5 mini cake loaves,\n12 puff puff ",
+        description: containing("A generous hamper filled with freshly made treats:", [
+            "5 meat pies",
+            "5 mini cake loaves",
+            "12 puff puff",
+        ]),
         image: TreatBoxes,
         price: 50,
         category: "Treat Boxes & Gifts",
@@ -115,8 +123,8 @@ export const ShopData = [
     },
     {
         id: 12,
-        name: "Custom Made Cake",
-        description: "A custom cake created around your theme and occasion starting from £45.00 \n A deposit of 70% is required to confirm your order.",
+        name: "Custom-Made Celebration Cakes",
+        description: lavishCustomCakeDescription,
         image: CustomMadeCake,
         link: "/custom-order",
         price: 65,
@@ -126,7 +134,7 @@ export const ShopData = [
     {
         id: 13,
         name: "Puff Puff",
-        description: "A delicious puff puff made with our secret recipe \n Minimum order of 10",
+        description: [p("A delicious puff puff made with our secret recipe."), minOrder(10)],
         image: puffPuff,
         price: 0.75,
         category: "Pastries & Small Chops",
@@ -135,7 +143,7 @@ export const ShopData = [
     {
         id: 14,
         name: "Spring Rolls",
-        description: "Freshly made spring rolls  \n Minimum order of 6",
+        description: [p("Freshly made spring rolls."), minOrder(6)],
         image: springRolls,
         price: 0.75,
         category: "Pastries & Small Chops",
@@ -144,7 +152,7 @@ export const ShopData = [
     {
         id: 15,
         name: "Small Chops Tray ",
-        description: "Tray of small chops containing:\n 50 Puff Puff,\n 20 Spring Rolls",
+        description: containing("Tray of small chops containing:", ["50 puff puff", "20 spring rolls"]),
         image: smallChops,
         price: 50.00,
         category: "Pastries & Small Chops",
@@ -153,7 +161,7 @@ export const ShopData = [
     {
         id: 16,
         name: "Chicken Pie",
-        description: "A delicious pie made with chicken \n Minimum order of 6",
+        description: [p("A delicious pie made with chicken."), minOrder(6)],
         image: Meatpie,
         price: 2.70,
         category: "Pastries & Small Chops",
@@ -163,7 +171,7 @@ export const ShopData = [
         id: 17,
         name: "The Lavish Classic – 6-Inch Celebration Cake",
         size: ["White", "Peach"],
-        description: true,
+        description: lavishClassicDescription,
         image: classicCake,
         price: [50, 50],
         category: "Celebration Cakes",
@@ -174,7 +182,10 @@ export const ShopData = [
     {
         id: 18,
         name: "Santa's Sweet Box",
-        description: "A delightful box of festive treats containing: \n4 meat pies \n10 puff-puff",
+        description: containing("A delightful box of festive treats containing:", [
+            "4 meat pies",
+            "10 puff-puff",
+        ]),
         image: festiveBox,
         price: 15.99,
         preorder: true,
@@ -184,7 +195,11 @@ export const ShopData = [
     {
         id: 19,
         name: "Festive Feast Box",
-        description: "A delightful box of festive treats containing: \n5 meat pies \n15 puff-puff \n6 spring rolls",
+        description: containing("A delightful box of festive treats containing:", [
+            "5 meat pies",
+            "15 puff-puff",
+            "6 spring rolls",
+        ]),
         image: festiveBox,
         price: 25.99,
         preorder: true,
@@ -194,7 +209,12 @@ export const ShopData = [
     {
         id: 20,
         name: "Lavish Christmas Hamper",
-        description: "A delightful hamper of festive treats containing: \n5 meat pies \n5 mini cake loaves \n15 puff-puff\nComplimentary bottle of exotic zobo drink",
+        description: containing("A delightful hamper of festive treats containing:", [
+            "5 meat pies",
+            "5 mini cake loaves",
+            "15 puff-puff",
+            "Complimentary bottle of exotic zobo drink",
+        ]),
         image: christmasHamper,
         price: 50,
         preorder: true,
@@ -204,8 +224,11 @@ export const ShopData = [
     {
         id: 21,
         name: "Christmas Celebration Cake - 8 inches (single layer)",
-        description: "A delicious celebration cake perfect for the holiday season. \n8 inches in diameter, single layer.",
-        image: eightInchCake,
+        description:[
+            p("A delicious celebration cake perfect for the holiday season."),
+            list(["8 inches in diameter", "Single layer"]),
+        ],
+        image: christmasCake,
         preorder: true,
         price: 50,
         category: "Christmas Menu",
@@ -215,7 +238,7 @@ export const ShopData = [
         id: 22,
         name: "12 Cupcakes - Christmas Special",
         description: "A delightful selection of 12 cupcakes, perfect for the holiday season.",
-        image: TwelveCupcake,
+        image:  christmasCupcakes,
         preorder: true,
         price: 26,
         category: "Christmas Menu",
@@ -231,6 +254,4 @@ export const ShopData = [
         category: "Christmas Menu",
         quantity: 1,
     },
-
-
 ]

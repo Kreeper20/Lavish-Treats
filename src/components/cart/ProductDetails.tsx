@@ -6,6 +6,7 @@ import { formatCurrency } from "../utils/formatCurrency";
 import { Link } from "@tanstack/react-router";
 import { IconArrowLeft, IconShoppingCartPlus, IconTruckDelivery, IconClock } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
+import { ProductDescription } from "../data/productDescription";
 
 export const ProductDetails = () => {
     const { increaseCartQuantityWithMinimum } = UseShoppingCart();
@@ -26,15 +27,7 @@ export const ProductDetails = () => {
     const displayPrice = Array.isArray(product.price)
         ? product.price[Math.max(product.size?.indexOf(selectedSize ?? "") ?? 0, 0)]
         : product.price;
-    const cakeIncludes = [
-        "6-inch, two-layer celebration cake.",
-        "Beautifully smooth American buttercream finish.",
-        "Delicate piped buttercream borders.",
-        "Gold Happy Birthday cake topper.",
-        "Only in vanilla flavour.",
-        "White or peach colour buttercream.",
-        "Carefully boxed and presented, ready for your celebration."
-    ];
+  
 
     const handleAddToCart = () => {
         if (Array.isArray(product.price) && product.size) {
@@ -109,18 +102,7 @@ export const ProductDetails = () => {
                             <p className="mt-3 text-center text-xs text-text-muted">Secure payment processing</p>
                         </div>
 
-                        {typeof product.description === "string" && <p className="mt-7 whitespace-pre-line text-base leading-7 text-text-body">{product.description}</p>}
-                        {product.description === true && (
-                            <div className="mt-7 text-base leading-7 text-text-body">
-                                <p>Introducing The Lavish Classic, a beautifully finished 6-inch celebration cake from our Lavish Treats Signature Collection.</p>
-                                <p className="mt-4">Designed for those who love something elegant without all the extras, this cake features smooth buttercream finishing, delicate piped details and a touch of gold for a timeless celebration look.</p>
-                                <h2 className="mt-7 font-serif text-2xl font-semibold text-purple-deep">Cake includes</h2>
-                                <ul className="mt-3 space-y-2 pl-5 marker:text-purple-primary">
-                                    {cakeIncludes.map((item) => <li key={item}>{item}</li>)}
-                                </ul>
-                                <p className="mt-6 text-sm"><strong className="text-purple-deep">Please note:</strong> This is a signature design with a set style. For a bespoke design, please enquire about a custom cake.</p>
-                            </div>
-                        )}
+                        <ProductDescription description={product.description} />
                     </div>
                 </div>
             </section>

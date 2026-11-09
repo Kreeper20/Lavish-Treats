@@ -1,7 +1,7 @@
 type ShopBoxesProps = {
     id: number;
     name: string;
-    description?: string | boolean;
+    description?: Description;
     price: number;
     imageUrl: string;
     link?: string;
@@ -14,6 +14,9 @@ import { IconShoppingCartPlus } from "@tabler/icons-react"
 import { Link } from "@tanstack/react-router";
 import { ShopData } from "../data/ShopData";
 import { useState } from "react";
+import { type Description } from "../data/productDescription";
+import { descriptionSummary } from "../data/productDescriptions";
+
 
 export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: ShopBoxesProps & { product: any; }) => {
     const [selectedSize, setSelectedSize] = useState(product?.size ? product.size[0] : undefined);
@@ -36,6 +39,8 @@ export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: S
     const { increaseCartQuantityWithMinimum } = UseShoppingCart();
     const item = ShopData.find((item) => item.id === id);
     if (item == null) return null;
+
+
     return (
         <>
             <motion.div
@@ -71,12 +76,12 @@ export const ShopBoxes = ({ id, name, description, imageUrl, link, product, }: S
 
                     </div>
 
-                    <div className="flex-1 px-4 pb-3 pt-4">
-                        <h2 className="line-clamp-2 min-h-12 font-serif text-xl font-semibold leading-tight text-purple-deep">
+                    <div className="flex-1 px-4 pb-3 pt-4 ">
+                        <h2 className="line-clamp-2  font-serif text-xl font-semibold leading-tight text-purple-deep">
                             {name}
                         </h2>
                         <p className="mt-2 line-clamp-2 min-h-10 text-sm font-light leading-5 text-text-dim">
-                            {typeof description === "string" ? description : "Introducing The Lavish Classic, a beautifully finished 6-inch celebration cake from our Lavish Treats Signature Collection."}
+                            {descriptionSummary(description)}
                         </p>
                     </div>
                 </Link>
