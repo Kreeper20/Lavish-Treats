@@ -155,7 +155,7 @@ export const Checkout = () => {
                     <section className="flex-1">
                         <form
 
-                            className="space-y-5 border border-lilac-panel bg-white p-6 md:p-10 rounded-2xl shadow-sm lg:sticky top-30"
+                            className="space-y-5 border border-lilac-panel bg-white p-6 md:p-10 rounded-2xl shadow-sm lg:sticky lg:top-30"
                             onSubmit={handleSubmit}
                         >
                             <h3 className="font-serif text-2xl text-purple-deep font-semibold mb-2">
