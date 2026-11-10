@@ -413,9 +413,9 @@ export const Checkout = () => {
                                         </div>
 
                                         <div className="flex-1">
-                                            <p className="font-medium text-text-card">{product.name}{(cartItem.size && <span className="text-xs text-text-muted"> ({cartItem.size})</span>)}</p>
+                                            <p className="font-medium text-text-card">{product.name}</p>
                                             {cartItem.size && (
-                                                <p className="text-xs text-text-muted">
+                                                <p className="text-xs font-medium text-text-muted">
                                                     {product.size?.length === 2 && product.size.includes("White") && product.size.includes("Peach") ? "Colour" : "Size"}: {cartItem.size}
                                                 </p>
                                             )}
