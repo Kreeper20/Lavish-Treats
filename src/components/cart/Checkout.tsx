@@ -155,7 +155,7 @@ export const Checkout = () => {
                     <section className="flex-1">
                         <form
 
-                            className="space-y-5 border border-lilac-panel bg-white p-6 md:p-10 rounded-2xl shadow-sm"
+                            className="space-y-5 border border-lilac-panel bg-white p-6 md:p-10 rounded-2xl shadow-sm lg:sticky top-30"
                             onSubmit={handleSubmit}
                         >
                             <h3 className="font-serif text-2xl text-purple-deep font-semibold mb-2">
@@ -377,7 +377,7 @@ export const Checkout = () => {
                                 type="submit"
                                 disabled={isPending || isSubmitting}
 
-                                className="bg-purple-primary cursor-pointer text-white px-6 py-3 uppercase w-full rounded-full hover:bg-purple-dark transition delay-100 duration-300 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed"
+                                className="bg-purple-primary cursor-pointer text-white px-6 py-3 uppercase w-full rounded-2xl hover:bg-purple-dark transition delay-100 duration-300 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed"
                             >
                                 {isPending ? "Submitting..." : "Submit Order"}
                             </button>
@@ -413,14 +413,10 @@ export const Checkout = () => {
                                         </div>
 
                                         <div className="flex-1">
-                                            <p className="font-medium text-text-card">{product.name} ({cartItem.size})</p>
-
-
-                                          
-
+                                            <p className="font-medium text-text-card">{product.name}{(cartItem.size && <span className="text-xs text-text-muted"> ({cartItem.size})</span>)}</p>
                                             {cartItem.size && (
                                                 <p className="text-xs text-text-muted">
-                                  {product.size?.length === 2 && product.size.includes("White") && product.size.includes("Peach") ? "Colour" : "Size"}: {cartItem.size}
+                                                    {product.size?.length === 2 && product.size.includes("White") && product.size.includes("Peach") ? "Colour" : "Size"}: {cartItem.size}
                                                 </p>
                                             )}
 
