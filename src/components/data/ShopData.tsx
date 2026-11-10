@@ -1,16 +1,13 @@
 import { TwelveCupcake, SixCupCake, BentaCuppCake, CakeLoaf, CakeParfait, Drink, Meatpie, MiniCakeLoaf, MiniTreatBox, TreatBoxes, TreatBoxesTwo, CustomMadeCake, puffPuff, smallChops, springRolls, classicCake, christmasHamper, festiveBox, christmasCake, christmasCupcakes } from '../utils/imports'
-import { p, list, minOrder, containing, lavishClassicDescription, lavishCustomCakeDescription } from "./productDescriptions";
+import { p, list, minOrder, containing, lavishClassicDescription, lavishCustomCakeDescription, lavishZoboDescription } from "./productDescriptions";
 
 export const ShopData = [
     {
         id: 1,
-        name: "Fruity Hibiscus Drink",
+        name: "Lavish Exotic Zobo Drink",
         size: ["250ml", "450ml"],
         price: [2.5, 4.99],
-        description: [
-            p("A refreshing drink made with fruity hibiscus."),
-            list(["£2.5 for 250ml", "£4.99 for 450ml"]),
-        ],
+        description: lavishZoboDescription,
         image: Drink,
         category: "Drinks",
         quantity: 1,
@@ -70,7 +67,7 @@ export const ShopData = [
     {
         id: 7,
         name: "Meat Pie",
-        description: [p("A delicious pie made with beef."), minOrder(6)],
+        description: [p("Enjoy our delicious, freshly baked meat pies, made with a rich, savoury filling of well-seasoned minced meat, wrapped in golden, flaky pastry. Perfectly baked to give you a crispy exterior and a tasty, satisfying filling. Ideal for snacking, lunchboxes, parties and special occasions."), minOrder(6)],
         image: Meatpie,
         price: 2.70,
         category: "Pastries & Small Chops",
@@ -79,7 +76,7 @@ export const ShopData = [
     {
         id: 8,
         name: "Mini Cake Loaf",
-        description: "A mini cake loaf in your choice of flavour",
+        description: "Treat yourself to our delicious, freshly baked cake loaves, made with quality ingredients for a soft, moist and fluffy texture. Each mini loaf is rich in flavour, perfectly baked and delightfully satisfying. Perfect for breakfast, afternoon tea, dessert, celebrations, parties or simply enjoying a sweet treat anytime!",
         image: MiniCakeLoaf,
         price: 5,
         category: "Cupcakes & Cake Treats",
@@ -124,7 +121,7 @@ export const ShopData = [
     {
         id: 12,
         name: "Custom-Made Celebration Cakes",
-        description: lavishCustomCakeDescription,
+        description: lavishCustomCakeDescription ,
         image: CustomMadeCake,
         link: "/custom-order",
         price: 65,
@@ -134,7 +131,7 @@ export const ShopData = [
     {
         id: 13,
         name: "Puff Puff",
-        description: [p("A delicious puff puff made with our secret recipe."), minOrder(10)],
+        description: [p("Soft, fluffy and deliciously golden! Our puff puff is a delightful African favourite, freshly prepared with a lightly sweetened dough and fried to perfection. Crispy on the outside and soft on the inside, making it an irresistible treat for snacking, sharing and entertaining."), minOrder(10)],
         image: puffPuff,
         price: 0.75,
         category: "Pastries & Small Chops",
@@ -143,7 +140,7 @@ export const ShopData = [
     {
         id: 14,
         name: "Spring Rolls",
-        description: [p("Freshly made spring rolls."), minOrder(6)],
+        description: [p("Enjoy our crispy, golden spring rolls, filled with a delicious blend of fresh vegetables and savoury ingredients. Carefully wrapped and fried until perfectly crunchy, they make a wonderful appetiser, party snack or addition to any meal. Every bite delivers a delightful crunch!"), minOrder(6)],
         image: springRolls,
         price: 0.75,
         category: "Pastries & Small Chops",
@@ -161,7 +158,7 @@ export const ShopData = [
     {
         id: 16,
         name: "Chicken Pie",
-        description: [p("A delicious pie made with chicken."), minOrder(6)],
+        description: [p("Treat yourself to our mouth-watering chicken pies, generously filled with tender, flavourful chicken, potatoes and carrots, seasoned to perfection and wrapped in delicious golden pastry.\n A perfect savoury treat for everyday snacking, parties, family gatherings and celebrations."), minOrder(6)],
         image: Meatpie,
         price: 2.70,
         category: "Pastries & Small Chops",

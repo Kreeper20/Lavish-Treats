@@ -39,6 +39,17 @@ export const lavishClassicDescription: Description = [
 export const lavishCustomCakeDescription: Description = [
     p("Make your celebration extra special with a beautifully handcrafted cake, designed around your chosen theme, style and occasion."),
     p("Choose your preferred cake size and flavours, and let us bring your vision to life with a cake that is as beautiful as it is delicious."),
-    note("A 70% deposit is required to secure your booking, with the remaining balance due before collection or delivery.", "Please note:"),
+    note("A 70% deposit is required to secure your booking, with the remaining balance due before collection or delivery & final pricing depends on the complexity of the design.", "Please note:"),
     p(" Every cake is made to order, with love and attention to detail.",),
+    
+];
+
+export const lavishZoboDescription: Description = [
+    p("Refresh your taste buds with our delicious, naturally infused Exotic Zobo drink. A refreshing blend of hibiscus, pineapple, orange, cloves, and cinnamon, carefully combined to create a rich, fruity, and perfectly spiced flavour."),
+    p("Available in 250 mL and 500 mL bottles, perfect for enjoying chilled or sharing with friends and family."),
+    note("Buy 5 bottles and get 1 FREE!", "Special Offer:"),
+];
+
+export const lavishMeatPieDescription: Description = [
+    p("Treat yourself to our mouth-watering chicken pies, generously filled with tender, flavourful chicken, potatoes and carrots, seasoned to perfection and wrapped in delicious golden pastry. A perfect savoury treat for everyday snacking, parties, family gatherings and celebrations."),
 ];

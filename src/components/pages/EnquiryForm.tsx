@@ -69,11 +69,11 @@ export const EnquiryForm = () => {
     const [cakeStyle, setCakeStyle] = useState("");
     const [collectionDate, setCollectionDate] = useState("");
 
-      const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selected = new Date(e.target.value);
         const day = selected.getUTCDay();
 
-        if (day === 0 || day === 8 ) {
+        if (day === 0 || day === 8) {
             setError("Sundays are not available. Please choose another date.");
             setCollectionDate(""); // Clear the invalid input
         } else {
@@ -82,7 +82,7 @@ export const EnquiryForm = () => {
         }
     };;
 
- 
+
 
 
     return (
@@ -499,7 +499,7 @@ export const EnquiryForm = () => {
                                                     type="checkbox"
                                                     max={2}
                                                     min={1}
-                                                    
+
                                                     name="flavours"
                                                     value={flavor}
                                                     id={id}
@@ -525,51 +525,57 @@ export const EnquiryForm = () => {
                                 </label>
                                 <div className="flex flex-col gap-1">
 
-                                    {["Cake Spheres ", "Fondant Toppers", "Dried Florals", "Feathers", "Metallic Finishes", "Gold Leaf Details", "Personalised Names/Age Toppers"].map((topping) => {
+                                    {["Cake Spheres/balls - from £10 ",
+                                        "Fondant Toppers - from £10",
+                                        "Dried Florals - £5-£20",
+                                        "Feathers - £5-£20",
+                                        "Metallic Finishes - £5-£10",
+                                        "Gold Leaf Details - £5-£10 ",
+                                        "Personalised Names/Age Toppers - £5-£15"].map((topping) => {
 
-                                        const id = `topping-${topping.replace(/\s+/g, "-").toLowerCase()}`;
-                                        return (
-                                            <div key={id} className="block items-center">
-                                                <input
-                                                    type="checkbox"
-                                                    name="toppings"
-                                                    value={topping.trim()}
-                                                    id={id}
-                                                    className="w-5 h-5 mr-3 accent-black cursor-pointer"
-                                                    onChange={(event) => {
-                                                        if (topping === "Personalised Names/Age Toppers") {
-                                                            setCakeInscription(event.target.checked);
-                                                        }
-                                                    }}
-                                                />
-                                                <label htmlFor={id} className="text-sm text-gray-700 cursor-pointer">
-                                                    {topping}
-                                                </label>
+                                            const id = `topping-${topping.replace(/\s+/g, "-").toLowerCase()}`;
+                                            return (
+                                                <div key={id} className="block items-center">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="toppings"
+                                                        value={topping.trim()}
+                                                        id={id}
+                                                        className="w-5 h-5 mr-3 accent-black cursor-pointer"
+                                                        onChange={(event) => {
+                                                            if (topping === "Personalised Names/Age Toppers - £5-£15") {
+                                                                setCakeInscription(event.target.checked);
+                                                            }
+                                                        }}
+                                                    />
+                                                    <label htmlFor={id} className="text-sm text-gray-700 cursor-pointer">
+                                                        {topping}
+                                                    </label>
 
-                                                {topping === "Personalised Names/Age Toppers" && cakeInscription && (
-                                                    <div className="flex flex-col gap-2 ml-3 " >
-                                                        <p className="text-sm text-gray-600">
-                                                            Please specify the name and age for the topper (leave blank if not applicable):
-                                                        </p>
-                                                        <input
-                                                            type="text"
-                                                            name="Name-Inscription"
-                                                            placeholder="Please specify Name"
-                                                            className={`${boxStyles} w-full ml-2`}
-                                                        />
-                                                        <input
-                                                            type="text"
-                                                            name="Age-Inscription"
-                                                            placeholder="Please specify Age"
-                                                            className={`${boxStyles} w-full ml-2`}
-                                                        />
-                                                    </div>
-                                                )}
-                                            </div>
+                                                    {topping === "Personalised Names/Age Toppers - £5-£15" && cakeInscription && (
+                                                        <div className="flex flex-col gap-2 ml-3 " >
+                                                            <p className="text-sm text-gray-600">
+                                                                Please specify the name and age for the topper (leave blank if not applicable):
+                                                            </p>
+                                                            <input
+                                                                type="text"
+                                                                name="Name-Inscription"
+                                                                placeholder="Please specify Name"
+                                                                className={`${boxStyles} w-full ml-2`}
+                                                            />
+                                                            <input
+                                                                type="text"
+                                                                name="Age-Inscription"
+                                                                placeholder="Please specify Age"
+                                                                className={`${boxStyles} w-full ml-2`}
+                                                            />
+                                                        </div>
+                                                    )}
+                                                </div>
 
-                                        );
+                                            );
 
-                                    })}
+                                        })}
 
                                 </div>
                             </div>
