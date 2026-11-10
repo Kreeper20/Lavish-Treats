@@ -5,7 +5,7 @@ export const ShopData = [
     {
         id: 1,
         name: "Lavish Exotic Zobo Drink",
-        size: ["250ml", "450ml"],
+        size: ["250ml", "500ml"],
         price: [2.5, 4.99],
         description: lavishZoboDescription,
         image: Drink,
@@ -49,7 +49,7 @@ export const ShopData = [
     {
         id: 5,
         name: "Cake Loaf",
-        description: "A delicious cake loaf in any flavour of choice",
+        description: "Treat yourself to our delicious, freshly baked cake loaves, made with quality ingredients for a soft, moist and fluffy texture. Each loaf is rich in flavour, perfectly baked and delightfully satisfying. Perfect for breakfast, afternoon tea, dessert, celebrations, parties or simply enjoying a sweet treat anytime!",
         image: CakeLoaf,
         price: 10,
         category: "Cupcakes & Cake Treats",
@@ -58,7 +58,7 @@ export const ShopData = [
     {
         id: 6,
         name: "Cake Parfait",
-        description: [p("Cake parfait with strawberry topping."), minOrder(6)],
+        description: [p("Our cake parfaits are light, layered treats made with soft cake, smooth creams, and delicious toppings. Perfect for parties, small celebrations, or a little self-treat, available in single cups or sets, made fresh with love."), minOrder(6)],
         image: CakeParfait,
         price: 5,
         category: "Cupcakes & Cake Treats",
