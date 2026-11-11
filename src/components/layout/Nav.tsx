@@ -73,10 +73,12 @@ const Mobilenav = () => {
                         <Nav />
                     </div>
                     <div className="lg:hidden mr-6">
-
                         <button
                             onClick={openCart}
                             aria-label={`Open shopping cart${cartQuantity > 0 ? `, ${cartQuantity} items` : ""}`}
+                            aria-expanded={isOpen}
+                            aria-haspopup="true"
+                            aria-controls="mobile-menu"
                             style={{ width: "3rem", height: "3rem", position: "relative" }}
                             className="rounded-full border items-center justify-center flex hover:bg-purple-mid hover:text-white transition delay-100 duration-300 ease-in-out"
                         >
@@ -112,20 +114,18 @@ const Mobilenav = () => {
                     </div>
                 </div>
                 <div
-                    className={`fixed inset-x-0 top-28 bottom-0 z-40 bg-purple-deep/85 transition-opacity lg:hidden duration-300 ${isOpen
-                        ? "pointer-events-auto opacity-100"
-                        : "pointer-events-none opacity-0"
+                    className={`fixed inset-x-0 top-28 bottom-0 z-40 items-center bg-purple-deep/85 transition-opacity lg:hidden duration-300 ${isOpen
+                        ? "pointer-events-auto opacity-100 mt-12"
+                        : "pointer-events-none opacity-0 mt-6"
                         }`}
                     onClick={closeMenu}
                 >
                     <div
-                        className={`fixed right-0 top-28 bottom-0 z-50 flex w-full max-w-fit flex-col bg-lilac-50 p-6 shadow-2xl transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+                        className={`fixed right-0 mt-12 top-28 bottom-0 z-50 flex w-full max-w-fit flex-col bg-lilac-50 p-6 shadow-2xl transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
                             }`}
                         onClick={closeMenu}
                     >
                         <Nav />
-
-                        
                     </div>
                 </div>
             </nav>

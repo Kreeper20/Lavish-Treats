@@ -101,7 +101,6 @@ export const Route = createFileRoute('/api/checkout')({
                         payment_method_types: ["card"],
                         payment_intent_data: {
                             metadata: {
-                                // CHANGED — order details go here instead of just orderId
                                 customerName: orderDetails.customerName,
                                 email: orderDetails.email,
                                 phone: orderDetails.phone,

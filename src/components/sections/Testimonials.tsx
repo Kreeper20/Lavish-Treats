@@ -10,7 +10,6 @@ export const TestimonialsBox = () => {
     const [testimonials, setTestimonials] = useState<Testimonial[] | null>(null);
     const [fetchError, setFetchError] = useState<string | null>(null);
     const [showAll, setShowAll] = useState(false);
-
     const [formOpen, setFormOpen] = useState(false);
     const [name, setName] = useState("");
     const [quote, setQuote] = useState("");
@@ -18,7 +17,6 @@ export const TestimonialsBox = () => {
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
-    // fetch
     useEffect(() => {
         const fetchTestimonials = async () => {
             const { data, error } = await supabase.from("testimonials").select();
@@ -34,14 +32,20 @@ export const TestimonialsBox = () => {
         fetchTestimonials();
     }, []);
 
-    // hide the thank-you message after a few seconds
+      useEffect(() => {
+            document.body.style.overflow = formOpen ? "hidden" : "";
+    
+            return () => {
+                document.body.style.overflow = "";
+            };
+        }, [formOpen]);
+
     useEffect(() => {
         if (!submitted) return;
         const timer = setTimeout(() => setSubmitted(false), 6000);
         return () => clearTimeout(timer);
     }, [submitted]);
 
-    // close the form with Escape
     useEffect(() => {
         if (!formOpen) return;
         const onKey = (e: KeyboardEvent) => {
@@ -98,7 +102,6 @@ export const TestimonialsBox = () => {
                 <p className="text-center text-red-500">{fetchError}</p>
             )}
 
-            {/* thank-you message */}
             {submitted && (
                 <div
                     role="status"
@@ -120,7 +123,6 @@ export const TestimonialsBox = () => {
                 </div>
             )}
 
-            {/* loading skeleton */}
             {!testimonials && !fetchError && (
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {[0, 1, 2].map((n) => (
@@ -132,7 +134,6 @@ export const TestimonialsBox = () => {
                 </div>
             )}
 
-            {/* empty state */}
             {testimonials && testimonials.length === 0 && (
                 <div className="mx-auto max-w-xl rounded-2xl border border-lilac-panel bg-lilac-50 px-8 py-12 text-center">
                     <p className="font-serif text-2xl text-purple-deep">
@@ -144,7 +145,6 @@ export const TestimonialsBox = () => {
                 </div>
             )}
 
-            {/* testimonials */}
             {testimonials && testimonials.length > 0 && (
                 <>
                     <p className="mb-8 text-center text-xs uppercase tracking-widest text-text-muted">
@@ -217,7 +217,6 @@ export const TestimonialsBox = () => {
                 </>
             )}
 
-            {/* actions */}
             <div className="flex flex-row items-center justify-center gap-x-6">
                 {testimonials && testimonials.length > INITIAL_COUNT && (
                     <button
@@ -235,7 +234,6 @@ export const TestimonialsBox = () => {
                 </button>
             </div>
 
-            {/* add testimonial modal */}
             {formOpen && (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"

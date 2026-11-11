@@ -1,4 +1,5 @@
 import { IconX } from "@tabler/icons-react";
+import { useEffect } from "react";
 
 type PrivacyPolicyModalProps = {
   showModal: boolean;
@@ -10,6 +11,13 @@ export const PrivacyPolicyModal = ({
   onClose,
 }: PrivacyPolicyModalProps) => {
   if (!showModal) return null;
+    useEffect(() => {
+              document.body.style.overflow = showModal ? "hidden" : "";
+      
+              return () => {
+                  document.body.style.overflow = "";
+              };
+          }, [showModal]);
 
   return (
     <div

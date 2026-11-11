@@ -15,7 +15,6 @@ import { ShoppingCartProvider } from '../components/context/ShoppingCartContext'
 import { AlertProvider } from '../components/cart/Toast'
 import { PromoBar } from '../components/promotions/PromoBar'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useEffect } from "react";
 import { NotFound } from '../components/pages/404'
 
 const queryClient = new QueryClient();
@@ -78,14 +77,6 @@ export const Route = createRootRoute({
 
 
 function RootComponent() {
-  useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/sw.js").catch((error) => {
-        console.error("Service worker registration failed", error);
-      });
-    }
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <ShoppingCartProvider>

@@ -57,7 +57,10 @@ export const Gallery = () => {
                                     <motion.img
                                         src={image.image}
                                         alt={image.name}
+                                        width="400"
+                                        height="533"
                                         loading="lazy"
+                                        decoding="async"
                                         className="h-full w-full object-cover transition-transform duration-500 ease-in-out hover:scale-105" />
                                 </motion.div>
                             ))}

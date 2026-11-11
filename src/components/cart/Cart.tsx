@@ -3,6 +3,7 @@ import { CartItems } from "./CartItems";
 import { Link } from "@tanstack/react-router";
 
 import { formatCurrency } from "../utils/formatCurrency";
+import { useEffect } from "react";
 
 type CartProps = {
   isOpen: boolean;
@@ -14,6 +15,14 @@ export const Cart = ({ isOpen }: CartProps) => {
     (total, cartItem) => total + (cartItem.price ?? 0) * cartItem.quantity,
     0
   );
+
+  useEffect(() => {
+          document.body.style.overflow = isOpen ? "hidden" : "";
+  
+          return () => {
+              document.body.style.overflow = "";
+          };
+      }, [isOpen]);
 
   const total = formatCurrency(subtotal);
   return (

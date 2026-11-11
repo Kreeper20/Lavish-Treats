@@ -42,7 +42,7 @@ export const Route = createFileRoute("/api/stripe-webhook")({
                         city: meta.city,
                         postal_code: meta.postcode,
                         items: JSON.parse(meta.items),
-                        status: "paid", // it's created already-paid, since this only fires on success
+                        status: "paid", 
                     });
 
                     if (error) {

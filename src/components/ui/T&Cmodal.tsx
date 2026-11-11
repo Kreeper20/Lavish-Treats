@@ -1,4 +1,5 @@
 import { IconX } from "@tabler/icons-react";
+import { useEffect } from "react";
 
 type TermsModalProps = {
   showModal: boolean;
@@ -6,12 +7,20 @@ type TermsModalProps = {
   onPrivacyPolicy?: () => void;
 };
 
+
 export const TAndCModal = ({
   showModal,
   onClose,
   onPrivacyPolicy,
 }: TermsModalProps) => {
   if (!showModal) return null;
+  useEffect(() => {
+            document.body.style.overflow = showModal ? "hidden" : "";
+    
+            return () => {
+                document.body.style.overflow = "";
+            };
+        }, [showModal]);
 
   return (
     <div

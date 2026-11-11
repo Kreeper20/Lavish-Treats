@@ -31,7 +31,7 @@ export const Home = () => {
         "Reliable ordering process",
         "5-star food hygiene rating",
     ]
-    const slides = [<Hero />, <Hero2 />];
+    const slides = [<Hero key="hero" />, <Hero2 key="christmas-hero" />];
    
     return (
 
@@ -215,7 +215,10 @@ export const Home = () => {
                             <img
                                 src={MultiLayered}
                                 alt="Lavish Treats"
-                               
+                                width="1152"
+                                height="768"
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-auto object-cover hover:scale-101 duration-500"
                             />
                         </div>

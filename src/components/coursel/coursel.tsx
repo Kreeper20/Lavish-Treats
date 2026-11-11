@@ -1,5 +1,5 @@
 import { IconArrowBigLeftFilled, IconArrowBigRightFilled } from "@tabler/icons-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 type CourselProps = {
   slides: React.ReactNode[];
@@ -9,16 +9,16 @@ export const Coursel = ({ slides }: CourselProps) => {
   const [isPaused, setIsPaused] = useState(false);
 
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((current) => (current + 1) % slides.length);
-  };
+  }, [slides.length]);
 
 
-  const previousSlide = () => {
+  const previousSlide = useCallback(() => {
     setCurrentSlide((current) =>
       current === 0 ? slides.length - 1 : current - 1
     );
-  };
+  }, [slides.length]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -33,7 +33,7 @@ export const Coursel = ({ slides }: CourselProps) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [nextSlide, previousSlide]);
 
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export const Coursel = ({ slides }: CourselProps) => {
     const timer = window.setInterval(nextSlide, 8000);
 
     return () => window.clearInterval(timer);
-  }, [slides.length, isPaused, currentSlide]);
+  }, [slides.length, isPaused, currentSlide, nextSlide]);
 
   if (slides.length === 0) return null;
   

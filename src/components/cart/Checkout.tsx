@@ -402,9 +402,13 @@ export const Checkout = () => {
                                 return (
                                     <div key={index} className="flex items-start gap-4 py-4">
                                         <div className="relative shrink-0">
-                                            <img
+                                             <img
                                                 src={product.image}
                                                 alt={product.name}
+                                                width="64"
+                                                height="64"
+                                                loading="lazy"
+                                                decoding="async"
                                                 className="h-16 w-16 rounded-xl object-cover border border-lilac-300"
                                             />
                                             <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-purple-deep text-[11px] font-semibold text-white">

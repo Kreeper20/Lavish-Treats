@@ -5,7 +5,9 @@ import tailwindcss from '@tailwindcss/vite'
 import { nitro } from 'nitro/vite'
 
 export default defineConfig({
-  
+  build: {
+    sourcemap: true,
+  },
   server: {
     port: 3000,
   },

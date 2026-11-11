@@ -128,6 +128,7 @@ export const Hero2 = () => {
                             alt="Lavish Treats"
                             width={1291}
                             height={1456}
+                            loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover"
                         />
@@ -166,4 +167,3 @@ export const Hero2 = () => {
         </motion.section>
     )
 }
-
