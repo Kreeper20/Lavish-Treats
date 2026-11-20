@@ -122,7 +122,7 @@ export const Checkout = () => {
 
         if (day === 0 || day === 8) {
             setError("Sundays are not available. Please choose another date.");
-            setCollectionDate(""); // Clear the invalid input
+            setCollectionDate("");
         } else {
             setError("");
             setCollectionDate(e.target.value);

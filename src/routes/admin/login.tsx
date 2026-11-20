@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react';
 import { supabase } from "../../../src/supabase";
-import { Orders } from '../../components/context/adminPage';
 
 export const Route = createFileRoute('/admin/login')({
     component: Login,
@@ -32,6 +31,14 @@ function Login() {
         };
         checkSession();
     }, []);
+     useEffect(() => {
+        if (!user) return;
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === "Enter") handleLogin();
+        };
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [user]);
 
     return (
         <div className="flex items-center justify-center h-screen">
@@ -77,7 +84,7 @@ function Login() {
                 </div>
             </form>
             ) : (
-                <Orders />
+                window.location.href = '/admin'
             )}
         </div>
     )
